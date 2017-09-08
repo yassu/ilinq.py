@@ -79,15 +79,19 @@ class TestLinq(unittest.TestCase):
         self.assertEqual(linq.inject(0, lambda res, val: res - val), -10)
 
     def test_count(self):
-        self.assertEqual(self.linq2.count, 5)
+        self.assertEqual(self.linq2.count(), 5)
 
     def test_first(self):
         linq = Linq([11, 13, 15, 19])
-        self.assertEqual(linq.first, 11)
+        self.assertEqual(linq.first(), 11)
 
     def test_last(self):
         linq = Linq([11, 13, 15, 19])
-        return self.assertEqual(linq.last, 19)
+        return self.assertEqual(linq.last(), 19)
+
+    def test_max(self):
+        linq = Linq([13, 19, 11, 15])
+        return self.assertEqual(linq.max(), 19)
 
     def test_to_list(self):
         self.assertEqual(self.linq1.to_list(), [1])
