@@ -10,7 +10,8 @@ class Linq:
 
     def where(self, filter_func):
         def where_generator():
-            for item in self._iter:
+            iter_ = deepcopy(self._iter)
+            for item in iter_:
                 if filter_func(item):
                     yield item
         return Linq(where_generator())

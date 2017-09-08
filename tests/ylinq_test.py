@@ -29,6 +29,8 @@ class TestLinq(unittest.TestCase):
         linq1 = Linq([1])
         linq2 = Linq([1, 1, 2, 3, 5])
         self.assertEqual(linq1.where(lambda x: x % 2 == 1).to_list(), [1])
+        self.assertEqual(linq1.where(lambda x: x % 2 == 1).to_list(), [1])
+        self.assertEqual(linq2.where(lambda x: x % 2 == 0).to_list(), [2])
         self.assertEqual(linq2.where(lambda x: x % 2 == 0).to_list(), [2])
 
     def test_select(self):
