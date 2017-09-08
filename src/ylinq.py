@@ -1,12 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from copy import deepcopy
-
-
 class Linq:
     def __init__(self, i):
-        self._iter = iter(deepcopy(i))
+        self._iter = iter(i)
 
     def where(self, filter_func):
         def where_generator():
