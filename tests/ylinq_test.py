@@ -38,6 +38,9 @@ class TestLinq(unittest.TestCase):
         self.assertEqual(
             linq.select(lambda x: x % 2 == 0).to_list(),
             [True, False, True, False, True])
+        self.assertEqual(
+            linq.select(lambda x: x % 2 == 0).to_list(),
+            [True, False, True, False, True])
 
     def test_take(self):
         linq = Linq(range(100))

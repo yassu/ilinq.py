@@ -18,7 +18,8 @@ class Linq:
 
     def select(self, select_func):
         def select_generator():
-            for item in self._iter:
+            iter_ = deepcopy(self._iter)
+            for item in iter_:
                 yield select_func(item)
         return Linq(select_generator())
 
