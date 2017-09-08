@@ -105,6 +105,14 @@ class TestLinq(unittest.TestCase):
         linq = Linq([1, 6, 1, 4, 2, 2])
         self.assertEqual(linq.max(key=lambda x: x % 2), 1)
 
+    def test_contain(self):
+        linq = Linq([1, 6, 1, 4, 2, 2])
+        self.assertTrue(linq.contains(2))
+
+    def test_contain2(self):
+        linq = Linq([1, 6, 1, 4, 2, 2])
+        self.assertFalse(linq.contains(100))
+
     def test_to_list(self):
         self.assertEqual(self.linq1.to_list(), [1])
         self.assertEqual(self.linq2.to_list(), [1, 1, 2, 3, 5])

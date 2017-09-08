@@ -53,6 +53,9 @@ class Linq:
     def max(self, key=lambda x: x):
         return max(list(self._iter), key=key)
 
+    def contains(self, item):
+        return item in list(self._iter)
+
     def to_list(self):
         return list(self._iter)
 
