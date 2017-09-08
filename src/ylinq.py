@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+
 class Linq:
     def __init__(self, i):
         self._iter = iter(i)
@@ -11,6 +12,15 @@ class Linq:
                 if filter_func(item):
                     yield item
         return Linq(where_generator())
+
+    def select(self, select_func):
+        def select_generator():
+            for item in self._iter:
+                yield select_func(item)
+        return Linq(select_generator())
+
+    def order_by(self, key=None):
+        return Linq(sorted(list(self), key=key))
 
     def to_list(self):
         return list(self._iter)

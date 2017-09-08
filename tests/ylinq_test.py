@@ -46,8 +46,8 @@ class TestLinq(unittest.TestCase):
         linq = Linq(items)
         self.assertEqual(
             linq
-            .order_by(lambda obj: (obj['x'], obj['y'])).
-            to_list(),
+            .order_by(lambda obj: (obj['x'], obj['y']))
+            .to_list(),
             [{'x': 1, 'y': 1}, {'x': 1, 'y': 2}, {'x': 3, 'y': 4}]
         )
 
