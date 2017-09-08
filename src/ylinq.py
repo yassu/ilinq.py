@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from copy import deepcopy
+
 
 class Linq:
     def __init__(self, i):
@@ -15,3 +17,9 @@ class Linq:
 
     def to_list(self):
         return list(self._iter)
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        return next(self._iter)
