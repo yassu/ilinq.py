@@ -21,6 +21,12 @@ class Linq:
                 yield select_func(item)
         return Linq(select_generator())
 
+    def take(self, num):
+        def take_generator():
+            for item, _ in zip(self._iter, range(num)):
+                yield item
+        return Linq(take_generator())
+
     def order_by(self, key=None, desc=False):
         return Linq(sorted(list(self), key=key, reverse=desc))
 

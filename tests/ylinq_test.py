@@ -37,6 +37,14 @@ class TestLinq(unittest.TestCase):
             linq.select(lambda x: x % 2 == 0).to_list(),
             [True, False, True, False, True])
 
+    def test_take(self):
+        linq = Linq(range(100))
+        self.assertEqual(linq.take(5).to_list(), [0, 1, 2, 3, 4])
+
+    def test_take2(self):
+        linq = Linq([1, 2])
+        self.assertEqual(linq.take(5).to_list(), [1, 2])
+
     def test_order_by(self):
         items = [
             {'x': 1, 'y': 2},
