@@ -48,8 +48,7 @@ class Linq:
 
     @property
     def last(self):
-        iter_ = deepcopy(self._iter)
-        return list(iter_)[-1]
+        return list(self._iter)[-1]
 
     def to_list(self):
         return list(self._iter)
