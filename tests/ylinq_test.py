@@ -16,7 +16,14 @@ class TestLinq(unittest.TestCase):
 
     def test_next(self):
         linq1 = deepcopy(self.linq1)
-        assert(next(linq1) == 1)
+        self.assertEqual(next(linq1), 1)
+
+        linq2 = deepcopy(self.linq2)
+        self.assertEqual(next(linq2), 1)
+        self.assertEqual(next(linq2), 1)
+        self.assertEqual(next(linq2), 2)
+        self.assertEqual(next(linq2), 3)
+        self.assertEqual(next(linq2), 5)
 
     def test_where(self):
         linq1 = Linq([1])
@@ -25,11 +32,24 @@ class TestLinq(unittest.TestCase):
         self.assertEqual(linq2.where(lambda x: x % 2 == 0).to_list(), [2])
 
     def test_select(self):
-        i = iter(range(5))
-        linq = Linq(i)
+        linq = Linq(range(5))
         self.assertEqual(
             linq.select(lambda x: x % 2 == 0).to_list(),
             [True, False, True, False, True])
+
+    def test_order_by(self):
+        items = [
+            {'x': 1, 'y': 2},
+            {'x': 3, 'y': 4},
+            {'x': 1, 'y': 1}
+        ]
+        linq = Linq(items)
+        self.assertEqual(
+            linq
+            .order_by(lambda obj: (obj['x'], obj['y'])).
+            to_list(),
+            [{'x': 1, 'y': 1}, {'x': 1, 'y': 2}, {'x': 3, 'y': 4}]
+        )
 
     def test_to_list(self):
         self.assertEqual(self.linq1.to_list(), [1])
