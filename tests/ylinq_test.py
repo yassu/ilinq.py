@@ -13,7 +13,6 @@ class TestLinq(unittest.TestCase):
         self.linq1 = Linq([1])
         self.linq2 = Linq([1, 1, 2, 3, 5])
 
-
     def test_to_list(self):
         self.assertEqual(self.linq1.to_list(), [1])
         self.assertEqual(self.linq2.to_list(), [1, 1, 2, 3, 5])

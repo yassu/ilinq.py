@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+
 class Linq:
     def __init__(self, i):
         self._iter = iter(i)
