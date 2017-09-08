@@ -44,6 +44,10 @@ class Linq:
         iter_ = deepcopy(self._iter)
         return next(iter_)
 
+    def last(self):
+        iter_ = deepcopy(self._iter)
+        return list(iter_)[-1]
+
     def to_list(self):
         return list(self._iter)
 

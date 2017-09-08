@@ -85,6 +85,11 @@ class TestLinq(unittest.TestCase):
         linq = Linq([11, 13, 15, 19])
         self.assertEqual(linq.first(), 11)
 
+    def test_last(self):
+        linq = Linq([11, 13, 15, 19])
+        self.assertEqual(linq.first(), 11)
+        return self.assertEqual(linq.last(), 19)
+
     def test_to_list(self):
         self.assertEqual(self.linq1.to_list(), [1])
         self.assertEqual(self.linq2.to_list(), [1, 1, 2, 3, 5])
