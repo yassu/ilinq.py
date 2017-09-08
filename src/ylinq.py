@@ -56,6 +56,13 @@ class Linq:
     def contains(self, item):
         return item in list(self._iter)
 
+    def all(self, cond_func):
+        iter_ = deepcopy(self._iter)
+        for item in iter_:
+            if cond_func(item) is False:
+                return False
+        return True
+
     def to_list(self):
         return list(self._iter)
 
