@@ -105,10 +105,6 @@ class TestLinq(unittest.TestCase):
         linq = Linq([1, 6, 1, 4, 2, 2])
         self.assertEqual(linq.max(key=lambda x: x % 2), 1)
 
-    def test_contain(self):
-        linq = Linq([1, 6, 1, 4, 2, 2])
-        self.assertTrue(linq.contains(2))
-
     def test_all(self):
         linq = Linq([1, 1, 3, 4, 5, 7, 9, 11])
         self.assertFalse(linq.all(lambda x: x % 2 == 1))
@@ -132,6 +128,10 @@ class TestLinq(unittest.TestCase):
     def test_any4(self):
         linq = Linq([2, 3, 4, 5])
         self.assertFalse(linq.any(lambda x: x > 10))
+
+    def test_contain(self):
+        linq = Linq([1, 6, 1, 4, 2, 2])
+        self.assertTrue(linq.contains(2))
 
     def test_contain2(self):
         linq = Linq([1, 6, 1, 4, 2, 2])
