@@ -18,10 +18,10 @@ class TestLinq(unittest.TestCase):
         linq1 = deepcopy(self.linq1)
         assert(next(linq1) == 1)
 
-    def test_to_list(self):
-        self.assertEqual(self.linq1.to_list(), [1])
-        self.assertEqual(self.linq2.to_list(), [1, 1, 2, 3, 5])
-
     def test_where(self):
         self.assertEqual(self.linq1.where(lambda x: x % 2 == 1).to_list(), [1])
         self.assertEqual(self.linq2.where(lambda x: x % 2 == 0).to_list(), [2])
+
+    def test_to_list(self):
+        self.assertEqual(self.linq1.to_list(), [1])
+        self.assertEqual(self.linq2.to_list(), [1, 1, 2, 3, 5])
