@@ -65,11 +65,11 @@ class TestLinq(unittest.TestCase):
             [{'x': 3, 'y': 4}, {'x': 1, 'y': 2}, {'x': 1, 'y': 1}]
         )
 
-    def test_to_list(self):
-        self.assertEqual(self.linq1.to_list(), [1])
-        self.assertEqual(self.linq2.to_list(), [1, 1, 2, 3, 5])
-
     def test_inject(self):
         linq = Linq([1, 2, 3, 4])
         # 0 - 1 - 2 - 3 - 4
         self.assertEqual(linq.inject(0, lambda res, val: res - val), -10)
+
+    def test_to_list(self):
+        self.assertEqual(self.linq1.to_list(), [1])
+        self.assertEqual(self.linq2.to_list(), [1, 1, 2, 3, 5])
