@@ -87,15 +87,23 @@ class TestLinq(unittest.TestCase):
 
     def test_last(self):
         linq = Linq([11, 13, 15, 19])
-        return self.assertEqual(linq.last(), 19)
+        self.assertEqual(linq.last(), 19)
+
+    def test_min(self):
+        linq = Linq([13, 19, 11, 15])
+        self.assertEqual(linq.min(), 11)
+
+    def test_min2(self):
+        linq = Linq([13, 18, 11, 100])
+        self.assertEqual(linq.min(key=lambda x: x % 4), 100)
 
     def test_max(self):
         linq = Linq([13, 19, 11, 15])
-        return self.assertEqual(linq.max(), 19)
+        self.assertEqual(linq.max(), 19)
 
     def test_max2(self):
         linq = Linq([1, 6, 1, 4, 2, 2])
-        return self.assertEqual(linq.max(key=lambda x: x % 2), 1)
+        self.assertEqual(linq.max(key=lambda x: x % 2), 1)
 
     def test_to_list(self):
         self.assertEqual(self.linq1.to_list(), [1])
