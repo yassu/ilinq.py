@@ -47,6 +47,9 @@ class Linq:
     def last(self):
         return list(self._iter)[-1]
 
+    def max(self, key=lambda x: x):
+        return max(list(self), key=key)
+
     def to_list(self):
         return list(self._iter)
 

@@ -93,6 +93,10 @@ class TestLinq(unittest.TestCase):
         linq = Linq([13, 19, 11, 15])
         return self.assertEqual(linq.max(), 19)
 
+    def test_max2(self):
+        linq = Linq([1, 6, 1, 4, 2, 2])
+        return self.assertEqual(linq.max(key=lambda x: x % 2), 1)
+
     def test_to_list(self):
         self.assertEqual(self.linq1.to_list(), [1])
         self.assertEqual(self.linq2.to_list(), [1, 1, 2, 3, 5])
