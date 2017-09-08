@@ -63,13 +63,12 @@ class Linq:
                 return False
         return True
 
-    def any(self):
+    def any(self, cond_func=lambda x: True):
         iter_ = deepcopy(self._iter)
-        try:
-            next(iter_)
-            return True
-        except StopIteration:
-            return False
+        for item in iter_:
+            if cond_func(item):
+                return True
+        return False
 
     def to_list(self):
         return list(self._iter)

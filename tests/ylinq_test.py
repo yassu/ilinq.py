@@ -125,6 +125,14 @@ class TestLinq(unittest.TestCase):
         linq = Linq([1])
         self.assertTrue(linq.any())
 
+    def test_any3(self):
+        linq = Linq([2, 3, 4, 5])
+        self.assertTrue(linq.any(lambda x: x % 2 == 0))
+
+    def test_any4(self):
+        linq = Linq([2, 3, 4, 5])
+        self.assertFalse(linq.any(lambda x: x > 10))
+
     def test_contain2(self):
         linq = Linq([1, 6, 1, 4, 2, 2])
         self.assertFalse(linq.contains(100))
