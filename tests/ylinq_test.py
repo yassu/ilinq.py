@@ -51,6 +51,20 @@ class TestLinq(unittest.TestCase):
             [{'x': 1, 'y': 1}, {'x': 1, 'y': 2}, {'x': 3, 'y': 4}]
         )
 
+    def test_order_by_desc(self):
+        items = [
+            {'x': 1, 'y': 2},
+            {'x': 3, 'y': 4},
+            {'x': 1, 'y': 1}
+        ]
+        linq = Linq(items)
+        self.assertEqual(
+            linq
+            .order_by(lambda obj: (obj['x'], obj['y']), desc=True)
+            .to_list(),
+            [{'x': 3, 'y': 4}, {'x': 1, 'y': 2}, {'x': 1, 'y': 1}]
+        )
+
     def test_to_list(self):
         self.assertEqual(self.linq1.to_list(), [1])
         self.assertEqual(self.linq2.to_list(), [1, 1, 2, 3, 5])

@@ -19,8 +19,8 @@ class Linq:
                 yield select_func(item)
         return Linq(select_generator())
 
-    def order_by(self, key=None):
-        return Linq(sorted(list(self), key=key))
+    def order_by(self, key=None, desc=False):
+        return Linq(sorted(list(self), key=key, reverse=desc))
 
     def to_list(self):
         return list(self._iter)
