@@ -27,6 +27,16 @@ class Linq:
                 yield item
         return Linq(take_generator())
 
+    def distinct(self):
+        def distinct_generator():
+            iter_ = deepcopy(self._iter)
+            list_ = list()
+            for item in iter_:
+                if item not in list_:
+                    list_.append(item)
+                    yield item
+        return Linq(distinct_generator())
+
     def order_by(self, key=None, desc=False):
         return Linq(sorted(list(self), key=key, reverse=desc))
 

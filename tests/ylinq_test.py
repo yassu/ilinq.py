@@ -41,6 +41,10 @@ class TestLinq(unittest.TestCase):
         linq = Linq(range(100))
         self.assertEqual(linq.take(5).to_list(), [0, 1, 2, 3, 4])
 
+    def test_distinct(self):
+        linq = Linq([-1, 1, 1, 2, 3, -1, 2, 1])
+        self.assertEqual(linq.distinct().to_list(), [-1, 1, 2, 3])
+
     def test_take2(self):
         linq = Linq([1, 2])
         self.assertEqual(linq.take(5).to_list(), [1, 2])
