@@ -6,7 +6,7 @@ from copy import deepcopy
 
 class Linq:
     def __init__(self, i):
-        self._iter = iter(i)
+        self._iter = iter(deepcopy(i))
 
     def where(self, filter_func):
         def where_generator():
