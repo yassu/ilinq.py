@@ -63,6 +63,14 @@ class Linq:
                 return False
         return True
 
+    def any(self):
+        iter_ = deepcopy(self._iter)
+        try:
+            next(iter_)
+            return True
+        except StopIteration:
+            return False
+
     def to_list(self):
         return list(self._iter)
 
