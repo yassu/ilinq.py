@@ -37,13 +37,16 @@ class Linq:
             res = func(res, item)
         return res
 
+    @property
     def count(self):
         return len(list(self._iter))
 
+    @property
     def first(self):
         iter_ = deepcopy(self._iter)
         return next(iter_)
 
+    @property
     def last(self):
         iter_ = deepcopy(self._iter)
         return list(iter_)[-1]
