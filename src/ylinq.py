@@ -31,6 +31,9 @@ class Linq:
             res = func(res, item)
         return res
 
+    def count(self):
+        return len(list(self._iter))
+
     def to_list(self):
         return list(self._iter)
 
