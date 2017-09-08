@@ -40,6 +40,10 @@ class Linq:
     def count(self):
         return len(list(self._iter))
 
+    def first(self):
+        iter_ = deepcopy(self._iter)
+        return next(iter_)
+
     def to_list(self):
         return list(self._iter)
 
