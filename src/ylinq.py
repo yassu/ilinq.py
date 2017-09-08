@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from copy import deepcopy
+
 
 class Linq:
     def __init__(self, i):
@@ -21,6 +23,13 @@ class Linq:
 
     def order_by(self, key=None, desc=False):
         return Linq(sorted(list(self), key=key, reverse=desc))
+
+    def inject(self, initial_value, func):
+        res = initial_value
+        list_ = deepcopy(list(self._iter))
+        for item in list_:
+            res = func(res, item)
+        return res
 
     def to_list(self):
         return list(self._iter)
