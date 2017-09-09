@@ -53,6 +53,12 @@ class Linq:
         iter_ = deepcopy(self._iter)
         return next(iter_)
 
+    def first_or_default(self, default=None):
+        try:
+            return self.first()
+        except StopIteration:
+            return default
+
     def last(self):
         return list(deepcopy(self._iter))[-1]
 
