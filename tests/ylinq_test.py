@@ -117,6 +117,10 @@ class TestLinq(unittest.TestCase):
         self.assertEqual(linq.max(key=lambda x: x % 2), 1)
         self.assertEqual(linq.max(key=lambda x: x % 2), 1)
 
+    def test_sum(self):
+        linq = Linq([1, 1, 4, 2, 2])
+        self.assertEqual(linq.sum(), 10)
+
     def test_average(self):
         linq = Linq([1.0, 1.0, 4.0, 2.0, 2.0])
         ave = linq.average()
