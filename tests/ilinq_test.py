@@ -103,6 +103,19 @@ class TestLinq(unittest.TestCase):
         linq = Linq([1, 2])
         linq.single()
 
+    def test_single_or_default(self):
+        linq = Linq([1])
+        self.assertEqual(linq.single_or_default(), 1)
+
+    def test_single_or_default2(self):
+        linq = Linq(tuple())
+        self.assertEqual(linq.single_or_default(default=10), 10)
+
+    @raises(IndexError)
+    def test_single_or_default3(self):
+        linq = Linq(tuple([1, 2]))
+        linq.single_or_default(default=10)
+
     def test_first(self):
         linq = Linq([11, 13, 15, 19])
         self.assertEqual(linq.first(), 11)

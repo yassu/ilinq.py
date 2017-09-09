@@ -61,6 +61,12 @@ class Linq:
             raise IndexError('This linq is more long.')
         return list_[0]
 
+    def single_or_default(self, default=None):
+        iter_ = deepcopy(self)
+        if iter_.count() == 0:
+            return default
+        return iter_.single()
+
     def first_or_default(self, default=None):
         try:
             return self.first()
