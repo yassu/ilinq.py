@@ -97,6 +97,10 @@ class TestLinq(unittest.TestCase):
         self.assertEqual(linq.last(), 19)
         self.assertEqual(linq.last(), 19)
 
+    def test_element_at(self):
+        linq = Linq([11, 13, 15, 19])
+        self.assertEqual(linq.element_at(2), 15)
+
     def test_min(self):
         linq = Linq([13, 19, 11, 15])
         self.assertEqual(linq.min(), 11)

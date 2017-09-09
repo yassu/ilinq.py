@@ -56,6 +56,9 @@ class Linq:
     def last(self):
         return list(deepcopy(self._iter))[-1]
 
+    def element_at(self, num):
+        return deepcopy(self).take(num + 1).to_list()[-1]
+
     def min(self, key=lambda x: x):
         return min(list(deepcopy(self._iter)), key=key)
 
