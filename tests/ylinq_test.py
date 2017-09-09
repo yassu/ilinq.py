@@ -117,6 +117,11 @@ class TestLinq(unittest.TestCase):
         self.assertEqual(linq.max(key=lambda x: x % 2), 1)
         self.assertEqual(linq.max(key=lambda x: x % 2), 1)
 
+    def test_average(self):
+        linq = Linq([1.0, 1.0, 4.0, 2.0, 2.0])
+        ave = linq.average()
+        self.assertTrue(2 - 0.0002 < ave and 2 + 0.0002)
+
     def test_contain(self):
         linq = Linq([1, 6, 1, 4, 2, 2])
         self.assertTrue(linq.contains(2))
