@@ -126,6 +126,11 @@ class TestLinq(unittest.TestCase):
         self.assertEqual(linq.first(), 11)
         self.assertEqual(linq.first(), 11)
 
+    @raises(IndexError)
+    def test_first2(self):
+        linq = Linq([])
+        linq.first()
+
     def test_first_or_default(self):
         linq = Linq([11, 13, 15, 19])
         self.assertEqual(linq.first_or_default(), 11)
@@ -140,6 +145,11 @@ class TestLinq(unittest.TestCase):
         linq = Linq([11, 13, 15, 19])
         self.assertEqual(linq.last(), 19)
         self.assertEqual(linq.last(), 19)
+
+    @raises(IndexError)
+    def test_last2(self):
+        linq = Linq([])
+        linq.last()
 
     def test_last_or_default(self):
         linq = Linq([11, 13, 15, 19])
@@ -161,6 +171,11 @@ class TestLinq(unittest.TestCase):
         linq = Linq([11])
         linq.element_at(3)
 
+    @raises(IndexError)
+    def test_element_at3(self):
+        linq = Linq([])
+        linq.element_at(2)
+
     def test_element_at_or_default(self):
         linq = Linq([11, 13, 15, 19])
         self.assertEqual(linq.element_at_or_default(2), 15)
@@ -181,6 +196,11 @@ class TestLinq(unittest.TestCase):
         self.assertEqual(linq.min(key=lambda x: x % 4), 100)
         self.assertEqual(linq.min(key=lambda x: x % 4), 100)
 
+    @raises(StopIteration)
+    def test_min3(self):
+        linq = Linq([])
+        linq.min()
+
     def test_max(self):
         linq = Linq([13, 19, 11, 15])
         self.assertEqual(linq.max(), 19)
@@ -190,6 +210,11 @@ class TestLinq(unittest.TestCase):
         linq = Linq([1, 6, 1, 4, 2, 2])
         self.assertEqual(linq.max(key=lambda x: x % 2), 1)
         self.assertEqual(linq.max(key=lambda x: x % 2), 1)
+
+    @raises(StopIteration)
+    def test_max3(self):
+        linq = Linq([])
+        linq.max()
 
     def test_sum(self):
         linq = Linq([1, 1, 4, 2, 2])
@@ -201,6 +226,10 @@ class TestLinq(unittest.TestCase):
         self.assertEqual(linq.sum(func=lambda x: x*x), 26)
         self.assertEqual(linq.sum(func=lambda x: x*x), 26)
 
+    def test_sum3(self):
+        linq = Linq([])
+        self.assertEqual(linq.sum(), 0)
+
     def test_average(self):
         linq = Linq([1.0, 1.0, 4.0, 2.0, 2.0])
         ave = linq.average()
@@ -210,6 +239,11 @@ class TestLinq(unittest.TestCase):
         linq = Linq([1.0, 1.0, 4.0, 2.0, 2.0])
         ave = linq.average(func=lambda x: x*x)
         self.assertTrue(5.2 - 0.0002 < ave and ave < 5.2 + 0.0002)
+
+    @raises(ZeroDivisionError)
+    def test_average3(self):
+        linq = Linq([])
+        linq.average()
 
     def test_contain(self):
         linq = Linq([1, 6, 1, 4, 2, 2])

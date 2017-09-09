@@ -51,7 +51,10 @@ class Linq:
 
     def first(self):
         iter_ = deepcopy(self._iter)
-        return next(iter_)
+        try:
+            return next(iter_)
+        except StopIteration:
+            raise IndexError('This linq is Empty.')
 
     def single(self):
         list_ = deepcopy(self).take(2).to_list()
@@ -70,7 +73,7 @@ class Linq:
     def first_or_default(self, default=None):
         try:
             return self.first()
-        except StopIteration:
+        except IndexError:
             return default
 
     def last(self):
@@ -95,10 +98,16 @@ class Linq:
             return default
 
     def min(self, key=lambda x: x):
-        return min(list(deepcopy(self._iter)), key=key)
+        try:
+            return min(list(deepcopy(self._iter)), key=key)
+        except ValueError:
+            raise StopIteration('This linq is empty.')
 
     def max(self, key=lambda x: x):
-        return max(list(deepcopy(self._iter)), key=key)
+        try:
+            return max(list(deepcopy(self._iter)), key=key)
+        except ValueError:
+            raise StopIteration('This linq is empty.')
 
     def sum(self, func=lambda x: x):
         iter_ = deepcopy(self).select(func)
