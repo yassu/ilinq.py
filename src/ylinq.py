@@ -63,12 +63,11 @@ class Linq:
         return max(list(deepcopy(self._iter)), key=key)
 
     def sum(self, func=lambda x: x):
-
         iter_ = deepcopy(self).select(func)
         return sum(iter_)
 
-    def average(self):
-        return self.sum()/self.count()
+    def average(self, func=lambda x: x):
+        return self.sum(func=func)/self.count()
 
     def contains(self, item):
         return item in list(deepcopy(self._iter))
