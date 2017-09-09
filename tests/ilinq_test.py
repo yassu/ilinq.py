@@ -26,6 +26,11 @@ class TestLinq(unittest.TestCase):
         self.assertEqual(next(linq2), 3)
         self.assertEqual(next(linq2), 5)
 
+    @raises(StopIteration)
+    def test_next2(self):
+        linq = Linq([])
+        next(linq)
+
     def test_where(self):
         linq1 = Linq([1])
         linq2 = Linq([1, 1, 2, 3, 5])
