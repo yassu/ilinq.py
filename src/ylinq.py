@@ -62,6 +62,12 @@ class Linq:
     def last(self):
         return list(deepcopy(self._iter))[-1]
 
+    def last_or_default(self, default=None):
+        try:
+            return self.last()
+        except IndexError:
+            return default
+
     def element_at(self, ind):
         list_ = deepcopy(self).take(ind + 1).to_list()
         if len(list_) == ind + 1:
