@@ -49,12 +49,12 @@ class Linq:
     def count(self):
         return len(list(deepcopy(self._iter)))
 
-    def first(self):
+    def first(self, func=lambda x: True):
         iter_ = deepcopy(self._iter)
-        try:
-            return next(iter_)
-        except StopIteration:
-            raise IndexError('This linq is Empty.')
+        for item in iter_:
+            if func(item):
+                return item
+        raise IndexError('This linq with condition is Empty.')
 
     def first_or_default(self, default=None):
         try:
