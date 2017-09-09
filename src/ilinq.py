@@ -53,12 +53,6 @@ class Linq:
         iter_ = deepcopy(self._iter)
         return next(iter_)
 
-    def first_or_default(self, default=None):
-        try:
-            return self.first()
-        except StopIteration:
-            return default
-
     def single(self):
         list_ = deepcopy(self).take(2).to_list()
         if len(list_) == 0:
@@ -66,6 +60,12 @@ class Linq:
         elif len(list_) == 2:
             raise IndexError('This linq is more long.')
         return list_[0]
+
+    def first_or_default(self, default=None):
+        try:
+            return self.first()
+        except StopIteration:
+            return default
 
     def last(self):
         return list(deepcopy(self._iter))[-1]

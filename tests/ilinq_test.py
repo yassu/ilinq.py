@@ -88,16 +88,6 @@ class TestLinq(unittest.TestCase):
         self.assertEqual(self.linq2.count(), 5)
         self.assertEqual(self.linq2.count(), 5)
 
-    def test_first(self):
-        linq = Linq([11, 13, 15, 19])
-        self.assertEqual(linq.first(), 11)
-        self.assertEqual(linq.first(), 11)
-
-    def test_first_or_default(self):
-        linq = Linq([11, 13, 15, 19])
-        self.assertEqual(linq.first_or_default(), 11)
-        self.assertEqual(linq.first_or_default(), 11)
-
     def test_single(self):
         linq = Linq([1])
         self.assertEqual(linq.single(), 1)
@@ -112,6 +102,16 @@ class TestLinq(unittest.TestCase):
     def test_single3(self):
         linq = Linq([1, 2])
         linq.single()
+
+    def test_first(self):
+        linq = Linq([11, 13, 15, 19])
+        self.assertEqual(linq.first(), 11)
+        self.assertEqual(linq.first(), 11)
+
+    def test_first_or_default(self):
+        linq = Linq([11, 13, 15, 19])
+        self.assertEqual(linq.first_or_default(), 11)
+        self.assertEqual(linq.first_or_default(), 11)
 
     def test_first_or_default2(self):
         linq = Linq([])
