@@ -3,6 +3,7 @@
 
 import sys
 import unittest
+from nose.tools import raises
 from copy import deepcopy
 sys.path.append('./../src/')
 from ylinq import Linq
@@ -101,6 +102,11 @@ class TestLinq(unittest.TestCase):
         linq = Linq([11, 13, 15, 19])
         self.assertEqual(linq.element_at(2), 15)
         self.assertEqual(linq.element_at(2), 15)
+
+    @raises(IndexError)
+    def test_element_at2(self):
+        linq = Linq([11])
+        linq.element_at(3)
 
     def test_element_at_or_default(self):
         linq = Linq([11, 13, 15, 19])

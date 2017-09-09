@@ -56,11 +56,17 @@ class Linq:
     def last(self):
         return list(deepcopy(self._iter))[-1]
 
-    def element_at(self, num):
-        return deepcopy(self).take(num + 1).to_list()[-1]
+    def element_at(self, ind):
+        list_ = deepcopy(self).take(ind + 1).to_list()
+        if len(list_) == ind + 1:
+            return list_[ind]
+        raise IndexError("This linq doesn't have {} items.".format(ind))
 
-    def element_at_or_default(self, num):
-        return self.element_at(num)
+    def element_at_or_default(self, num, default=None):
+        try:
+            return self.element_at(num)
+        except IndexError:
+            return default
 
     def min(self, key=lambda x: x):
         return min(list(deepcopy(self._iter)), key=key)
