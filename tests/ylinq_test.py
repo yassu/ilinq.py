@@ -121,10 +121,14 @@ class TestLinq(unittest.TestCase):
         linq = Linq([1, 1, 4, 2, 2])
         self.assertEqual(linq.sum(), 10)
 
+    def test_sum2(self):
+        linq = Linq([1, 1, 4, 2, 2])
+        self.assertEqual(linq.sum(func=lambda x: x*x), 26)
+
     def test_average(self):
         linq = Linq([1.0, 1.0, 4.0, 2.0, 2.0])
         ave = linq.average()
-        self.assertTrue(2 - 0.0002 < ave and 2 + 0.0002)
+        self.assertTrue(2 - 0.0002 < ave and ave < 2 + 0.0002)
 
     def test_contain(self):
         linq = Linq([1, 6, 1, 4, 2, 2])
