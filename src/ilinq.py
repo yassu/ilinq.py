@@ -59,6 +59,14 @@ class Linq:
         except StopIteration:
             return default
 
+    def single(self):
+        list_ = deepcopy(self).take(2).to_list()
+        if len(list_) == 0:
+            raise IndexError('This linq is empty.')
+        elif len(list_) == 2:
+            raise IndexError('This linq is more long.')
+        return list_[0]
+
     def last(self):
         return list(deepcopy(self._iter))[-1]
 
