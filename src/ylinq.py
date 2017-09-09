@@ -10,16 +10,14 @@ class Linq:
 
     def where(self, filter_func):
         def where_generator():
-            iter_ = deepcopy(self._iter)
-            for item in iter_:
+            for item in self._iter:
                 if filter_func(item):
                     yield item
         return Linq(where_generator())
 
     def select(self, select_func):
         def select_generator():
-            iter_ = deepcopy(self._iter)
-            for item in iter_:
+            for item in self._iter:
                 yield select_func(item)
         return Linq(select_generator())
 
@@ -31,9 +29,8 @@ class Linq:
 
     def distinct(self):
         def distinct_generator():
-            iter_ = deepcopy(self._iter)
             list_ = list()
-            for item in iter_:
+            for item in self._iter:
                 if item not in list_:
                     list_.append(item)
                     yield item
@@ -44,29 +41,29 @@ class Linq:
 
     def inject(self, initial_value, func):
         res = initial_value
-        list_ = deepcopy(list(self._iter))
+        list_ = list(deepcopy(self._iter))
         for item in list_:
             res = func(res, item)
         return res
 
     def count(self):
-        return len(list(self._iter))
+        return len(list(deepcopy(self._iter)))
 
     def first(self):
         iter_ = deepcopy(self._iter)
         return next(iter_)
 
     def last(self):
-        return list(self._iter)[-1]
+        return list(deepcopy(self._iter))[-1]
 
     def min(self, key=lambda x: x):
-        return min(list(self._iter), key=key)
+        return min(list(deepcopy(self._iter)), key=key)
 
     def max(self, key=lambda x: x):
-        return max(list(self._iter), key=key)
+        return max(list(deepcopy(self._iter)), key=key)
 
     def contains(self, item):
-        return item in list(self._iter)
+        return item in list(deepcopy(self._iter))
 
     def all(self, cond_func):
         iter_ = deepcopy(self._iter)

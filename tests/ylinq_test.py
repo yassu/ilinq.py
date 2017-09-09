@@ -29,15 +29,10 @@ class TestLinq(unittest.TestCase):
         linq1 = Linq([1])
         linq2 = Linq([1, 1, 2, 3, 5])
         self.assertEqual(linq1.where(lambda x: x % 2 == 1).to_list(), [1])
-        self.assertEqual(linq1.where(lambda x: x % 2 == 1).to_list(), [1])
-        self.assertEqual(linq2.where(lambda x: x % 2 == 0).to_list(), [2])
         self.assertEqual(linq2.where(lambda x: x % 2 == 0).to_list(), [2])
 
     def test_select(self):
         linq = Linq(range(5))
-        self.assertEqual(
-            linq.select(lambda x: x % 2 == 0).to_list(),
-            [True, False, True, False, True])
         self.assertEqual(
             linq.select(lambda x: x % 2 == 0).to_list(),
             [True, False, True, False, True])
@@ -86,64 +81,80 @@ class TestLinq(unittest.TestCase):
         linq = Linq([1, 2, 3, 4])
         # 0 - 1 - 2 - 3 - 4
         self.assertEqual(linq.inject(0, lambda res, val: res - val), -10)
+        self.assertEqual(linq.inject(0, lambda res, val: res - val), -10)
 
     def test_count(self):
+        self.assertEqual(self.linq2.count(), 5)
         self.assertEqual(self.linq2.count(), 5)
 
     def test_first(self):
         linq = Linq([11, 13, 15, 19])
         self.assertEqual(linq.first(), 11)
+        self.assertEqual(linq.first(), 11)
 
     def test_last(self):
         linq = Linq([11, 13, 15, 19])
+        self.assertEqual(linq.last(), 19)
         self.assertEqual(linq.last(), 19)
 
     def test_min(self):
         linq = Linq([13, 19, 11, 15])
         self.assertEqual(linq.min(), 11)
+        self.assertEqual(linq.min(), 11)
 
     def test_min2(self):
         linq = Linq([13, 18, 11, 100])
+        self.assertEqual(linq.min(key=lambda x: x % 4), 100)
         self.assertEqual(linq.min(key=lambda x: x % 4), 100)
 
     def test_max(self):
         linq = Linq([13, 19, 11, 15])
         self.assertEqual(linq.max(), 19)
+        self.assertEqual(linq.max(), 19)
 
     def test_max2(self):
         linq = Linq([1, 6, 1, 4, 2, 2])
+        self.assertEqual(linq.max(key=lambda x: x % 2), 1)
         self.assertEqual(linq.max(key=lambda x: x % 2), 1)
 
     def test_contain(self):
         linq = Linq([1, 6, 1, 4, 2, 2])
         self.assertTrue(linq.contains(2))
+        self.assertTrue(linq.contains(2))
 
     def test_contain2(self):
         linq = Linq([1, 6, 1, 4, 2, 2])
+        self.assertFalse(linq.contains(100))
         self.assertFalse(linq.contains(100))
 
     def test_all(self):
         linq = Linq([1, 1, 3, 4, 5, 7, 9, 11])
         self.assertFalse(linq.all(lambda x: x % 2 == 1))
+        self.assertFalse(linq.all(lambda x: x % 2 == 1))
 
     def test_all2(self):
         linq = Linq([1, 1, 3, 5, 7, 9, 11])
+        self.assertTrue(linq.all(lambda x: x % 2 == 1))
         self.assertTrue(linq.all(lambda x: x % 2 == 1))
 
     def test_any(self):
         linq = Linq([])
         self.assertFalse(linq.any())
+        self.assertFalse(linq.any())
 
     def test_any2(self):
         linq = Linq([1])
+        self.assertTrue(linq.any())
         self.assertTrue(linq.any())
 
     def test_any3(self):
         linq = Linq([2, 3, 4, 5])
         self.assertTrue(linq.any(lambda x: x % 2 == 0))
+        self.assertTrue(linq.any(lambda x: x % 2 == 0))
 
     def test_any4(self):
         linq = Linq([2, 3, 4, 5])
+        self.assertFalse(linq.any(lambda x: x > 10))
         self.assertFalse(linq.any(lambda x: x > 10))
 
     def test_to_list(self):
