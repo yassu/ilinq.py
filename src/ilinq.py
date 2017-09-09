@@ -119,10 +119,10 @@ class Linq:
     def contains(self, item):
         return item in list(deepcopy(self._iter))
 
-    def all(self, cond_func):
+    def all(self, func):
         iter_ = deepcopy(self._iter)
         for item in iter_:
-            if cond_func(item) is False:
+            if func(item) is False:
                 return False
         return True
 
