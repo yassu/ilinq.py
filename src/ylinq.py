@@ -59,6 +59,9 @@ class Linq:
     def element_at(self, num):
         return deepcopy(self).take(num + 1).to_list()[-1]
 
+    def element_at_or_default(self, num):
+        return self.element_at(num)
+
     def min(self, key=lambda x: x):
         return min(list(deepcopy(self._iter)), key=key)
 

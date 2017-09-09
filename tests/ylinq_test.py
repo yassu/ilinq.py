@@ -100,6 +100,17 @@ class TestLinq(unittest.TestCase):
     def test_element_at(self):
         linq = Linq([11, 13, 15, 19])
         self.assertEqual(linq.element_at(2), 15)
+        self.assertEqual(linq.element_at(2), 15)
+
+    def test_element_at_or_default(self):
+        linq = Linq([11, 13, 15, 19])
+        self.assertEqual(linq.element_at_or_default(2), 15)
+        self.assertEqual(linq.element_at_or_default(2), 15)
+
+    def test_element_at_or_default2(self):
+        linq = Linq([11])
+        self.assertEqual(linq.element_at_or_default(2), None)
+        self.assertEqual(linq.element_at_or_default(2, default=3), 3)
 
     def test_min(self):
         linq = Linq([13, 19, 11, 15])
