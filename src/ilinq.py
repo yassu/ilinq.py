@@ -56,6 +56,12 @@ class Linq:
         except StopIteration:
             raise IndexError('This linq is Empty.')
 
+    def first_or_default(self, default=None):
+        try:
+            return self.first()
+        except IndexError:
+            return default
+
     def single(self):
         list_ = deepcopy(self).take(2).to_list()
         if len(list_) == 0:
@@ -69,12 +75,6 @@ class Linq:
         if iter_.count() == 0:
             return default
         return iter_.single()
-
-    def first_or_default(self, default=None):
-        try:
-            return self.first()
-        except IndexError:
-            return default
 
     def last(self):
         return list(deepcopy(self._iter))[-1]
@@ -114,7 +114,7 @@ class Linq:
         return sum(iter_)
 
     def average(self, func=lambda x: x):
-        return self.sum(func=func)/self.count()
+        return self.sum(func=func) / self.count()
 
     def contains(self, item):
         return item in list(deepcopy(self._iter))
@@ -126,10 +126,10 @@ class Linq:
                 return False
         return True
 
-    def any(self, cond_func=lambda x: True):
+    def any(self, func=lambda x: True):
         iter_ = deepcopy(self._iter)
         for item in iter_:
-            if cond_func(item):
+            if func(item):
                 return True
         return False
 

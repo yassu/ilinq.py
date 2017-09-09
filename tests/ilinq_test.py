@@ -277,13 +277,13 @@ class TestLinq(unittest.TestCase):
 
     def test_any3(self):
         linq = Linq([2, 3, 4, 5])
-        self.assertTrue(linq.any(lambda x: x % 2 == 0))
-        self.assertTrue(linq.any(lambda x: x % 2 == 0))
+        self.assertTrue(linq.any(func=lambda x: x % 2 == 0))
+        self.assertTrue(linq.any(func=lambda x: x % 2 == 0))
 
     def test_any4(self):
         linq = Linq([2, 3, 4, 5])
-        self.assertFalse(linq.any(lambda x: x > 10))
-        self.assertFalse(linq.any(lambda x: x > 10))
+        self.assertFalse(linq.any(func=lambda x: x > 10))
+        self.assertFalse(linq.any(func=lambda x: x > 10))
 
     def test_to_list(self):
         self.assertEqual(self.linq1.to_list(), [1])
