@@ -145,6 +145,12 @@ class TestLinq(unittest.TestCase):
         linq = Linq([])
         self.assertEqual(linq.first_or_default(), None)
         self.assertEqual(linq.first_or_default(default=100), 100)
+        self.assertEqual(linq.first_or_default(default=100), 100)
+
+    def test_first_or_default3(self):
+        linq = Linq([11, 14, 15, 19])
+        self.assertEqual(linq.first_or_default(func=lambda x: x % 2 == 0), 14)
+        self.assertEqual(linq.first_or_default(func=lambda x: x % 2 == 0), 14)
 
     def test_last(self):
         linq = Linq([11, 13, 15, 19])

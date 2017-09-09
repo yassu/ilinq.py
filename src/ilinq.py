@@ -56,11 +56,12 @@ class Linq:
                 return item
         raise IndexError('This linq with condition is Empty.')
 
-    def first_or_default(self, default=None):
-        try:
-            return self.first()
-        except IndexError:
-            return default
+    def first_or_default(self, default=None, func=lambda x: True):
+        iter_ = deepcopy(self)
+        for item in iter_:
+            if func(item):
+                return item
+        return default
 
     def single(self):
         list_ = deepcopy(self).take(2).to_list()
