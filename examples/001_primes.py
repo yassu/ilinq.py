@@ -1,17 +1,3 @@
-ILinq
-=======
-
-This project provides the module like linq of C# for Python.
-
-## How To Install
-
-```
-$ python setup.py install
-```
-
-## First Example
-
-```
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
@@ -37,4 +23,3 @@ if __name__ == '__main__':
         .where(is_prime)
         .last())
     # => 9973
-```
