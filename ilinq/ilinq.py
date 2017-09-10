@@ -123,7 +123,6 @@ class Linq(list):
 
         for key, values in group_dict.items():
             group.append(IPair(key, values))
-        print(group)
         return group
 
     def to_list(self):
