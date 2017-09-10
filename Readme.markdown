@@ -38,3 +38,7 @@ if __name__ == '__main__':
         .last())
     # => 9973
 ```
+
+## LICENSE
+
+Apache 2.0
