@@ -57,6 +57,9 @@ class TestLinq(unittest.TestCase):
         linq = Linq([-1, 1, 1, 2, 3, -1, 2, 1])
         self.assertEqual(linq.distinct().to_list(), [-1, 1, 2, 3])
 
+    def test_repeat(self):
+        self.assertEqual(Linq.repeat(1, 3), Linq([1, 1, 1]))
+
     def test_order_by(self):
         items = [
             {'x': 1, 'y': 2},

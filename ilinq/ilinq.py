@@ -29,6 +29,10 @@ class Linq(list):
         else:
             return Linq([default])
 
+    @staticmethod
+    def repeat(obj, num):
+        return Linq([obj] * num)
+
     def distinct(self):
         list_ = list()
         for item in self[:]:
