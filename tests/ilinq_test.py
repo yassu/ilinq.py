@@ -11,26 +11,6 @@ from ilinq import Linq
 
 class TestLinq(unittest.TestCase):
 
-    def setUp(self):
-        self.linq1 = Linq([1])
-        self.linq2 = Linq([1, 1, 2, 3, 5])
-
-    def test_next(self):
-        linq1 = deepcopy(self.linq1)
-        self.assertEqual(next(linq1), 1)
-
-        linq2 = deepcopy(self.linq2)
-        self.assertEqual(next(linq2), 1)
-        self.assertEqual(next(linq2), 1)
-        self.assertEqual(next(linq2), 2)
-        self.assertEqual(next(linq2), 3)
-        self.assertEqual(next(linq2), 5)
-
-    @raises(StopIteration)
-    def test_next2(self):
-        linq = Linq([])
-        next(linq)
-
     def test_where(self):
         linq1 = Linq([1])
         linq2 = Linq([1, 1, 2, 3, 5])
@@ -47,13 +27,13 @@ class TestLinq(unittest.TestCase):
         linq = Linq(range(100))
         self.assertEqual(linq.take(5).to_list(), [0, 1, 2, 3, 4])
 
-    def test_distinct(self):
-        linq = Linq([-1, 1, 1, 2, 3, -1, 2, 1])
-        self.assertEqual(linq.distinct().to_list(), [-1, 1, 2, 3])
-
     def test_take2(self):
         linq = Linq([1, 2])
         self.assertEqual(linq.take(5).to_list(), [1, 2])
+
+    def test_distinct(self):
+        linq = Linq([-1, 1, 1, 2, 3, -1, 2, 1])
+        self.assertEqual(linq.distinct().to_list(), [-1, 1, 2, 3])
 
     def test_order_by(self):
         items = [
@@ -90,8 +70,7 @@ class TestLinq(unittest.TestCase):
         self.assertEqual(linq.inject(0, lambda res, val: res - val), -10)
 
     def test_count(self):
-        self.assertEqual(self.linq2.count(), 5)
-        self.assertEqual(self.linq2.count(), 5)
+        self.assertEqual(Linq([2, 4, 6, 8, 10]).count(), 5)
 
     def test_single(self):
         linq = Linq([1])
@@ -297,5 +276,5 @@ class TestLinq(unittest.TestCase):
         self.assertFalse(linq.any(func=lambda x: x > 10))
 
     def test_to_list(self):
-        self.assertEqual(self.linq1.to_list(), [1])
-        self.assertEqual(self.linq2.to_list(), [1, 1, 2, 3, 5])
+        self.assertEqual(Linq([1]), [1])
+        self.assertEqual(Linq([1, 1, 2, 3, 5]), [1, 1, 2, 3, 5])
