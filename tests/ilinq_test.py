@@ -50,8 +50,8 @@ class TestLinq(unittest.TestCase):
 
     def test_default_if_empty2(self):
         linq = Linq([])
-        self.assertEqual(linq.default_if_empty(), None)
-        self.assertEqual(linq.default_if_empty(default=3), 3)
+        self.assertEqual(linq.default_if_empty(), Linq([None]))
+        self.assertEqual(linq.default_if_empty(default=3), Linq([3]))
 
     def test_distinct(self):
         linq = Linq([-1, 1, 1, 2, 3, -1, 2, 1])

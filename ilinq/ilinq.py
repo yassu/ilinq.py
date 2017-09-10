@@ -27,7 +27,7 @@ class Linq(list):
         if len(list_) == 1:
             return Linq(self[:])
         else:
-            return default
+            return Linq([default])
 
     def distinct(self):
         list_ = list()
