@@ -339,12 +339,12 @@ class TestLinq(unittest.TestCase):
         self.assertFalse(linq.any(func=lambda x: x > 10))
 
     def test_group_by(self):
-        linq = Linq([1, 2, 3, 4, 5])
+        linq = Linq(range(6))
         self.assertEqual(
             linq.group_by(lambda n: n % 2),
             IGroup([
-                IPair(1, [1, 3, 5]),
-                IPair(0, [2, 4])
+                IPair(0, [0, 2, 4]),
+                IPair(1, [1, 3, 5])
             ]))
 
     def test_to_list(self):
