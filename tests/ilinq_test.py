@@ -1,12 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import sys
 import unittest
 from nose.tools import raises
-from copy import deepcopy
-sys.path.append('./../src/')
-from ilinq import Linq
+from ilinq.ilinq import Linq
 
 
 class TestLinq(unittest.TestCase):
