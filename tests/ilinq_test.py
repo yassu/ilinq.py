@@ -351,6 +351,9 @@ class TestLinq(unittest.TestCase):
         self.assertEqual(Linq([1]).to_list(), [1])
         self.assertEqual(Linq([1, 1, 2, 3, 5]).to_list(), [1, 1, 2, 3, 5])
 
+    def test_to_set(self):
+        self.assertEqual(Linq([1, 1, 2, 3, 5]).to_set(), {1, 1, 2, 3, 5})
+
     def test_str0(self):
         self.assertEqual(str(Linq([])), 'Linq<>')
 

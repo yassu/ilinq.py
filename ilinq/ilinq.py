@@ -152,6 +152,9 @@ class Linq(list):
     def to_list(self):
         return list(self)
 
+    def to_set(self):
+        return set(self)
+
     def __str__(self):
         s = 'Linq<'
         for item in self:
