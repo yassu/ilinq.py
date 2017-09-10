@@ -16,8 +16,8 @@ class TestIPair(unittest.TestCase):
         self.assertEqual(pair.key, 0)
 
     def test_value(self):
-        pair = IPair(0, 1)
-        self.assertEqual(pair.value, 1)
+        pair = IPair(0, Linq([1]))
+        self.assertEqual(pair.values, Linq([1]))
 
     def test_str(self):
         self.assertEqual(str(IPair(0, 1)), '{0: 1}')

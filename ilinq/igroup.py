@@ -5,26 +5,26 @@ from ilinq.ilinq import Linq
 
 
 class IPair(object):
-    def __init__(self, key, value):
+    def __init__(self, key, value_linq):
         self._key = key
-        self._value = value
+        self._value_linq = value_linq
 
     @property
     def key(self):
         return self._key
 
     @property
-    def value(self):
-        return self._value
+    def values(self):
+        return self._value_linq
 
     def __str__(self):
-        return '{%s: %s}' % (self.key, self.value)
+        return '{%s: %s}' % (self.key, self.values)
 
     def __repr__(self):
-        return 'IPair{%s: %s}' % (self.key, self.value)
+        return 'IPair{%s: %s}' % (self.key, self.values)
 
     def __eq__(self, other):
-        return self.key == other.key and self.value == other.value
+        return self.key == other.key and self.values == other.values
 
 
 class IGroup(Linq):
@@ -34,4 +34,4 @@ class IGroup(Linq):
 
     @property
     def values(self):
-        return [pair.value for pair in self]
+        return [pair.values for pair in self]
