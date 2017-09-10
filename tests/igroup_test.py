@@ -15,7 +15,7 @@ class TestIPair(unittest.TestCase):
         pair = IPair(0, 1)
         self.assertEqual(pair.key, 0)
 
-    def test_value(self):
+    def test_values(self):
         pair = IPair(0, Linq([1]))
         self.assertEqual(pair.values, Linq([1]))
 
@@ -48,7 +48,7 @@ class TestIGroup(unittest.TestCase):
         ])
         self.assertEqual(group.keys, [0, 1])
 
-    def test_value(self):
+    def test_values(self):
         group = IGroup([
             IPair(0, Linq([0, 1, 2])),
             IPair(1, Linq([0, 1, 3]))
