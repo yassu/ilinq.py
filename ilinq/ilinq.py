@@ -22,6 +22,13 @@ class Linq(list):
             res = Linq(res.to_list() + linq.to_list())
         return res
 
+    def default_if_empty(self, default=None):
+        list_ = Linq(self[:]).take(1)
+        if len(list_) == 1:
+            return Linq(self[:])
+        else:
+            return default
+
     def distinct(self):
         list_ = list()
         for item in self[:]:

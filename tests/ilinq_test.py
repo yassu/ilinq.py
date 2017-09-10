@@ -44,6 +44,15 @@ class TestLinq(unittest.TestCase):
         self.assertEqual(linq1, Linq([1, 2]))
         self.assertEqual(linq2, Linq([3, 4]))
 
+    def test_default_if_empty(self):
+        linq = Linq([1, 2])
+        self.assertEqual(linq.default_if_empty(), Linq([1, 2]))
+
+    def test_default_if_empty2(self):
+        linq = Linq([])
+        self.assertEqual(linq.default_if_empty(), None)
+        self.assertEqual(linq.default_if_empty(default=3), 3)
+
     def test_distinct(self):
         linq = Linq([-1, 1, 1, 2, 3, -1, 2, 1])
         self.assertEqual(linq.distinct().to_list(), [-1, 1, 2, 3])
