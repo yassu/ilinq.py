@@ -3,10 +3,11 @@
 
 import unittest
 from nose.tools import raises
-from ilinq.igroup import IPair
+from ilinq.igroup import IPair, IGroup
+from ilinq.ilinq import Linq
 
 
-class TestLinq(unittest.TestCase):
+class TestIPair(unittest.TestCase):
     def test_init(self):
         IPair(0, 1)
 
@@ -26,3 +27,36 @@ class TestLinq(unittest.TestCase):
 
     def test_eq(self):
         self.assertEqual(IPair(0, 1), IPair(0, 1))
+
+
+class TestIGroup(unittest.TestCase):
+    def test_init(self):
+        IGroup([
+            IPair(0, Linq([0, 1, 2]))
+        ])
+
+    def test_keys(self):
+        group = IGroup([
+            IPair(0, Linq([0, 1, 2]))
+        ])
+        self.assertEqual(group.keys, [0])
+
+    def test_keys2(self):
+        group = IGroup([
+            IPair(0, Linq([0, 1, 2])),
+            IPair(1, Linq([0, 1, 3]))
+        ])
+        self.assertEqual(group.keys, [0, 1])
+
+    def test_value(self):
+        group = IGroup([
+            IPair(0, Linq([0, 1, 2])),
+            IPair(1, Linq([0, 1, 3]))
+        ])
+        self.assertEqual(
+            group.values,
+            [
+                Linq([0, 1, 2]),
+                Linq([0, 1, 3])
+            ]
+        )

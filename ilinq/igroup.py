@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from ilinq.ilinq import Linq
+
 
 class IPair(object):
     def __init__(self, key, value):
@@ -23,3 +25,13 @@ class IPair(object):
 
     def __eq__(self, other):
         return self.key == other.key and self.value == other.value
+
+
+class IGroup(Linq):
+    @property
+    def keys(self):
+        return [pair.key for pair in self]
+
+    @property
+    def values(self):
+        return [pair.value for pair in self]
