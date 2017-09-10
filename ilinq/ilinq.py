@@ -85,9 +85,9 @@ class Linq(list):
     def last(self, func=lambda x: True):
         return self.where(func)[-1]
 
-    def last_or_default(self, default=None):
+    def last_or_default(self, default=None, func=lambda x: True):
         try:
-            return self.last()
+            return self.where(func).last()
         except IndexError:
             return default
 

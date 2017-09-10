@@ -203,6 +203,12 @@ class TestLinq(unittest.TestCase):
         self.assertEqual(linq.last_or_default(), None)
         self.assertEqual(linq.last_or_default(default=10), 10)
 
+    def test_last_or_default3(self):
+        linq = Linq([11, 13, 15, 19])
+        self.assertEqual(linq.last_or_default(
+            default=2, func=lambda x: x > 100), 2)
+        self.assertEqual(linq.last_or_default(), 19)
+
     def test_element_at(self):
         linq = Linq([11, 13, 15, 19])
         self.assertEqual(linq.element_at(2), 15)
