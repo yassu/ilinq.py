@@ -82,8 +82,8 @@ class Linq(list):
             return default
         return obj.single()
 
-    def last(self):
-        return self[-1]
+    def last(self, func=lambda x: True):
+        return self.where(func)[-1]
 
     def last_or_default(self, default=None):
         try:

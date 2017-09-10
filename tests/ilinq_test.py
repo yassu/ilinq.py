@@ -188,6 +188,11 @@ class TestLinq(unittest.TestCase):
         linq = Linq([])
         linq.last()
 
+    def test_last3(self):
+        linq = Linq([11, 13, 15, 19])
+        self.assertEqual(linq.last(func=lambda x: x % 3 == 2), 11)
+        self.assertEqual(linq.last(func=lambda x: x % 3 == 2), 11)
+
     def test_last_or_default(self):
         linq = Linq([11, 13, 15, 19])
         self.assertEqual(linq.last_or_default(), 19)
