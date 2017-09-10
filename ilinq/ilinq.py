@@ -76,10 +76,11 @@ class Linq(list):
             raise IndexError('This linq with condition is more long.')
         return obj[0]
 
-    def single_or_default(self, default=None):
-        if self.count() == 0:
+    def single_or_default(self, default=None, func=lambda x: True):
+        obj = self.where(func)
+        if obj.count() == 0:
             return default
-        return self.single()
+        return obj.single()
 
     def last(self):
         return self[-1]

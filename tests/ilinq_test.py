@@ -143,6 +143,10 @@ class TestLinq(unittest.TestCase):
         linq = Linq(tuple([1, 2]))
         linq.single_or_default(default=10)
 
+    def test_single_or_default4(self):
+        linq = Linq([1, 2, 3, 4, 5])
+        self.assertEqual(linq.single_or_default(func=lambda x: x % 3 == 0), 3)
+
     def test_first(self):
         linq = Linq([11, 13, 15, 19])
         self.assertEqual(linq.first(), 11)
