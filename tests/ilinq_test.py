@@ -29,6 +29,21 @@ class TestLinq(unittest.TestCase):
         linq = Linq([1, 2])
         self.assertEqual(linq.take(5).to_list(), [1, 2])
 
+    def test_concat(self):
+        linq1 = Linq([1, 2])
+        linq2 = Linq([3, 4])
+        self.assertEqual(linq1.concat(linq2), Linq([1, 2, 3, 4]))
+        self.assertEqual(linq1, Linq([1, 2]))
+        self.assertEqual(linq2, Linq([3, 4]))
+
+    def test_concat2(self):
+        linq1 = Linq([1, 2])
+        linq2 = Linq([3, 4])
+        linq3 = Linq([5, 6])
+        self.assertEqual(linq1.concat(linq2, linq3), Linq([1, 2, 3, 4, 5, 6]))
+        self.assertEqual(linq1, Linq([1, 2]))
+        self.assertEqual(linq2, Linq([3, 4]))
+
     def test_distinct(self):
         linq = Linq([-1, 1, 1, 2, 3, -1, 2, 1])
         self.assertEqual(linq.distinct().to_list(), [-1, 1, 2, 3])

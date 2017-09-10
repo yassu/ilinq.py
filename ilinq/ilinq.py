@@ -15,6 +15,13 @@ class Linq(list):
     def take(self, num):
         return Linq([self[j] for j in range(min(num, len(self)))])
 
+    def concat(self, *linqs):
+        res = self
+        for linq in linqs:
+            print(linq)
+            res = Linq(res.to_list() + linq.to_list())
+        return res
+
     def distinct(self):
         list_ = list()
         for item in self[:]:
