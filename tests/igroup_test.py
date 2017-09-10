@@ -14,6 +14,9 @@ class TestLinq(unittest.TestCase):
         pair = IPair(0, 1)
         self.assertEqual(pair.key, 0)
 
-    def test_val(self):
+    def test_value(self):
         pair = IPair(0, 1)
-        self.assertEqual(pair.val, 1)
+        self.assertEqual(pair.value, 1)
+
+    def test_eq(self):
+        self.assertEqual(IPair(0, 1), IPair(0, 1))
