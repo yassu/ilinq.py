@@ -15,5 +15,8 @@ class IPair(object):
     def value(self):
         return self._value
 
+    def __str__(self):
+        return '{%s: %s}' % (self.key, self.value)
+
     def __eq__(self, other):
         return self.key == other.key and self.value == other.value
