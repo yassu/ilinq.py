@@ -10,69 +10,56 @@ class Linq(list):
         return Linq([item for item in list_ if filter_func(item)])
 
     def select(self, select_func):
-        def select_generator():
-            for item in self._iter:
-                yield select_func(item)
-        return Linq(select_generator())
+        return Linq([select_func(item) for item in self[:]])
 
     def take(self, num):
-        def take_generator():
-            for item, _ in zip(self._iter, range(num)):
-                yield item
-        return Linq(take_generator())
+        return Linq([self[j] for j in range(min(num, len(self)))])
 
     def distinct(self):
-        def distinct_generator():
-            list_ = list()
-            for item in self._iter:
-                if item not in list_:
-                    list_.append(item)
-                    yield item
-        return Linq(distinct_generator())
+        list_ = list()
+        for item in self[:]:
+            if item not in list_:
+                list_.append(item)
+        return Linq(list_)
 
     def order_by(self, key=None, desc=False):
-        return Linq(sorted(list(self), key=key, reverse=desc))
+        return Linq(sorted(self[:], key=key, reverse=desc))
 
     def inject(self, initial_value, func):
         res = initial_value
-        list_ = list(deepcopy(self._iter))
-        for item in list_:
+        for item in self[:]:
             res = func(res, item)
-        return Linq(res)
+        return res
 
     def count(self):
-        return len(list(deepcopy(self._iter)))
+        return len(self)
 
     def first(self, func=lambda x: True):
-        iter_ = deepcopy(self._iter)
-        for item in iter_:
+        for item in self[:]:
             if func(item):
                 return item
         raise IndexError('This linq with condition is Empty.')
 
     def first_or_default(self, default=None, func=lambda x: True):
-        iter_ = deepcopy(self)
-        for item in iter_:
+        for item in self:
             if func(item):
                 return item
         return default
 
     def single(self):
-        list_ = deepcopy(self).take(2).to_list()
-        if len(list_) == 0:
+        if self.count() == 0:
             raise IndexError('This linq is empty.')
-        elif len(list_) == 2:
+        elif self.count() == 2:
             raise IndexError('This linq is more long.')
-        return list_[0]
+        return self[0]
 
     def single_or_default(self, default=None):
-        iter_ = deepcopy(self)
-        if iter_.count() == 0:
+        if self.count() == 0:
             return default
-        return iter_.single()
+        return self.single()
 
     def last(self):
-        return list(deepcopy(self._iter))[-1]
+        return self[-1]
 
     def last_or_default(self, default=None):
         try:
@@ -81,7 +68,7 @@ class Linq(list):
             return default
 
     def element_at(self, ind):
-        list_ = deepcopy(self).take(ind + 1).to_list()
+        list_ = self.take(ind + 1).to_list()
         if len(list_) == ind + 1:
             return list_[ind]
         raise IndexError("This linq doesn't have {} items.".format(ind))
@@ -94,36 +81,33 @@ class Linq(list):
 
     def min(self, key=lambda x: x):
         try:
-            return min(list(deepcopy(self._iter)), key=key)
+            return min(self, key=key)
         except ValueError:
             raise StopIteration('This linq is empty.')
 
     def max(self, key=lambda x: x):
         try:
-            return max(list(deepcopy(self._iter)), key=key)
+            return max(self, key=key)
         except ValueError:
             raise StopIteration('This linq is empty.')
 
     def sum(self, func=lambda x: x):
-        iter_ = deepcopy(self).select(func)
-        return sum(iter_)
+        return sum(self.select(func))
 
     def average(self, func=lambda x: x):
         return self.sum(func=func) / self.count()
 
     def contains(self, item):
-        return item in list(deepcopy(self._iter))
+        return item in self
 
     def all(self, func):
-        iter_ = deepcopy(self._iter)
-        for item in iter_:
+        for item in self:
             if func(item) is False:
                 return False
         return True
 
     def any(self, func=lambda x: True):
-        iter_ = deepcopy(self._iter)
-        for item in iter_:
+        for item in self:
             if func(item):
                 return True
         return False
