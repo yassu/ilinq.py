@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from collections import defaultdict
+from functools import reduce
 
 
 class Linq(list):
@@ -11,6 +12,9 @@ class Linq(list):
 
     def select(self, func):
         return Linq([func(item) for item in self[:]])
+
+    def select_many(self, func):
+        return reduce(lambda x, y: x + y, [func(item) for item in self[:]])
 
     def take(self, num):
         return Linq([self[j] for j in range(min(num, len(self)))])
