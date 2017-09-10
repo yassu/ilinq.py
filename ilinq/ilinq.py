@@ -112,3 +112,12 @@ class Linq(list):
 
     def to_list(self):
         return list(self)
+
+    def __str__(self):
+        s = 'Linq<'
+        for item in self:
+            s += str(item)
+            s += ', '
+        if self.count() > 0:
+            s = s[:-2]
+        return s + '>'

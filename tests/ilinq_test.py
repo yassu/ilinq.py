@@ -273,5 +273,14 @@ class TestLinq(unittest.TestCase):
         self.assertFalse(linq.any(func=lambda x: x > 10))
 
     def test_to_list(self):
-        self.assertEqual(Linq([1]), [1])
-        self.assertEqual(Linq([1, 1, 2, 3, 5]), [1, 1, 2, 3, 5])
+        self.assertEqual(Linq([1]).to_list(), [1])
+        self.assertEqual(Linq([1, 1, 2, 3, 5]).to_list(), [1, 1, 2, 3, 5])
+
+    def test_str0(self):
+        self.assertEqual(str(Linq([])), 'Linq<>')
+
+    def test_str1(self):
+        self.assertEqual(str(Linq([1])), 'Linq<1>')
+
+    def test_str2(self):
+        self.assertEqual(str(Linq([1, 2])), 'Linq<1, 2>')
