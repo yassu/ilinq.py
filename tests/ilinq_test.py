@@ -126,6 +126,10 @@ class TestLinq(unittest.TestCase):
         linq = Linq([1, 2])
         linq.single()
 
+    def test_single4(self):
+        linq = Linq([1, 1, 2, 3, 5])
+        self.assertEqual(linq.single(func=lambda x: x % 2 == 0), 2)
+
     def test_single_or_default(self):
         linq = Linq([1])
         self.assertEqual(linq.single_or_default(), 1)

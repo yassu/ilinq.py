@@ -68,12 +68,13 @@ class Linq(list):
                 return item
         return default
 
-    def single(self):
-        if self.count() == 0:
-            raise IndexError('This linq is empty.')
-        elif self.count() == 2:
-            raise IndexError('This linq is more long.')
-        return self[0]
+    def single(self, func=lambda x: True):
+        obj = self.where(func)
+        if obj.count() == 0:
+            raise IndexError('This linq with condition is empty.')
+        elif obj.count() == 2:
+            raise IndexError('This linq with condition is more long.')
+        return obj[0]
 
     def single_or_default(self, default=None):
         if self.count() == 0:
