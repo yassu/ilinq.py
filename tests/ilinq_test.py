@@ -85,6 +85,9 @@ class TestLinq(unittest.TestCase):
     def test_count(self):
         self.assertEqual(Linq([2, 4, 6, 8, 10]).count(), 5)
 
+    def test_count2(self):
+        self.assertEqual(Linq([2, 4, 6, 8, 10]).count(lambda n: n > 5), 3)
+
     def test_single(self):
         linq = Linq([1])
         self.assertEqual(linq.single(), 1)

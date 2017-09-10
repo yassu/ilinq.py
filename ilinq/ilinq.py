@@ -38,8 +38,8 @@ class Linq(list):
             res = func(res, item)
         return res
 
-    def count(self):
-        return len(self)
+    def count(self, func=lambda x: True):
+        return len(self.where(func))
 
     def first(self, func=lambda x: True):
         for item in self[:]:
