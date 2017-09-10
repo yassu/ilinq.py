@@ -18,5 +18,8 @@ class IPair(object):
     def __str__(self):
         return '{%s: %s}' % (self.key, self.value)
 
+    def __repr__(self):
+        return 'IPair{%s: %s}' % (self.key, self.value)
+
     def __eq__(self, other):
         return self.key == other.key and self.value == other.value

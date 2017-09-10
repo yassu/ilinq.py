@@ -21,5 +21,8 @@ class TestLinq(unittest.TestCase):
     def test_str(self):
         self.assertEqual(str(IPair(0, 1)), '{0: 1}')
 
+    def test_repr(self):
+        self.assertEqual(repr(IPair(0, 1)), 'IPair{0: 1}')
+
     def test_eq(self):
         self.assertEqual(IPair(0, 1), IPair(0, 1))
