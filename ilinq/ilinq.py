@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from collections import defaultdict
+
 
 class Linq(list):
     def where(self, func):
@@ -111,6 +113,18 @@ class Linq(list):
             if func(item):
                 return True
         return False
+
+    def group_by(self, func):
+        from ilinq.igroup import IPair, IGroup
+        group = IGroup()
+        group_dict = defaultdict(lambda: Linq([]))
+        for item in self[:]:
+            group_dict[func(item)].append(item)
+
+        for key, values in group_dict.items():
+            group.append(IPair(key, values))
+        print(group)
+        return group
 
     def to_list(self):
         return list(self)

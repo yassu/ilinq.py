@@ -4,6 +4,7 @@
 import unittest
 from nose.tools import raises
 from ilinq.ilinq import Linq
+from ilinq.igroup import IPair, IGroup
 
 
 class TestLinq(unittest.TestCase):
@@ -271,6 +272,15 @@ class TestLinq(unittest.TestCase):
         linq = Linq([2, 3, 4, 5])
         self.assertFalse(linq.any(func=lambda x: x > 10))
         self.assertFalse(linq.any(func=lambda x: x > 10))
+
+    def test_group_by(self):
+        linq = Linq([1, 2, 3, 4, 5])
+        self.assertEqual(
+            linq.group_by(lambda n: n % 2),
+            IGroup([
+                IPair(1, [1, 3, 5]),
+                IPair(0, [2, 4])
+            ]))
 
     def test_to_list(self):
         self.assertEqual(Linq([1]).to_list(), [1])
