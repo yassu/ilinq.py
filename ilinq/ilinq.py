@@ -106,8 +106,8 @@ class Linq(list):
     def average(self, func=lambda x: x):
         return self.sum(func=func) / self.count()
 
-    def contains(self, item):
-        return item in self
+    def contains(self, item, func=lambda x: x):
+        return func(item) in [func(item) for item in self]
 
     def all(self, func):
         for item in self:
