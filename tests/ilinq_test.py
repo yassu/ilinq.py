@@ -284,3 +284,12 @@ class TestLinq(unittest.TestCase):
 
     def test_str2(self):
         self.assertEqual(str(Linq([1, 2])), 'Linq<1, 2>')
+
+    def test_repr0(self):
+        self.assertEqual(repr(Linq([])), 'Linq<>')
+
+    def test_repr1(self):
+        self.assertEqual(repr(Linq([1])), 'Linq<1>')
+
+    def test_repr2(self):
+        self.assertEqual(repr(Linq([1, 2])), 'Linq<1, 2>')

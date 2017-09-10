@@ -121,3 +121,6 @@ class Linq(list):
         if self.count() > 0:
             s = s[:-2]
         return s + '>'
+
+    def __repr__(self):
+        return str(self)
