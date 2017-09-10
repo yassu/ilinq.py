@@ -3,12 +3,12 @@
 
 
 class Linq(list):
-    def where(self, filter_func):
+    def where(self, func):
         list_ = self[:]
-        return Linq([item for item in list_ if filter_func(item)])
+        return Linq([item for item in list_ if func(item)])
 
-    def select(self, select_func):
-        return Linq([select_func(item) for item in self[:]])
+    def select(self, func):
+        return Linq([func(item) for item in self[:]])
 
     def take(self, num):
         return Linq([self[j] for j in range(min(num, len(self)))])
@@ -20,8 +20,8 @@ class Linq(list):
                 list_.append(item)
         return Linq(list_)
 
-    def order_by(self, key=None, desc=False):
-        return Linq(sorted(self[:], key=key, reverse=desc))
+    def order_by(self, func=None, desc=False):
+        return Linq(sorted(self[:], key=func, reverse=desc))
 
     def inject(self, initial_value, func):
         res = initial_value
@@ -77,15 +77,17 @@ class Linq(list):
         except IndexError:
             return default
 
-    def min(self, key=lambda x: x):
+    # func: key function
+    def min(self, func=lambda x: x):
         try:
-            return min(self, key=key)
+            return min(self, key=func)
         except ValueError:
             raise StopIteration('This linq is empty.')
 
-    def max(self, key=lambda x: x):
+    # func: key function
+    def max(self, func=lambda x: x):
         try:
-            return max(self, key=key)
+            return max(self, key=func)
         except ValueError:
             raise StopIteration('This linq is empty.')
 

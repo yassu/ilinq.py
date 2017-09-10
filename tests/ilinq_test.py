@@ -41,7 +41,7 @@ class TestLinq(unittest.TestCase):
         linq = Linq(items)
         self.assertEqual(
             linq
-            .order_by(lambda obj: (obj['x'], obj['y']))
+            .order_by(func=lambda obj: (obj['x'], obj['y']))
             .to_list(),
             [{'x': 1, 'y': 1}, {'x': 1, 'y': 2}, {'x': 3, 'y': 4}]
         )
@@ -55,7 +55,7 @@ class TestLinq(unittest.TestCase):
         linq = Linq(items)
         self.assertEqual(
             linq
-            .order_by(lambda obj: (obj['x'], obj['y']), desc=True)
+            .order_by(func=lambda obj: (obj['x'], obj['y']), desc=True)
             .to_list(),
             [{'x': 3, 'y': 4}, {'x': 1, 'y': 2}, {'x': 1, 'y': 1}]
         )
@@ -180,8 +180,8 @@ class TestLinq(unittest.TestCase):
 
     def test_min2(self):
         linq = Linq([13, 18, 11, 100])
-        self.assertEqual(linq.min(key=lambda x: x % 4), 100)
-        self.assertEqual(linq.min(key=lambda x: x % 4), 100)
+        self.assertEqual(linq.min(func=lambda x: x % 4), 100)
+        self.assertEqual(linq.min(func=lambda x: x % 4), 100)
 
     @raises(StopIteration)
     def test_min3(self):
@@ -195,8 +195,8 @@ class TestLinq(unittest.TestCase):
 
     def test_max2(self):
         linq = Linq([1, 6, 1, 4, 2, 2])
-        self.assertEqual(linq.max(key=lambda x: x % 2), 1)
-        self.assertEqual(linq.max(key=lambda x: x % 2), 1)
+        self.assertEqual(linq.max(func=lambda x: x % 2), 1)
+        self.assertEqual(linq.max(func=lambda x: x % 2), 1)
 
     @raises(StopIteration)
     def test_max3(self):
