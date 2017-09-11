@@ -48,11 +48,11 @@ class Linq(list):
                 val_list.append(val)
         return Linq(list_)
 
-    def except_(self, linq2, key_func=None):
+    def except_(self, other, key_func=None):
         res = list()
         for item in self[:]:
             val = item if key_func is None else key_func(item)
-            if val not in linq2:
+            if val not in other:
                 res.append(item)
         return Linq(res)
 
