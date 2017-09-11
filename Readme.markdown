@@ -15,7 +15,7 @@ $ python setup.py install
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# We obtain the last primes less than 10^4.
+# We obtain the last prime less than 10^4.
 
 from ilinq.ilinq import Linq
 
