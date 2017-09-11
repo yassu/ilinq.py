@@ -23,7 +23,6 @@ class Linq(list):
     def concat(self, *linqs):
         res = self
         for linq in linqs:
-            print(linq)
             res = Linq(res.to_list() + linq.to_list())
         return res
 
