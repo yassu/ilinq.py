@@ -39,6 +39,11 @@ if __name__ == '__main__':
     # => 9973
 ```
 
+## Todo
+
+- [ ] check all linq defined c# (here)
+- [ ] use compare function not key function
+
 ## LICENSE
 
 Apache 2.0
