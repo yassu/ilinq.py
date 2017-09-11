@@ -72,6 +72,11 @@ class TestLinq(unittest.TestCase):
         linq = Linq([-1, 2, 1, 2, 3, -1, 2, 1])
         self.assertEqual(linq.distinct(lambda x: x*x), Linq([-1, 2, 3]))
 
+    def test_except(self):
+        linq1 = Linq([2.0, 2.0, 2.1, 2.2, 2.3, 2.4, 2.5])
+        linq2 = Linq([2.1, 2.2])
+        self.assertEqual(linq1.except_(linq2), Linq([2.0, 2.0, 2.3, 2.4, 2.5]))
+
     def test_repeat(self):
         self.assertEqual(Linq.repeat(1, 3), Linq([1, 1, 1]))
 
