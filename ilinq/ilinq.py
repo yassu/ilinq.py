@@ -116,11 +116,13 @@ class Linq(list):
         except ValueError:
             raise StopIteration('This linq is empty.')
 
-    def sum(self, cond_func=lambda x: x):
-        return sum(self.select(cond_func))
+    def sum(self, cond_func=lambda x: x, select_func=None):
+        list_ = self if select_func is None else \
+            Linq([select_func(item) for item in self])
+        return sum(list_.select(cond_func))
 
-    def average(self, cond_func=lambda x: x):
-        return self.sum(cond_func=cond_func) / self.count()
+    def average(self, select_func=lambda x: x):
+        return self.sum(select_func=select_func) / self.count()
 
     def contains(self, item, key_func=lambda x: x):
         return key_func(item) in [key_func(item) for item in self]

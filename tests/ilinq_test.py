@@ -297,7 +297,7 @@ class TestLinq(unittest.TestCase):
 
     def test_average2(self):
         linq = Linq([1.0, 1.0, 4.0, 2.0, 2.0])
-        ave = linq.average(cond_func=lambda x: x*x)
+        ave = linq.average(select_func=lambda x: x*x)
         self.assertTrue(5.2 - 0.0002 < ave and ave < 5.2 + 0.0002)
 
     @raises(ZeroDivisionError)
