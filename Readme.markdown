@@ -41,7 +41,7 @@ if __name__ == '__main__':
 
 ## Todo
 
-- [ ] check all linq defined c# (here)
+- [ ] check all linq defined c# ([here](https://msdn.microsoft.com/ja-jp/library/system.linq.enumerable(v=vs.110).aspx))
 - [ ] use compare function not key function
 
 ## LICENSE
