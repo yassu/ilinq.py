@@ -12,14 +12,14 @@ class TestLinq(unittest.TestCase):
     def test_where(self):
         linq1 = Linq([1])
         linq2 = Linq([1, 1, 2, 3, 5])
-        self.assertEqual(linq1.where(lambda x: x % 2 == 1).to_list(), [1])
-        self.assertEqual(linq2.where(lambda x: x % 2 == 0).to_list(), [2])
+        self.assertEqual(linq1.where(lambda x: x % 2 == 1), Linq([1]))
+        self.assertEqual(linq2.where(lambda x: x % 2 == 0), Linq([2]))
 
     def test_select(self):
         linq = Linq(range(5))
         self.assertEqual(
-            linq.select(lambda x: x % 2 == 0).to_list(),
-            [True, False, True, False, True])
+            linq.select(lambda x: x % 2 == 0),
+            Linq([True, False, True, False, True]))
 
     def test_select_many(self):
         linq = Linq(
@@ -34,11 +34,11 @@ class TestLinq(unittest.TestCase):
 
     def test_take(self):
         linq = Linq(range(100))
-        self.assertEqual(linq.take(5).to_list(), [0, 1, 2, 3, 4])
+        self.assertEqual(linq.take(5), Linq([0, 1, 2, 3, 4]))
 
     def test_take2(self):
         linq = Linq([1, 2])
-        self.assertEqual(linq.take(5).to_list(), [1, 2])
+        self.assertEqual(linq.take(5), Linq([1, 2]))
 
     def test_concat(self):
         linq1 = Linq([1, 2])
@@ -66,7 +66,7 @@ class TestLinq(unittest.TestCase):
 
     def test_distinct(self):
         linq = Linq([-1, 1, 1, 2, 3, -1, 2, 1])
-        self.assertEqual(linq.distinct().to_list(), [-1, 1, 2, 3])
+        self.assertEqual(linq.distinct(), Linq([-1, 1, 2, 3]))
 
     def test_repeat(self):
         self.assertEqual(Linq.repeat(1, 3), Linq([1, 1, 1]))
@@ -80,9 +80,8 @@ class TestLinq(unittest.TestCase):
         linq = Linq(items)
         self.assertEqual(
             linq
-            .order_by(func=lambda obj: (obj['x'], obj['y']))
-            .to_list(),
-            [{'x': 1, 'y': 1}, {'x': 1, 'y': 2}, {'x': 3, 'y': 4}]
+            .order_by(func=lambda obj: (obj['x'], obj['y'])),
+            Linq([{'x': 1, 'y': 1}, {'x': 1, 'y': 2}, {'x': 3, 'y': 4}])
         )
 
     def test_order_by_desc(self):
@@ -94,9 +93,8 @@ class TestLinq(unittest.TestCase):
         linq = Linq(items)
         self.assertEqual(
             linq
-            .order_by(func=lambda obj: (obj['x'], obj['y']), desc=True)
-            .to_list(),
-            [{'x': 3, 'y': 4}, {'x': 1, 'y': 2}, {'x': 1, 'y': 1}]
+            .order_by(func=lambda obj: (obj['x'], obj['y']), desc=True),
+            Linq([{'x': 3, 'y': 4}, {'x': 1, 'y': 2}, {'x': 1, 'y': 1}])
         )
 
     def test_inject(self):
