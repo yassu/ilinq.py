@@ -48,12 +48,13 @@ class Linq(list):
                 val_list.append(val)
         return Linq(list_)
 
-    def except_(self, linq2):
+    def except_(self, linq2, key_func=None):
         res = list()
         for item in self[:]:
-            if item not in linq2:
+            val = item if key_func is None else key_func(item)
+            if val not in linq2:
                 res.append(item)
-        return res
+        return Linq(res)
 
     def order_by(self, key_func=None, desc=False):
         return Linq(sorted(self[:], key=key_func, reverse=desc))
