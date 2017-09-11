@@ -38,11 +38,14 @@ class Linq(list):
     def repeat(obj, num):
         return Linq([obj] * num)
 
-    def distinct(self):
+    def distinct(self, key_func=None):
         list_ = list()
+        val_list = list()
         for item in self[:]:
-            if item not in list_:
+            val = item if key_func is None else key_func(item)
+            if val not in val_list:
                 list_.append(item)
+                val_list.append(val)
         return Linq(list_)
 
     def order_by(self, key_func=None, desc=False):
