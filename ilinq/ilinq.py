@@ -48,11 +48,11 @@ class Linq(list):
     def order_by(self, key_func=None, desc=False):
         return Linq(sorted(self[:], key=key_func, reverse=desc))
 
-    def inject(self, initial_value, func):
+    def inject(self, initial_value, func, last_func=None):
         res = initial_value
         for item in self[:]:
             res = func(res, item)
-        return res
+        return res if last_func is None else last_func(res)
 
     def count(self, cond_func=lambda x: True):
         return len(self.where(cond_func))

@@ -103,6 +103,16 @@ class TestLinq(unittest.TestCase):
         self.assertEqual(linq.inject(0, lambda res, val: res - val), -10)
         self.assertEqual(linq.inject(0, lambda res, val: res - val), -10)
 
+    def test_inject2(self):
+        linq = Linq([1, 2, 3, 4])
+        # the equare of 0 - 1 - 2 - 3 - 4
+        self.assertEqual(
+            linq.inject(0, lambda res, val: res - val, lambda x: x * x),
+            100)
+        self.assertEqual(
+            linq.inject(0, lambda res, val: res - val, lambda x: x * x),
+            100)
+
     def test_count(self):
         self.assertEqual(Linq([2, 4, 6, 8, 10]).count(), 5)
 
