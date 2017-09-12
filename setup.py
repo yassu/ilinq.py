@@ -9,4 +9,5 @@ setup(name='ilinq',
       author='yassu',
       author_email='yasu0320.dev@gmail.com',
       url='https://github.com/yassu/Ilinq.py',
+      extra_require={'dev': open('extra_require.txt').read().split('\n')}
       )

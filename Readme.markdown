@@ -9,6 +9,12 @@ This project provides the module like linq of C# for Python.
 $ python setup.py install
 ```
 
+For developers, we enter
+
+```
+$ pip install -e .[dev]
+```
+
 ## First Example
 
 ```
@@ -43,6 +49,7 @@ if __name__ == '__main__':
 
 - [ ] check all linq defined c# ([here](https://msdn.microsoft.com/ja-jp/library/system.linq.enumerable(v=vs.110).aspx))
 - [ ] use compare function not key function
+- [ ] write here-docs
 
 ## LICENSE
 

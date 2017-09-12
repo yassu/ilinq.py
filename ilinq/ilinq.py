@@ -1,6 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+"""
+This module provides Linq class, which is a python version of linq like c#
+and inherited list.
+"""
+
 from collections import defaultdict
 from functools import reduce
 
