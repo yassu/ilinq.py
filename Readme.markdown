@@ -9,6 +9,12 @@ This project provides the module like linq of C# for Python.
 $ python setup.py install
 ```
 
+For developers, we enter
+
+```
+$ pip install -e .[dev]
+```
+
 ## First Example
 
 ```
