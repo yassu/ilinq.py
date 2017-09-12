@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 import unittest
-from nose.tools import raises
 from ilinq.igroup import IPair, IGroup
 from ilinq.ilinq import Linq
 

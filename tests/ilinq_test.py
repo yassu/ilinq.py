@@ -203,8 +203,12 @@ class TestLinq(unittest.TestCase):
 
     def test_first_or_default3(self):
         linq = Linq([11, 14, 15, 19])
-        self.assertEqual(linq.first_or_default(cond_func=lambda x: x % 2 == 0), 14)
-        self.assertEqual(linq.first_or_default(cond_func=lambda x: x % 2 == 0), 14)
+        self.assertEqual(
+            linq.first_or_default(cond_func=lambda x: x % 2 == 0),
+            14)
+        self.assertEqual(
+            linq.first_or_default(cond_func=lambda x: x % 2 == 0),
+            14)
 
     def test_last(self):
         linq = Linq([11, 13, 15, 19])
