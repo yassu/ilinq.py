@@ -167,6 +167,3 @@ texinfo_documents = [
      author, 'ILinq', 'One line description of project.',
      'Miscellaneous'),
 ]
-
-
-
