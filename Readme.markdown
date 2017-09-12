@@ -49,6 +49,7 @@ if __name__ == '__main__':
 
 - [ ] check all linq defined c# ([here](https://msdn.microsoft.com/ja-jp/library/system.linq.enumerable(v=vs.110).aspx))
 - [ ] use compare function not key function
+- [ ] write here-docs
 
 ## LICENSE
 
