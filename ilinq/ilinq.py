@@ -94,6 +94,12 @@ class Linq(list):
 
     @staticmethod
     def repeat(obj, num):
+        """
+        return Linq instance which has num objs.
+
+        >>> Linq.repeat('Hello', 5)
+        Linq<Hello, Hello, Hello, Hello, Hello>
+        """
         return Linq([obj] * num)
 
     def distinct(self, key_func=None):
