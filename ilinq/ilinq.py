@@ -235,6 +235,22 @@ class Linq(list):
         return default
 
     def single(self, cond_func=lambda x: True):
+        """
+        >>> Linq([]).single()
+        Traceback (most recent call last):
+          File "<stdin>", line 1, in <module>
+          File "/Users/yuki_yasuda/dev/ilinq.py/ilinq/ilinq.py", line 95, in
+          single @staticmethod
+        IndexError: This linq with condition is empty.
+        >>> Linq([12]).single()
+        12
+        >>> Linq([12, 15]).single()
+        Traceback (most recent call last):
+          File "<stdin>", line 1, in <module>
+          File "/Users/yuki_yasuda/dev/ilinq.py/ilinq/ilinq.py", line 97, in
+        single
+        IndexError: This linq with condition is more long.
+        """
         obj = self.where(cond_func)
         if obj.count() == 0:
             raise IndexError('This linq with condition is empty.')
