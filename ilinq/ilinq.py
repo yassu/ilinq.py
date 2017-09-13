@@ -238,6 +238,9 @@ class Linq(list):
 
     def single(self, cond_func=None):
         """
+        If this object consists of one object, return this object.
+        Otherwise, error is occured.
+
         >>> Linq([]).single()
         Traceback (most recent call last):
           File "<stdin>", line 1, in <module>
