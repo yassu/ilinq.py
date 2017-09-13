@@ -140,7 +140,7 @@ class Linq(list):
         return self.sum(select_func=select_func) / self.count()
 
     def contains(self, item, key_func=lambda x: x):
-        return key_func(item) in [key_func(item) for item in self]
+        return key_func(item) in [key_func(item_) for item_ in self]
 
     def all(self, cond_func):
         for item in self:
