@@ -121,6 +121,20 @@ class Linq(list):
         return Linq(list_)
 
     def except_(self, other, key_func=None):
+        """
+        If key_func is None, return self values except for other values.
+
+        >>> Linq(range(10)).except_(Linq(range(4)))
+        Linq<4, 5, 6, 7, 8, 9>
+
+        If key_func is not None, return self values with condition that
+        key_func(item) doesn't contain key_func(other_item) items.
+
+        >>> linq1 = Linq([1, 2, -3, -4, -5])
+        >>> linq2 = Linq([2, 3, 5, 7, 6])
+        >>> linq1.except_(linq2, key_func=lambda x: abs(x))
+        Linq<1, -4>
+        """
         res = list()
         for item in self[:]:
             val = item if key_func is None else key_func(item)
