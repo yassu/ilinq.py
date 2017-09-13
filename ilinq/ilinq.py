@@ -303,6 +303,16 @@ class Linq(list):
         return self.where(func)[-1]
 
     def last_or_default(self, default=None, cond_func=lambda x: True):
+        """
+        >>> Linq([3, 2, 5, 8]).last_or_default()
+        8
+        >>> Linq([3, 2, 5, 8]).last_or_default(cond_func=lambda x: x % 2 == 1)
+        5
+        >>> Linq([3, 2, 5, 8]).last_or_default(
+            cond_func=lambda x: x > 100,
+            default=-100)
+        -100
+        """
         try:
             return self.where(cond_func).last()
         except IndexError:
