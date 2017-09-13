@@ -304,6 +304,9 @@ class Linq(list):
 
     def last_or_default(self, default=None, cond_func=None):
         """
+        return the last element with cond_func(item) and default value
+        is default.
+
         >>> Linq([3, 2, 5, 8]).last_or_default()
         8
         >>> Linq([3, 2, 5, 8]).last_or_default(cond_func=lambda x: x % 2 == 1)
@@ -319,6 +322,12 @@ class Linq(list):
             return default
 
     def element_at(self, ind):
+        """
+        return the element at ind index.
+
+        >>> Linq([3, 2, 5, 8]).element_at(2)
+        5
+        """
         list_ = self.take(ind + 1).to_list()
         if len(list_) == ind + 1:
             return list_[ind]
