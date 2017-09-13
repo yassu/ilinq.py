@@ -169,6 +169,19 @@ class Linq(list):
         return Linq(sorted(self[:], key=key_func, reverse=desc))
 
     def inject(self, initial_value, func, last_func=None):
+        """
+        return the result of
+        func(func(func(initial_value, self[0]), self[1]) .. self[length - 1])
+        filtered by last_func.
+
+        >>> Linq(range(100 + 1)).inject(0, lambda res, x: res + x)
+        5050
+        >>> Linq(range(100 + 1)).inject(
+            0,
+            lambda res, x: res + x,
+            last_func=lambda x: x + 100)
+        5150
+        """
         res = initial_value
         for item in self[:]:
             res = func(res, item)
