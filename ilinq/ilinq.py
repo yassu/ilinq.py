@@ -44,15 +44,48 @@ class Linq(list):
             lambda x, y: x + y, [select_func(item) for item in self[:]])
 
     def take(self, num):
+        """
+        Return first num numbers of this object.
+
+        >>> linq = Linq(range(10))
+        >>> linq.take(4)
+        Linq<0, 1, 2, 3>
+        >>> linq.take(100)
+        Linq<0, 1, 2, 3, 4, 5, 6, 7, 8, 9>
+        """
         return Linq([self[j] for j in range(min(num, len(self)))])
 
     def concat(self, *linqs):
+        """
+        >>> linq = Linq(range(4))
+        >>> linq.concat(Linq(range(5)).select(lambda x: x*x))
+        Linq<0, 1, 2, 3, 0, 1, 4, 9, 16>
+
+        >>> linq1 = Linq(range(5))
+        >>> linq2 = Linq(range(4)).select(lambda x: x * x)
+        >>> linq3 = Linq(range(3)).select(lambda x: x * x * x)
+        >>> linq1.concat(linq2, linq3)
+        Linq<0, 1, 2, 3, 4, 0, 1, 4, 9, 0, 1, 8>
+        """
         res = self
         for linq in linqs:
             res = Linq(res.to_list() + linq.to_list())
         return res
 
     def default_if_empty(self, default=None):
+        """
+        if self is empty, return Linq([default]) else self.
+
+        >>> Linq(range(3)).default_if_empty()
+        Linq<0, 1, 2>
+        >>> Linq(range(3)).default_if_empty("default")
+        Linq<0, 1, 2>
+
+        >>> Linq([]).default_if_empty()
+        Linq<None>
+        >>> Linq([]).default_if_empty("default")
+        Linq<default>
+        """
         list_ = Linq(self[:]).take(1)
         if len(list_) == 1:
             return Linq(self[:])
