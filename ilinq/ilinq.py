@@ -23,6 +23,21 @@ class Linq(list):
             item for item in list_
             if cond_func is None or cond_func(item)])
 
+    def where_in(self, list_, select_func=None):
+        """
+        return items which the condition that select_func(item) in list_
+
+        >>> Linq([1, 3, 5, 100]).where_in([1, 2, 3])
+        Linq<1, 3>
+        >>> Linq([1, 3, 5, 100]).where_in(
+            [1, 2, 3],
+            select_func=lambda x: x % 2)
+        Linq<1, 3, 5>
+        """
+        return self.where(
+            lambda x: x in list_ if select_func is None else
+            select_func(x) in list_)
+
     def select(self, select_func):
         """
         Return the linq instance selected by select_func.
