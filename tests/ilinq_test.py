@@ -315,8 +315,8 @@ class TestLinq(unittest.TestCase):
 
     def test_sum2(self):
         linq = Linq([1, 1, 4, 2, 2])
-        self.assertEqual(linq.sum(cond_func=lambda x: x*x), 26)
-        self.assertEqual(linq.sum(cond_func=lambda x: x*x), 26)
+        self.assertEqual(linq.sum(filter_func=lambda x: x*x), 26)
+        self.assertEqual(linq.sum(filter_func=lambda x: x*x), 26)
 
     def test_sum3(self):
         linq = Linq([])

@@ -362,16 +362,19 @@ class Linq(list):
         except ValueError:
             raise StopIteration('This linq is empty.')
 
-    def max(self, key_func=lambda x: x):
+    def max(self, key_func=None):
         try:
-            return max(self, key=key_func)
+            return max(
+                self,
+                key=lambda x: x if key_func is None else key_func(x))
         except ValueError:
             raise StopIteration('This linq is empty.')
 
-    def sum(self, cond_func=lambda x: x, select_func=None):
+    def sum(self, filter_func=None, select_func=None):
         list_ = self if select_func is None else \
             Linq([select_func(item) for item in self])
-        return sum(list_.select(cond_func))
+        return sum(list_.select(
+            lambda x: x if filter_func is None else filter_func(x)))
 
     def average(self, select_func=lambda x: x):
         return self.sum(select_func=select_func) / self.count()
