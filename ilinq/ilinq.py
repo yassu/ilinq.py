@@ -260,7 +260,7 @@ class Linq(list):
             raise IndexError('This linq with condition is more long.')
         return obj[0]
 
-    def single_or_default(self, default=None, cond_func=lambda x: True):
+    def single_or_default(self, default=None, cond_func=None):
         obj = self.where(cond_func)
         if obj.count() == 0:
             return default
