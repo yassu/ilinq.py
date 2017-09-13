@@ -12,7 +12,7 @@ $ python setup.py install
 For developers, we enter
 
 ```
-$ pip install -e .[dev]
+$ pip install -r extra_require.txt
 ```
 
 ## First Example
