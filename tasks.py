@@ -49,5 +49,5 @@ def deploy_doc(ctx):
             'git add .',
             'git commit -m "update docs"',
             'git push origin gh-pages',
+            'git checkout master'
         ])
-    ctx.run('git checkout master')
