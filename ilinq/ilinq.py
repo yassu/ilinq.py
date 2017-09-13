@@ -2,8 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-This module provides Linq class, which is a python version of linq like c#
-and inherited list.
+This module provides Linq class, which is a python version of linq like c#.
 """
 
 from collections import defaultdict
@@ -11,14 +10,36 @@ from functools import reduce
 
 
 class Linq(list):
+    """ class which is similar to be in c# """
     def where(self, cond_func):
+        """
+        Return the Linq instance filtered by cond_func.
+
+        >>> Linq(range(10 + 1)).where(lambda n: n % 5 == 0)
+        Linq<0, 5, 10>
+        """
         list_ = self[:]
         return Linq([item for item in list_ if cond_func(item)])
 
     def select(self, select_func):
+        """
+        Return the linq instance selected by select_func.
+
+        >>> Linq(range(10 + 1)).select(lambda n: n % 3)
+        Linq<0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1>
+        """
         return Linq([select_func(item) for item in self[:]])
 
     def select_many(self, select_func):
+        """
+        Return the linq instance selected by select_func and flatten.
+
+        >>> linq = Linq([
+            {"name": "yassu", "ids": (12, 13)},
+            {"name": "aiya",  "ids": (20, 21)}])
+        >>> linq.select_many(lambda obj: obj["ids"])
+        (12, 13, 20, 21)
+        """
         return reduce(
             lambda x, y: x + y, [select_func(item) for item in self[:]])
 
