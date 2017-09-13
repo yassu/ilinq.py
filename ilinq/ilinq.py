@@ -261,6 +261,28 @@ class Linq(list):
         return obj[0]
 
     def single_or_default(self, default=None, cond_func=None):
+        """
+        If this obj consists only one object, return this object.
+
+        If this obj is empty, return default.
+
+        If this obj consists more than one objects, error is occured.
+
+        >>> Linq([]).single_or_default(16)
+        16
+        >>> Linq([32]).single_or_default()
+        32
+        >>> Linq([12, 35]).single_or_default()
+        Traceback (most recent call last):
+          File "<stdin>", line 1, in <module>
+          File "/Users/yuki_yasuda/dev/ilinq.py/ilinq/ilinq.py", line 104, in
+        single_or_default
+            \"\"\"
+          File "/Users/yuki_yasuda/dev/ilinq.py/ilinq/ilinq.py", line 97, in
+        single
+            @staticmethod
+        IndexError: This linq with condition is more long.
+        """
         obj = self.where(cond_func)
         if obj.count() == 0:
             return default
