@@ -354,9 +354,11 @@ class Linq(list):
         except IndexError:
             return default
 
-    def min(self, key_func=lambda x: x):
+    def min(self, key_func=None):
         try:
-            return min(self, key=key_func)
+            return min(
+                self,
+                key=lambda x: x if key_func is None else key_func(x))
         except ValueError:
             raise StopIteration('This linq is empty.')
 
