@@ -302,7 +302,7 @@ class Linq(list):
         """
         return self.where(func)[-1]
 
-    def last_or_default(self, default=None, cond_func=lambda x: True):
+    def last_or_default(self, default=None, cond_func=None):
         """
         >>> Linq([3, 2, 5, 8]).last_or_default()
         8
