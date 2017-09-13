@@ -143,6 +143,29 @@ class Linq(list):
         return Linq(res)
 
     def order_by(self, key_func=None, desc=False):
+        """
+        If desc=False and key_func=None, sort in ascending order.
+
+        >>> Linq([1.1, 2.3, -2, 5.3, 1.3]).order_by()
+        Linq<-2, 1.1, 1.3, 2.3, 5.3>
+
+        If desc=True, sort in descending order
+
+        >>> Linq([1.1, 2.3, -2, 5.3, 1.3]).order_by(desc=True)
+        Linq<5.3, 2.3, 1.3, 1.1, -2>
+
+        If key_func is not None, sort by result of key_func
+
+        >>> linq = Linq([
+                {"name": "person1", "age": 23},
+                {"name": "person2", "age": 25},
+                {"name": "person3", "age": 21}])
+        >>> linq.order_by(key_func=lambda person: person["age"])
+        Linq<
+            {'name': 'person3', 'age': 21},
+            {'name': 'person1', 'age': 23},
+            {'name': 'person2', 'age': 25}>
+        """
         return Linq(sorted(self[:], key=key_func, reverse=desc))
 
     def inject(self, initial_value, func, last_func=None):
