@@ -19,7 +19,9 @@ class Linq(list):
         Linq<0, 5, 10>
         """
         list_ = self[:]
-        return Linq([item for item in list_ if cond_func(item)])
+        return Linq([
+            item for item in list_
+            if cond_func is None or cond_func(item)])
 
     def select(self, select_func):
         """
