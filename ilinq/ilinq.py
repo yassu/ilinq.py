@@ -200,9 +200,17 @@ class Linq(list):
             cond_func if cond_func is not None else
             lambda x: True))
 
-    def first(self, cond_func=lambda x: True):
+    def first(self, cond_func=None):
+        """
+        return the first element with cond_func(item)
+
+        >>> Linq([3, 2, 5, 8]).first()
+        3
+        >>> Linq([3, 2, 5, 8]).first(cond_func=lambda x: x % 2 == 0)
+        2
+        """
         for item in self[:]:
-            if cond_func(item):
+            if cond_func is None or cond_func(item):
                 return item
         raise IndexError('This linq with condition is Empty.')
 
