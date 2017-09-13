@@ -292,6 +292,14 @@ class Linq(list):
         return obj.single()
 
     def last(self, func=None):
+        """
+        return the first element with cond_func(item)
+
+        >>> Linq([3, 2, 5, 8]).last()
+        8
+        >>> Linq([3, 2, 5, 8]).last(lambda x: x % 4 == 1)
+        5
+        """
         return self.where(func)[-1]
 
     def last_or_default(self, default=None, cond_func=lambda x: True):
