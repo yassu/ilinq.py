@@ -236,7 +236,7 @@ class Linq(list):
                 return item
         return default
 
-    def single(self, cond_func=lambda x: True):
+    def single(self, cond_func=None):
         """
         >>> Linq([]).single()
         Traceback (most recent call last):
