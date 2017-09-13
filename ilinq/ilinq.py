@@ -291,7 +291,7 @@ class Linq(list):
             return default
         return obj.single()
 
-    def last(self, func=lambda x: True):
+    def last(self, func=None):
         return self.where(func)[-1]
 
     def last_or_default(self, default=None, cond_func=lambda x: True):
