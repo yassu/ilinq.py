@@ -214,7 +214,7 @@ class Linq(list):
                 return item
         raise IndexError('This linq with condition is Empty.')
 
-    def first_or_default(self, default=None, cond_func=lambda x: True):
+    def first_or_default(self, default=None, cond_func=None):
         """
         return the first element with cond_func(item) and default value
         is default.
@@ -230,7 +230,7 @@ class Linq(list):
         100
         """
         for item in self:
-            if cond_func(item):
+            if cond_func is None or cond_func(item):
                 return item
         return default
 
