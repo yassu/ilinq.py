@@ -187,7 +187,7 @@ class Linq(list):
             res = func(res, item)
         return res if last_func is None else last_func(res)
 
-    def count(self, cond_func=lambda x: True):
+    def count(self, cond_func=None):
         """
         return the length with condition that cond_func(item).
 
@@ -196,7 +196,9 @@ class Linq(list):
         >>> Linq(range(10)).count(lambda x: x >= 8)
         2
         """
-        return len(self.where(cond_func))
+        return len(self.where(
+            cond_func if cond_func is not None else
+            lambda x: True))
 
     def first(self, cond_func=lambda x: True):
         for item in self[:]:
