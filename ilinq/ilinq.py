@@ -215,6 +215,20 @@ class Linq(list):
         raise IndexError('This linq with condition is Empty.')
 
     def first_or_default(self, default=None, cond_func=lambda x: True):
+        """
+        return the first element with cond_func(item) and default value
+        is default.
+
+        >>> Linq([3, 2, 5, 8]).first_or_default()
+        3
+        >>> Linq([3, 2, 5, 8]).first_or_default(
+            cond_func=lambda x: x % 2 == 0)
+        2
+        >>> Linq([3, 2, 5, 8]).first_or_default(
+            cond_func=lambda x: x > 100,
+            default=100)
+        100
+        """
         for item in self:
             if cond_func(item):
                 return item
