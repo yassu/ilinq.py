@@ -103,6 +103,14 @@ class Linq(list):
         return Linq([obj] * num)
 
     def distinct(self, key_func=None):
+        """
+        return self deleted duplicates
+
+        >>> linq1 = Linq(range(4))
+        >>> linq2 = Linq(range(5)).select(lambda x: x * x)
+        >>> linq1.concat(linq2).distinct()
+        Linq<0, 1, 2, 3, 4, 9, 16>
+        """
         list_ = list()
         val_list = list()
         for item in self[:]:
