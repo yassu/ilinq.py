@@ -15,6 +15,12 @@ class TestLinq(unittest.TestCase):
         self.assertEqual(linq1.where(lambda x: x % 2 == 1), Linq([1]))
         self.assertEqual(linq2.where(lambda x: x % 2 == 0), Linq([2]))
 
+    def test_where2(self):
+        linq1 = Linq([1])
+        linq2 = Linq([1, 1, 2, 3, 5])
+        self.assertEqual(linq1.where(), Linq([1]))
+        self.assertEqual(linq2.where(), Linq([1, 1, 2, 3, 5]))
+
     def test_where_in(self):
         self.assertEqual(
             Linq(range(10)).where_in((1, 3, 7, 9, 13, 15)),

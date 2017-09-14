@@ -11,9 +11,10 @@ from functools import reduce
 
 class Linq(list):
     """ class which is similar to be in c# """
-    def where(self, cond_func):
+    def where(self, cond_func=None):
         """
         Return the Linq instance filtered by cond_func.
+        And if cond_func is None, return all items.
 
         >>> Linq(range(10 + 1)).where(lambda n: n % 5 == 0)
         Linq<0, 5, 10>
