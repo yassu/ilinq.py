@@ -39,6 +39,12 @@ class TestLinq(unittest.TestCase):
             linq.select(lambda x: x % 2 == 0),
             Linq([True, False, True, False, True]))
 
+    def test_select2(self):
+        linq = Linq(range(5))
+        self.assertEqual(
+            linq.select(),
+            Linq(range(5)))
+
     def test_select_many(self):
         linq = Linq(
             [

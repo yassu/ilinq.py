@@ -39,14 +39,16 @@ class Linq(list):
             lambda x: x in list_ if select_func is None else
             select_func(x) in list_)
 
-    def select(self, select_func):
+    def select(self, select_func=None):
         """
         Return the linq instance selected by select_func.
 
         >>> Linq(range(10 + 1)).select(lambda n: n % 3)
         Linq<0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1>
         """
-        return Linq([select_func(item) for item in self[:]])
+        return Linq([
+            item if select_func is None else
+            select_func(item) for item in self[:]])
 
     def select_many(self, select_func):
         """
