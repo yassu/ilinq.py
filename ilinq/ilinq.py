@@ -162,6 +162,15 @@ class Linq(list):
                 res.append(item)
         return Linq(res)
 
+    def intersect(self, other):
+        """
+        >>> linq1 = Linq([2.0, -2.0, 2.1, -2.2, 2.3, 2.4, 2.5, 2.3])
+        >>> linq2 = Linq([2.1, 2.2])
+        >>> linq1.intersect(linq2)
+        Linq<2.1>
+        """
+        return Linq([item for item in self if item in other])
+
     def order_by(self, key_func=None, desc=False):
         """
         If desc=False and key_func=None, sort in ascending order.
