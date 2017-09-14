@@ -1,0 +1,63 @@
+ilinq\.ilinq\.Linq
+==================
+
+.. currentmodule:: ilinq.ilinq
+
+.. autoclass:: Linq
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Linq.all
+      ~Linq.any
+      ~Linq.append
+      ~Linq.average
+      ~Linq.clear
+      ~Linq.concat
+      ~Linq.contains
+      ~Linq.copy
+      ~Linq.count
+      ~Linq.default_if_empty
+      ~Linq.distinct
+      ~Linq.element_at
+      ~Linq.element_at_or_default
+      ~Linq.except_
+      ~Linq.extend
+      ~Linq.first
+      ~Linq.first_or_default
+      ~Linq.group_by
+      ~Linq.index
+      ~Linq.inject
+      ~Linq.insert
+      ~Linq.intersect
+      ~Linq.last
+      ~Linq.last_or_default
+      ~Linq.max
+      ~Linq.min
+      ~Linq.order_by
+      ~Linq.pop
+      ~Linq.remove
+      ~Linq.repeat
+      ~Linq.reverse
+      ~Linq.select
+      ~Linq.select_many
+      ~Linq.single
+      ~Linq.single_or_default
+      ~Linq.sort
+      ~Linq.sum
+      ~Linq.take
+      ~Linq.to_list
+      ~Linq.to_set
+      ~Linq.where
+      ~Linq.where_in
+   
+   
+
+   
+   
+   

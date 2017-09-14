@@ -12,6 +12,12 @@ ilinq\.igroup module
     :undoc-members:
     :show-inheritance:
 
+    .. autosummary::
+        :toctree: _gen
+
+        IPair
+        IGroup
+
 ilinq\.ilinq module
 -------------------
 
@@ -20,11 +26,7 @@ ilinq\.ilinq module
     :undoc-members:
     :show-inheritance:
 
+    .. autosummary::
+        :toctree: _gen
 
-Module contents
----------------
-
-.. automodule:: ilinq
-    :members:
-    :undoc-members:
-    :show-inheritance:
+        Linq

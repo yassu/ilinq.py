@@ -1,0 +1,63 @@
+ilinq\.igroup\.IGroup
+=====================
+
+.. currentmodule:: ilinq.igroup
+
+.. autoclass:: IGroup
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~IGroup.all
+      ~IGroup.any
+      ~IGroup.append
+      ~IGroup.average
+      ~IGroup.clear
+      ~IGroup.concat
+      ~IGroup.contains
+      ~IGroup.copy
+      ~IGroup.count
+      ~IGroup.default_if_empty
+      ~IGroup.distinct
+      ~IGroup.element_at
+      ~IGroup.element_at_or_default
+      ~IGroup.except_
+      ~IGroup.extend
+      ~IGroup.first
+      ~IGroup.first_or_default
+      ~IGroup.group_by
+      ~IGroup.index
+      ~IGroup.inject
+      ~IGroup.insert
+      ~IGroup.intersect
+      ~IGroup.last
+      ~IGroup.last_or_default
+      ~IGroup.max
+      ~IGroup.min
+      ~IGroup.order_by
+      ~IGroup.pop
+      ~IGroup.remove
+      ~IGroup.repeat
+      ~IGroup.reverse
+      ~IGroup.select
+      ~IGroup.select_many
+      ~IGroup.single
+      ~IGroup.single_or_default
+      ~IGroup.sort
+      ~IGroup.sum
+      ~IGroup.take
+      ~IGroup.to_list
+      ~IGroup.to_set
+      ~IGroup.where
+      ~IGroup.where_in
+   
+   
+
+   
+   
+   
