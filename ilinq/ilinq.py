@@ -10,7 +10,7 @@ from functools import reduce
 
 
 class Linq(list):
-    """ class which is similar to be in c# """
+    """  Class for handling Linq like C# """
     def where(self, cond_func=None):
         """
         Return the Linq instance filtered by cond_func.

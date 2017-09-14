@@ -8,6 +8,8 @@ ILinq Documentation
 
 ILinq Project provides features similar to Linq of C#.
 
+.. autoclass:: ilinq.ilinq.Linq
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
