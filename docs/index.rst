@@ -6,6 +6,8 @@
 ILinq Documentation
 =================================
 
+ILinq Project provides features similar to Linq of C#.
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
