@@ -40,6 +40,7 @@ def deploy_doc(ctx):
     run_commands(
         ctx,
         [
+            'git stash',
             'cp -r docs/_build/html/ /tmp/.build',
             'git checkout gh-pages',
             'git clean -fdx',
@@ -47,7 +48,8 @@ def deploy_doc(ctx):
             'mv /tmp/.build/* .',
             'touch .nojekyll',
             'git add .',
-            'git commit -m "update docs"',
+            'git commit --allow-empty -m "update docs"',
             'git push origin gh-pages',
-            'git checkout master'
+            'git checkout master',
+            'git stash pop',
         ])
