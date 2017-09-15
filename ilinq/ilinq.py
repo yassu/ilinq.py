@@ -361,6 +361,17 @@ class Linq(list):
         raise IndexError("This linq doesn't have {} items.".format(ind))
 
     def element_at_or_default(self, num, default=None):
+        """
+        If there is num-th element, return this.
+        Else return default value.
+
+        >>> from ilinq.ilinq import Linq
+        >>> linq = Linq([1, 2])
+        >>> linq.element_at_or_default(0)
+        1
+        >>> linq.element_at_or_default(3)
+        # None
+        """
         try:
             return self.element_at(num)
         except IndexError:
