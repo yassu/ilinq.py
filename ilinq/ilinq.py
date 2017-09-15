@@ -412,6 +412,12 @@ class Linq(list):
             raise StopIteration('This linq is empty.')
 
     def sum(self, filter_func=None, select_func=None):
+        """
+        return filter_func(total of select_func(item))
+
+        >>> Linq(range(100 + 1)).sum()
+        5050
+        """
         return sum(self.select(select_func).select(
             lambda x: x if filter_func is None else filter_func(x)))
 
