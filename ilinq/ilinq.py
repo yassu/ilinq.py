@@ -378,6 +378,15 @@ class Linq(list):
             return default
 
     def min(self, key_func=None):
+        """
+        return minimal value in this object.
+        if key_func is defined, return minimal value by key_func(item).
+
+        >>> Linq([-1, 2, 3, -4.3, 2]).min()
+        -4.3
+        >>> Linq([-1, 2, 3, -4.3, 2]).min(abs)
+        -1
+        """
         try:
             return min(
                 self,
