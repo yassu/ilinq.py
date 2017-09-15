@@ -431,6 +431,15 @@ class TestLinq(unittest.TestCase):
     def test_to_set(self):
         self.assertEqual(Linq([1, 1, 2, 3, 5]).to_set(), {1, 1, 2, 3, 5})
 
+    def test_slice(self):
+        linq = Linq(range(5))
+        self.assertTrue(linq[3] == 3)
+
+    def test_slice2(self):
+        linq = Linq()
+        self.assertTrue(isinstance(linq[:], Linq))
+        self.assertTrue(linq[:] is not linq)
+
     def test_str0(self):
         self.assertEqual(str(Linq([])), 'Linq<>')
 

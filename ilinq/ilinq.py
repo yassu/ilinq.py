@@ -459,6 +459,12 @@ class Linq(list):
     def to_set(self):
         return set(self)
 
+    def __getitem__(self, val):
+        if isinstance(val, int):
+            return super().__getitem__(val)
+        elif isinstance(val, slice):
+            return Linq(super().__getitem__(val))
+
     def __str__(self):
         s = 'Linq<'
         for item in self:
