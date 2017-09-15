@@ -395,6 +395,15 @@ class Linq(list):
             raise StopIteration('This linq is empty.')
 
     def max(self, key_func=None):
+        """
+        return maximal value in this object.
+        if key_func is defined, return minimal value by key_func(item).
+
+        >>> Linq([-1, 2, 3, -4.3, 2]).max()
+        3
+        >>> Linq([-1, 2, 3, -4.3, 2]).max(abs)
+        -4.3
+        """
         try:
             return max(
                 self,
