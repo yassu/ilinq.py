@@ -45,13 +45,6 @@ if __name__ == '__main__':
     # => 9973
 ```
 
-## Todo
-
-- [ ] check all linq defined c# ([here](https://msdn.microsoft.com/ja-jp/library/system.linq.enumerable(v=vs.110).aspx))
-- [x] write deploy command for docs
-- [ ] write docs
-- [ ] write here-docs
-
 ## LICENSE
 
 Apache 2.0
