@@ -418,8 +418,8 @@ class Linq(list):
         >>> Linq(range(100 + 1)).sum()
         5050
         """
-        return sum(self.select(select_func).select(
-            lambda x: x if filter_func is None else filter_func(x)))
+        res = sum(self.select(select_func).select())
+        return res if filter_func is None else filter_func(res)
 
     def average(self, select_func=lambda x: x):
         return self.sum(select_func=select_func) / self.count()
