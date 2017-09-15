@@ -412,9 +412,7 @@ class Linq(list):
             raise StopIteration('This linq is empty.')
 
     def sum(self, filter_func=None, select_func=None):
-        list_ = self if select_func is None else \
-            Linq([select_func(item) for item in self])
-        return sum(list_.select(
+        return sum(self.select(select_func).select(
             lambda x: x if filter_func is None else filter_func(x)))
 
     def average(self, select_func=lambda x: x):
