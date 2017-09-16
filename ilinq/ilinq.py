@@ -395,6 +395,18 @@ class Linq(list):
             raise StopIteration('This linq is empty.')
 
     def min_all(self, key_func=None):
+        """
+        return the Linq object which consists of minimal numbers
+        computed by key_func.
+
+        >>> linq = Linq(range(5)).concat(Linq(range(4)))
+        >>> linq
+        Linq<0, 1, 2, 3, 4, 0, 1, 2, 3>
+        >>> linq.min_all()
+        Linq<0, 0>
+        >>> linq.min_all(key_func=lambda x: x % 4)
+        Linq<0, 4, 0>
+        """
         if len(self) == 0:
             return Linq()
         min_value = self.select(key_func).min()
