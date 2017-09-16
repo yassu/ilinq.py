@@ -431,6 +431,10 @@ class Linq(list):
         except ValueError:
             raise StopIteration('This linq is empty.')
 
+    def max_all(self):
+        max_value = self.max()
+        return Linq([item for item in self if item == max_value])
+
     def sum(self, filter_func=None, select_func=None):
         """
         return filter_func(total of select_func(item))

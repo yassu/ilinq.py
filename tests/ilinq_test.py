@@ -320,6 +320,10 @@ class TestLinq(unittest.TestCase):
     def test_min_all3(self):
         self.assertEqual(Linq().min_all(), Linq())
 
+    def test_max_all(self):
+        linq = Linq(range(5)).concat(Linq(range(5)))
+        self.assertEqual(linq.max_all(), Linq([4, 4]))
+
     @raises(StopIteration)
     def test_min3(self):
         linq = Linq([])
