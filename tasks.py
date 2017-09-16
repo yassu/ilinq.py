@@ -49,7 +49,7 @@ def deploy_doc(ctx):
             'touch .nojekyll',
             'git add .',
             'git commit --allow-empty -m "update docs"',
-            'git push origin gh-pages',
+            'git push -f origin gh-pages',
             'git checkout master',
             'git stash pop',
         ])
