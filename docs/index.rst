@@ -4,19 +4,9 @@
    contain the root `toctree` directive.
 
 ILinq Documentation
-=================================
+=====================
 
-ILinq Project provides features similar to Linq of C#.
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+ILink project is a module for appending features like C# Linq to Python.
 
 
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+`Modules <apis/modules.html>`_
