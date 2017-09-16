@@ -407,7 +407,7 @@ class Linq(list):
         >>> linq.min_all(key_func=lambda x: x % 4)
         Linq<0, 4, 0>
         """
-        if len(self) == 0:
+        if self.count() == 0:
             return Linq()
         min_value = self.select(key_func).min()
         return self.where(
@@ -432,6 +432,21 @@ class Linq(list):
             raise StopIteration('This linq is empty.')
 
     def max_all(self, key_func=None):
+        """
+        return the Linq object which consists of maximal numbers
+        computed by key_func.
+
+        >>> linq = Linq(range(5)).concat(Linq(range(5)))
+        >>> linq
+        Linq<0, 1, 2, 3, 4, 0, 1, 2, 3, 4>
+        >>> linq.max_all()
+        Linq<4, 4>
+        >>> linq.max_all(key_func=lambda x: x % 3)
+        Linq<2, 2>
+        """
+        if self.count() == 0:
+            return Linq()
+
         max_value = self.max(key_func=key_func)
         return Linq([
             item for item in self if

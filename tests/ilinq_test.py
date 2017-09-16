@@ -330,6 +330,9 @@ class TestLinq(unittest.TestCase):
             linq.max_all(key_func=lambda n: n % 5),
             Linq([4, 9, 4, 9, 14, 19]))
 
+    def test_max_all3(self):
+        self.assertEqual(Linq().max_all(), Linq())
+
     @raises(StopIteration)
     def test_min3(self):
         linq = Linq([])
