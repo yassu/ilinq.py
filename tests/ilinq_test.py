@@ -307,6 +307,19 @@ class TestLinq(unittest.TestCase):
         self.assertEqual(linq.min(key_func=lambda x: x % 4), 100)
         self.assertEqual(linq.min(key_func=lambda x: x % 4), 100)
 
+    def test_min_all(self):
+        linq = Linq(range(5)).concat(Linq(range(4)))
+        self.assertEqual(linq.min_all(), [0, 0])
+
+    def test_min_all2(self):
+        linq = Linq(range(5)).concat(Linq(range(4)))
+        self.assertEqual(
+            linq.min_all(key_func=lambda x: x % 4),
+            Linq([0, 4, 0]))
+
+    def test_min_all3(self):
+        self.assertEqual(Linq().min_all(), Linq())
+
     @raises(StopIteration)
     def test_min3(self):
         linq = Linq([])

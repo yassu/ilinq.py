@@ -394,6 +394,14 @@ class Linq(list):
         except ValueError:
             raise StopIteration('This linq is empty.')
 
+    def min_all(self, key_func=None):
+        if len(self) == 0:
+            return Linq()
+        min_value = self.select(key_func).min()
+        return self.where(
+            cond_func=lambda item:
+            (item if key_func is None else key_func(item)) == min_value)
+
     def max(self, key_func=None):
         """
         return maximal value in this object.
