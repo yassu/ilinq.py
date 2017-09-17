@@ -568,12 +568,25 @@ class Linq(list):
         return group
 
     def to_list(self):
+        """
+        return the list of items.
+        This is equivalent list(self)
+        """
         return list(self)
 
     def copy(self):
+        """
+        return shallow copied self
+        """
         return Linq(self[:])
 
     def to_set(self):
+        """
+        return the set of items.
+
+        >>> Linq([3, 2, 5, 3, 8]).to_set()
+        {8, 2, 3, 5}
+        """
         return set(self)
 
     def __getitem__(self, val):
