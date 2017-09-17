@@ -31,8 +31,8 @@ class Linq(list):
         >>> Linq([1, 3, 5, 100]).where_in([1, 2, 3])
         Linq<1, 3>
         >>> Linq([1, 3, 5, 100]).where_in(
-            [1, 2, 3],
-            select_func=lambda x: x % 2)
+        ...     [1, 2, 3],
+        ...     select_func=lambda x: x % 2)
         Linq<1, 3, 5>
         """
         return self.where(
@@ -55,8 +55,8 @@ class Linq(list):
         Return the linq instance selected by select_func and flatten.
 
         >>> linq = Linq([
-            {"name": "yassu", "ids": (12, 13)},
-            {"name": "aiya",  "ids": (20, 21)}])
+        ...     {"name": "yassu", "ids": (12, 13)},
+        ...     {"name": "aiya",  "ids": (20, 21)}])
         >>> linq.select_many(lambda obj: obj["ids"])
         (12, 13, 20, 21)
         """
@@ -186,9 +186,9 @@ class Linq(list):
         If key_func is not None, sort by result of key_func
 
         >>> linq = Linq([
-                {"name": "person1", "age": 23},
-                {"name": "person2", "age": 25},
-                {"name": "person3", "age": 21}])
+        ...     {"name": "person1", "age": 23},
+        ...     {"name": "person2", "age": 25},
+        ...     {"name": "person3", "age": 21}])
         >>> linq.order_by(key_func=lambda person: person["age"])
         Linq<
             {'name': 'person3', 'age': 21},
@@ -206,9 +206,9 @@ class Linq(list):
         >>> Linq(range(100 + 1)).inject(0, lambda res, x: res + x)
         5050
         >>> Linq(range(100 + 1)).inject(
-            0,
-            lambda res, x: res + x,
-            last_func=lambda x: x + 100)
+        ...     0,
+        ...     lambda res, x: res + x,
+        ...     last_func=lambda x: x + 100)
         5150
         """
         res = initial_value
@@ -254,8 +254,8 @@ class Linq(list):
             cond_func=lambda x: x % 2 == 0)
         2
         >>> Linq([3, 2, 5, 8]).first_or_default(
-            cond_func=lambda x: x > 100,
-            default=100)
+        ...     cond_func=lambda x: x > 100,
+        ...     default=100)
         100
         """
         for item in self:
@@ -339,8 +339,8 @@ class Linq(list):
         >>> Linq([3, 2, 5, 8]).last_or_default(cond_func=lambda x: x % 2 == 1)
         5
         >>> Linq([3, 2, 5, 8]).last_or_default(
-            cond_func=lambda x: x > 100,
-            default=-100)
+        ...     cond_func=lambda x: x > 100,
+        ...     default=-100)
         -100
         """
         try:
@@ -462,9 +462,9 @@ class Linq(list):
         >>> Linq(range(100 + 1)).sum()
         5050
         >>> persons = Linq([
-                {'name': 'yassu', 'age': 25},
-                {'name': 'person2', 'age': 3}
-            ])
+        ...     {'name': 'yassu', 'age': 25},
+        ...     {'name': 'person2', 'age': 3}
+        ... ])
         >>> persons.sum(select_func=lambda x: x['age'])
         28
         """
@@ -477,9 +477,9 @@ class Linq(list):
         >>> Linq([1, 2, 3, 4, 5]).average()
         3.0
         >>> persons = Linq([
-                {'name': 'yassu', 'age': 25},
-                {'name': 'person2', 'age': 3}
-            ])
+        ...     {'name': 'yassu', 'age': 25},
+        ...     {'name': 'person2', 'age': 3}
+        ... ])
         >>> persons.average(select_func=lambda x: x['age'])
         14.0
         """
@@ -494,7 +494,7 @@ class Linq(list):
         >>> books = Linq([
         ...     {'name': 'book1', 'code': '23'},
         ...     {'name': 'book2', 'code': '32'}
-            ])
+        ... ])
         >>> books.contains(
         ...     {'name': 'undefined', 'code': '32'},
         ...     key_func=lambda b: b['code'])
