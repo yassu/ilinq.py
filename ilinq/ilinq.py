@@ -505,6 +505,16 @@ class Linq(list):
             key_func(item)) in self.select(key_func)
 
     def all(self, cond_func):
+        """
+        if all of cond_func(item) is True, return True.
+        else return False.
+
+        >>> numbers = Linq([14, 28, 35])
+        >>> numbers.all(lambda n: n % 7 == 0)
+        True
+        >>> numbers.all(lambda n: n % 8 == 0)
+        False
+        """
         for item in self:
             if cond_func(item) is False:
                 return False
