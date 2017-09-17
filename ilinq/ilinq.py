@@ -485,8 +485,24 @@ class Linq(list):
         """
         return self.select(select_func).sum() / float(self.count())
 
-    def contains(self, item, key_func=lambda x: x):
-        return key_func(item) in [key_func(item_) for item_ in self]
+    def contains(self, item, key_func=None):
+        """
+        return either item is in self or not.
+
+        If key_func is setted, we compare by ``key_func`` function.
+
+        >>> books = Linq([
+        ...     {'name': 'book1', 'code': '23'},
+        ...     {'name': 'book2', 'code': '32'}
+            ])
+        >>> books.contains(
+        ...     {'name': 'undefined', 'code': '32'},
+        ...     key_func=lambda b: b['code'])
+        True
+        """
+        return (
+            item if key_func is None else
+            key_func(item)) in self.select(key_func)
 
     def all(self, cond_func):
         for item in self:
