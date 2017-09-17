@@ -244,9 +244,9 @@ Else return false.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span><span class="o">.</span><span class="n">average</span><span class="p">()</span>
 <span class="go">3.0</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">persons</span> <span class="o">=</span> <span class="n">Linq</span><span class="p">([</span>
-<span class="go">        {&#39;name&#39;: &#39;yassu&#39;, &#39;age&#39;: 25},</span>
-<span class="go">        {&#39;name&#39;: &#39;person2&#39;, &#39;age&#39;: 3}</span>
-<span class="go">    ])</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;yassu&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">:</span> <span class="mi">25</span><span class="p">},</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;person2&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+<span class="gp">... </span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">persons</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">select_func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">])</span>
 <span class="go">14.0</span>
 </pre></div>
@@ -278,7 +278,7 @@ Else return false.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">books</span> <span class="o">=</span> <span class="n">Linq</span><span class="p">([</span>
 <span class="gp">... </span>    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;book1&#39;</span><span class="p">,</span> <span class="s1">&#39;code&#39;</span><span class="p">:</span> <span class="s1">&#39;23&#39;</span><span class="p">},</span>
 <span class="gp">... </span>    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;book2&#39;</span><span class="p">,</span> <span class="s1">&#39;code&#39;</span><span class="p">:</span> <span class="s1">&#39;32&#39;</span><span class="p">}</span>
-<span class="go">    ])</span>
+<span class="gp">... </span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">books</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;undefined&#39;</span><span class="p">,</span> <span class="s1">&#39;code&#39;</span><span class="p">:</span> <span class="s1">&#39;32&#39;</span><span class="p">},</span>
 <span class="gp">... </span>    <span class="n">key_func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">b</span><span class="p">:</span> <span class="n">b</span><span class="p">[</span><span class="s1">&#39;code&#39;</span><span class="p">])</span>
@@ -401,8 +401,8 @@ is default.</p>
 <span class="go">    cond_func=lambda x: x % 2 == 0)</span>
 <span class="go">2</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span><span class="o">.</span><span class="n">first_or_default</span><span class="p">(</span>
-<span class="go">    cond_func=lambda x: x &gt; 100,</span>
-<span class="go">    default=100)</span>
+<span class="gp">... </span>    <span class="n">cond_func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">default</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 <span class="go">100</span>
 </pre></div>
 </div>
@@ -444,9 +444,9 @@ filtered by last_func.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">inject</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">res</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">res</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span>
 <span class="go">5050</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">inject</span><span class="p">(</span>
-<span class="go">    0,</span>
-<span class="go">    lambda res, x: res + x,</span>
-<span class="go">    last_func=lambda x: x + 100)</span>
+<span class="gp">... </span>    <span class="mi">0</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="k">lambda</span> <span class="n">res</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">res</span> <span class="o">+</span> <span class="n">x</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">last_func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">100</span><span class="p">)</span>
 <span class="go">5150</span>
 </pre></div>
 </div>
@@ -485,8 +485,8 @@ is default.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span><span class="o">.</span><span class="n">last_or_default</span><span class="p">(</span><span class="n">cond_func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
 <span class="go">5</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span><span class="o">.</span><span class="n">last_or_default</span><span class="p">(</span>
-<span class="go">    cond_func=lambda x: x &gt; 100,</span>
-<span class="go">    default=-100)</span>
+<span class="gp">... </span>    <span class="n">cond_func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">default</span><span class="o">=-</span><span class="mi">100</span><span class="p">)</span>
 <span class="go">-100</span>
 </pre></div>
 </div>
@@ -565,9 +565,9 @@ computed by key_func.</p>
 </div>
 <p>If key_func is not None, sort by result of key_func</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">linq</span> <span class="o">=</span> <span class="n">Linq</span><span class="p">([</span>
-<span class="go">        {&quot;name&quot;: &quot;person1&quot;, &quot;age&quot;: 23},</span>
-<span class="go">        {&quot;name&quot;: &quot;person2&quot;, &quot;age&quot;: 25},</span>
-<span class="go">        {&quot;name&quot;: &quot;person3&quot;, &quot;age&quot;: 21}])</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;person1&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">23</span><span class="p">},</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;person2&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">25</span><span class="p">},</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;person3&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">21</span><span class="p">}])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">linq</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="n">key_func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">person</span><span class="p">:</span> <span class="n">person</span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">])</span>
 <span class="go">Linq&lt;</span>
 <span class="go">    {&#39;name&#39;: &#39;person3&#39;, &#39;age&#39;: 21},</span>
@@ -602,8 +602,8 @@ computed by key_func.</p>
 <code class="descname">select_many</code><span class="sig-paren">(</span><em>select_func</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.select_many" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the linq instance selected by select_func and flatten.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">linq</span> <span class="o">=</span> <span class="n">Linq</span><span class="p">([</span>
-<span class="go">    {&quot;name&quot;: &quot;yassu&quot;, &quot;ids&quot;: (12, 13)},</span>
-<span class="go">    {&quot;name&quot;: &quot;aiya&quot;,  &quot;ids&quot;: (20, 21)}])</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;yassu&quot;</span><span class="p">,</span> <span class="s2">&quot;ids&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">)},</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;aiya&quot;</span><span class="p">,</span>  <span class="s2">&quot;ids&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">21</span><span class="p">)}])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">linq</span><span class="o">.</span><span class="n">select_many</span><span class="p">(</span><span class="k">lambda</span> <span class="n">obj</span><span class="p">:</span> <span class="n">obj</span><span class="p">[</span><span class="s2">&quot;ids&quot;</span><span class="p">])</span>
 <span class="go">(12, 13, 20, 21)</span>
 </pre></div>
@@ -664,9 +664,9 @@ IndexError: This linq with condition is more long.
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="go">5050</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">persons</span> <span class="o">=</span> <span class="n">Linq</span><span class="p">([</span>
-<span class="go">        {&#39;name&#39;: &#39;yassu&#39;, &#39;age&#39;: 25},</span>
-<span class="go">        {&#39;name&#39;: &#39;person2&#39;, &#39;age&#39;: 3}</span>
-<span class="go">    ])</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;yassu&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">:</span> <span class="mi">25</span><span class="p">},</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;person2&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+<span class="gp">... </span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">persons</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">select_func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">])</span>
 <span class="go">28</span>
 </pre></div>
@@ -721,8 +721,8 @@ And if cond_func is None, return all items.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">100</span><span class="p">])</span><span class="o">.</span><span class="n">where_in</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 <span class="go">Linq&lt;1, 3&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">100</span><span class="p">])</span><span class="o">.</span><span class="n">where_in</span><span class="p">(</span>
-<span class="go">    [1, 2, 3],</span>
-<span class="go">    select_func=lambda x: x % 2)</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="n">select_func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span><span class="p">)</span>
 <span class="go">Linq&lt;1, 3, 5&gt;</span>
 </pre></div>
 </div>
