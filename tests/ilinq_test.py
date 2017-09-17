@@ -367,14 +367,6 @@ class TestLinq(unittest.TestCase):
         linq = Linq([])
         self.assertEqual(linq.sum(), 0)
 
-    def test_sum4(self):
-        linq = Linq([1, 1, 4, 2, 2])
-        self.assertEqual(
-            linq.sum(
-                select_func=lambda x: x*x,
-                filter_func=lambda x: x * x * x),
-            26 * 26 * 26)
-
     def test_average(self):
         linq = Linq([1.0, 1.0, 4.0, 2.0, 2.0])
         ave = linq.average()

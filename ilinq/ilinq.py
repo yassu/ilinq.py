@@ -455,15 +455,20 @@ class Linq(list):
                 key_func(item)
             ) == max_value])
 
-    def sum(self, filter_func=None, select_func=None):
+    def sum(self, select_func=None):
         """
         return filter_func(total of select_func(item))
 
         >>> Linq(range(100 + 1)).sum()
         5050
+        >>> persons = Linq([
+                {'name': 'yassu', 'age': 25},
+                {'name': 'person2', 'age': 3}
+            ])
+        >>> persons.sum(select_func=lambda x: x['age'])
+        28
         """
-        res = sum(self.select(select_func).select())
-        return res if filter_func is None else filter_func(res)
+        return sum(self.select(select_func))
 
     def average(self, select_func=lambda x: x):
         return self.sum(select_func=select_func) / self.count()
