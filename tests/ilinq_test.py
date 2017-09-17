@@ -30,7 +30,7 @@ class TestLinq(unittest.TestCase):
         self.assertEqual(
             Linq(range(10)).where_in(
                 (1, 3, 7, 9, 13, 15),
-                select_func=lambda x: x % 5),
+                select_f=lambda x: x % 5),
             Linq([1, 3, 6, 8]))
 
     def test_select(self):
@@ -105,7 +105,7 @@ class TestLinq(unittest.TestCase):
         linq1 = Linq([2.0, -2.0, 2.1, -2.2, 2.3, 2.4, 2.5, 2.3])
         linq2 = Linq([2.1, 2.2])
         self.assertEqual(linq1.except_(
-                linq2, key_func=lambda x: abs(x)),
+                linq2, key_f=lambda x: abs(x)),
             Linq([2.0, -2.0, 2.3, 2.4, 2.5, 2.3]))
 
     def test_intersect(self):
@@ -127,7 +127,7 @@ class TestLinq(unittest.TestCase):
         linq = Linq(items)
         self.assertEqual(
             linq
-            .order_by(key_func=lambda obj: (obj['x'], obj['y'])),
+            .order_by(key_f=lambda obj: (obj['x'], obj['y'])),
             Linq([{'x': 1, 'y': 1}, {'x': 1, 'y': 2}, {'x': 3, 'y': 4}])
         )
 
@@ -140,7 +140,7 @@ class TestLinq(unittest.TestCase):
         linq = Linq(items)
         self.assertEqual(
             linq
-            .order_by(key_func=lambda obj: (obj['x'], obj['y']), desc=True),
+            .order_by(key_f=lambda obj: (obj['x'], obj['y']), desc=True),
             Linq([{'x': 3, 'y': 4}, {'x': 1, 'y': 2}, {'x': 1, 'y': 1}])
         )
 
@@ -166,7 +166,7 @@ class TestLinq(unittest.TestCase):
     def test_count2(self):
         self.assertEqual(
             Linq([2, 4, 6, 8, 10])
-            .count(cond_func=lambda n: n > 5),
+            .count(cond_f=lambda n: n > 5),
             3)
 
     def test_single(self):
@@ -186,7 +186,7 @@ class TestLinq(unittest.TestCase):
 
     def test_single4(self):
         linq = Linq([1, 1, 2, 3, 5])
-        self.assertEqual(linq.single(cond_func=lambda x: x % 2 == 0), 2)
+        self.assertEqual(linq.single(cond_f=lambda x: x % 2 == 0), 2)
 
     def test_single_or_default(self):
         linq = Linq([1])
@@ -204,7 +204,7 @@ class TestLinq(unittest.TestCase):
     def test_single_or_default4(self):
         linq = Linq([1, 2, 3, 4, 5])
         self.assertEqual(
-            linq.single_or_default(cond_func=lambda x: x % 3 == 0), 3)
+            linq.single_or_default(cond_f=lambda x: x % 3 == 0), 3)
 
     def test_first(self):
         linq = Linq([11, 13, 15, 19])
@@ -218,8 +218,8 @@ class TestLinq(unittest.TestCase):
 
     def test_first3(self):
         linq = Linq([11, 14, 15, 19])
-        self.assertEqual(linq.first(cond_func=lambda x: x % 2 == 0), 14)
-        self.assertEqual(linq.first(cond_func=lambda x: x % 2 == 0), 14)
+        self.assertEqual(linq.first(cond_f=lambda x: x % 2 == 0), 14)
+        self.assertEqual(linq.first(cond_f=lambda x: x % 2 == 0), 14)
 
     def test_first_or_default(self):
         linq = Linq([11, 13, 15, 19])
@@ -235,10 +235,10 @@ class TestLinq(unittest.TestCase):
     def test_first_or_default3(self):
         linq = Linq([11, 14, 15, 19])
         self.assertEqual(
-            linq.first_or_default(cond_func=lambda x: x % 2 == 0),
+            linq.first_or_default(cond_f=lambda x: x % 2 == 0),
             14)
         self.assertEqual(
-            linq.first_or_default(cond_func=lambda x: x % 2 == 0),
+            linq.first_or_default(cond_f=lambda x: x % 2 == 0),
             14)
 
     def test_last(self):
@@ -253,8 +253,8 @@ class TestLinq(unittest.TestCase):
 
     def test_last3(self):
         linq = Linq([11, 13, 15, 19])
-        self.assertEqual(linq.last(func=lambda x: x % 3 == 2), 11)
-        self.assertEqual(linq.last(func=lambda x: x % 3 == 2), 11)
+        self.assertEqual(linq.last(cond_f=lambda x: x % 3 == 2), 11)
+        self.assertEqual(linq.last(cond_f=lambda x: x % 3 == 2), 11)
 
     def test_last_or_default(self):
         linq = Linq([11, 13, 15, 19])
@@ -269,7 +269,7 @@ class TestLinq(unittest.TestCase):
     def test_last_or_default3(self):
         linq = Linq([11, 13, 15, 19])
         self.assertEqual(linq.last_or_default(
-            default=2, cond_func=lambda x: x > 100), 2)
+            default=2, cond_f=lambda x: x > 100), 2)
         self.assertEqual(linq.last_or_default(), 19)
 
     def test_element_at(self):
@@ -304,8 +304,8 @@ class TestLinq(unittest.TestCase):
 
     def test_min2(self):
         linq = Linq([13, 18, 11, 100])
-        self.assertEqual(linq.min(key_func=lambda x: x % 4), 100)
-        self.assertEqual(linq.min(key_func=lambda x: x % 4), 100)
+        self.assertEqual(linq.min(key_f=lambda x: x % 4), 100)
+        self.assertEqual(linq.min(key_f=lambda x: x % 4), 100)
 
     def test_min_all(self):
         linq = Linq(range(5)).concat(Linq(range(4)))
@@ -314,7 +314,7 @@ class TestLinq(unittest.TestCase):
     def test_min_all2(self):
         linq = Linq(range(5)).concat(Linq(range(4)))
         self.assertEqual(
-            linq.min_all(key_func=lambda x: x % 4),
+            linq.min_all(key_f=lambda x: x % 4),
             Linq([0, 4, 0]))
 
     def test_min_all3(self):
@@ -327,7 +327,7 @@ class TestLinq(unittest.TestCase):
     def test_max_all2(self):
         linq = Linq(range(10)).concat(Linq(range(20)))
         self.assertEqual(
-            linq.max_all(key_func=lambda n: n % 5),
+            linq.max_all(key_f=lambda n: n % 5),
             Linq([4, 9, 4, 9, 14, 19]))
 
     def test_max_all3(self):
@@ -345,8 +345,8 @@ class TestLinq(unittest.TestCase):
 
     def test_max2(self):
         linq = Linq([1, 6, 1, 4, 2, 2])
-        self.assertEqual(linq.max(key_func=lambda x: x % 2), 1)
-        self.assertEqual(linq.max(key_func=lambda x: x % 2), 1)
+        self.assertEqual(linq.max(key_f=lambda x: x % 2), 1)
+        self.assertEqual(linq.max(key_f=lambda x: x % 2), 1)
 
     @raises(StopIteration)
     def test_max3(self):
@@ -360,8 +360,8 @@ class TestLinq(unittest.TestCase):
 
     def test_sum2(self):
         linq = Linq([1, 1, 4, 2, 2])
-        self.assertEqual(linq.sum(select_func=lambda x: x*x), 26)
-        self.assertEqual(linq.sum(select_func=lambda x: x*x), 26)
+        self.assertEqual(linq.sum(select_f=lambda x: x*x), 26)
+        self.assertEqual(linq.sum(select_f=lambda x: x*x), 26)
 
     def test_sum3(self):
         linq = Linq([])
@@ -374,7 +374,7 @@ class TestLinq(unittest.TestCase):
 
     def test_average2(self):
         linq = Linq([1.0, 1.0, 4.0, 2.0, 2.0])
-        ave = linq.average(select_func=lambda x: x*x)
+        ave = linq.average(select_f=lambda x: x*x)
         self.assertTrue(5.2 - 0.0002 < ave and ave < 5.2 + 0.0002)
 
     @raises(ZeroDivisionError)
@@ -394,8 +394,8 @@ class TestLinq(unittest.TestCase):
 
     def test_contain3(self):
         linq = Linq([1, 2, 3])
-        self.assertTrue(linq.contains(101, key_func=lambda n: n % 100))
-        self.assertFalse(linq.contains(100, key_func=lambda n: n % 100))
+        self.assertTrue(linq.contains(101, key_f=lambda n: n % 100))
+        self.assertFalse(linq.contains(100, key_f=lambda n: n % 100))
 
     def test_all(self):
         linq = Linq([1, 1, 3, 4, 5, 7, 9, 11])
@@ -419,13 +419,13 @@ class TestLinq(unittest.TestCase):
 
     def test_any3(self):
         linq = Linq([2, 3, 4, 5])
-        self.assertTrue(linq.any(cond_func=lambda x: x % 2 == 0))
-        self.assertTrue(linq.any(cond_func=lambda x: x % 2 == 0))
+        self.assertTrue(linq.any(cond_f=lambda x: x % 2 == 0))
+        self.assertTrue(linq.any(cond_f=lambda x: x % 2 == 0))
 
     def test_any4(self):
         linq = Linq([2, 3, 4, 5])
-        self.assertFalse(linq.any(cond_func=lambda x: x > 10))
-        self.assertFalse(linq.any(cond_func=lambda x: x > 10))
+        self.assertFalse(linq.any(cond_f=lambda x: x > 10))
+        self.assertFalse(linq.any(cond_f=lambda x: x > 10))
 
     def test_group_by(self):
         linq = Linq(range(6))
