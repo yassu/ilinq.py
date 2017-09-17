@@ -520,11 +520,19 @@ class Linq(list):
                 return False
         return True
 
-    def any(self, cond_func=lambda x: True):
-        for item in self:
-            if cond_func(item):
-                return True
-        return False
+    def any(self, cond_func=None):
+        """
+        If there exists item such that cond_func(item), return True.
+        Else return false.
+
+        >>> Linq([1, 2, 3, 4, 5]).any()
+        True
+        >>> Linq([1, 2, 3, 4, 5]).any(lambda n: n > 100)
+        False
+        >>> Linq([1, 2, 3, 4, 5]).any(lambda n: n == 3)
+        True
+        """
+        return self.select(cond_func).contains(True)
 
     def group_by(self, grouping_func):
         from ilinq.igroup import IPair, IGroup
