@@ -470,8 +470,8 @@ class Linq(list):
         """
         return sum(self.select(select_func))
 
-    def average(self, select_func=lambda x: x):
-        return self.sum(select_func=select_func) / self.count()
+    def average(self, select_func=None):
+        return self.select(select_func).sum() / self.count()
 
     def contains(self, item, key_func=lambda x: x):
         return key_func(item) in [key_func(item_) for item_ in self]
