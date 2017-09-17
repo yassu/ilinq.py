@@ -457,7 +457,7 @@ class Linq(list):
 
     def sum(self, select_func=None):
         """
-        return filter_func(total of select_func(item))
+        return total of select_func(item)
 
         >>> Linq(range(100 + 1)).sum()
         5050
@@ -471,7 +471,19 @@ class Linq(list):
         return sum(self.select(select_func))
 
     def average(self, select_func=None):
-        return self.select(select_func).sum() / self.count()
+        """
+        return average of select_func(item)
+
+        >>> Linq([1, 2, 3, 4, 5]).average()
+        3.0
+        >>> persons = Linq([
+                {'name': 'yassu', 'age': 25},
+                {'name': 'person2', 'age': 3}
+            ])
+        >>> persons.average(select_func=lambda x: x['age'])
+        14.0
+        """
+        return self.select(select_func).sum() / float(self.count())
 
     def contains(self, item, key_func=lambda x: x):
         return key_func(item) in [key_func(item_) for item_ in self]
