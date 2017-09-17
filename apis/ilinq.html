@@ -211,17 +211,47 @@
 <dl class="method">
 <dt id="ilinq.ilinq.Linq.all">
 <code class="descname">all</code><span class="sig-paren">(</span><em>cond_func</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.all" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>if all of cond_func(item) is True, return True.
+else return False.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">numbers</span> <span class="o">=</span> <span class="n">Linq</span><span class="p">([</span><span class="mi">14</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">35</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">numbers</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">7</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">numbers</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">8</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
 
 <dl class="method">
 <dt id="ilinq.ilinq.Linq.any">
-<code class="descname">any</code><span class="sig-paren">(</span><em>cond_func=&lt;function Linq.&lt;lambda&gt;&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.any" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="descname">any</code><span class="sig-paren">(</span><em>cond_func=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.any" title="Permalink to this definition">¶</a></dt>
+<dd><p>If there exists item such that cond_func(item), return True.
+Else return false.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span><span class="o">.</span><span class="n">any</span><span class="p">()</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
 
 <dl class="method">
 <dt id="ilinq.ilinq.Linq.average">
-<code class="descname">average</code><span class="sig-paren">(</span><em>select_func=&lt;function Linq.&lt;lambda&gt;&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.average" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="descname">average</code><span class="sig-paren">(</span><em>select_func=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.average" title="Permalink to this definition">¶</a></dt>
+<dd><p>return average of select_func(item)</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span><span class="o">.</span><span class="n">average</span><span class="p">()</span>
+<span class="go">3.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">persons</span> <span class="o">=</span> <span class="n">Linq</span><span class="p">([</span>
+<span class="go">        {&#39;name&#39;: &#39;yassu&#39;, &#39;age&#39;: 25},</span>
+<span class="go">        {&#39;name&#39;: &#39;person2&#39;, &#39;age&#39;: 3}</span>
+<span class="go">    ])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">persons</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">select_func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">])</span>
+<span class="go">14.0</span>
+</pre></div>
+</div>
+</dd></dl>
 
 <dl class="method">
 <dt id="ilinq.ilinq.Linq.concat">
@@ -242,13 +272,26 @@
 
 <dl class="method">
 <dt id="ilinq.ilinq.Linq.contains">
-<code class="descname">contains</code><span class="sig-paren">(</span><em>item</em>, <em>key_func=&lt;function Linq.&lt;lambda&gt;&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.contains" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="descname">contains</code><span class="sig-paren">(</span><em>item</em>, <em>key_func=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.contains" title="Permalink to this definition">¶</a></dt>
+<dd><p>return either item is in self or not.</p>
+<p>If key_func is setted, we compare by <code class="docutils literal"><span class="pre">key_func</span></code> function.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">books</span> <span class="o">=</span> <span class="n">Linq</span><span class="p">([</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;book1&#39;</span><span class="p">,</span> <span class="s1">&#39;code&#39;</span><span class="p">:</span> <span class="s1">&#39;23&#39;</span><span class="p">},</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;book2&#39;</span><span class="p">,</span> <span class="s1">&#39;code&#39;</span><span class="p">:</span> <span class="s1">&#39;32&#39;</span><span class="p">}</span>
+<span class="go">    ])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">books</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;undefined&#39;</span><span class="p">,</span> <span class="s1">&#39;code&#39;</span><span class="p">:</span> <span class="s1">&#39;32&#39;</span><span class="p">},</span>
+<span class="gp">... </span>    <span class="n">key_func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">b</span><span class="p">:</span> <span class="n">b</span><span class="p">[</span><span class="s1">&#39;code&#39;</span><span class="p">])</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
 
 <dl class="method">
 <dt id="ilinq.ilinq.Linq.copy">
 <code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.copy" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>return shallow copied self</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="ilinq.ilinq.Linq.count">
@@ -368,7 +411,29 @@ is default.</p>
 <dl class="method">
 <dt id="ilinq.ilinq.Linq.group_by">
 <code class="descname">group_by</code><span class="sig-paren">(</span><em>grouping_func</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.group_by" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>group items by grouping_func.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">foods</span> <span class="o">=</span> <span class="n">Linq</span><span class="p">([</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;tomato&#39;</span><span class="p">,</span> <span class="s1">&#39;kind&#39;</span><span class="p">:</span> <span class="s1">&#39;Vegetable&#39;</span><span class="p">},</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;hormone&#39;</span><span class="p">,</span> <span class="s1">&#39;kind&#39;</span><span class="p">:</span> <span class="s1">&#39;Meat&#39;</span><span class="p">},</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;butdock root&#39;</span><span class="p">,</span> <span class="s1">&#39;kind&#39;</span><span class="p">:</span> <span class="s1">&#39;Vegetable&#39;</span><span class="p">},</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;pumpkin&#39;</span><span class="p">,</span> <span class="s1">&#39;kind&#39;</span><span class="p">:</span> <span class="s1">&#39;Vegetable&#39;</span><span class="p">}</span>
+<span class="gp">... </span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">foods</span><span class="o">.</span><span class="n">group_by</span><span class="p">(</span><span class="k">lambda</span> <span class="n">f</span><span class="p">:</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;kind&#39;</span><span class="p">])</span>
+<span class="go">Linq&lt;</span>
+<span class="go">    {Vegetable:</span>
+<span class="go">        Linq&lt;{&#39;name&#39;: &#39;tomato&#39;, &#39;kind&#39;: &#39;Vegetable&#39;},</span>
+<span class="go">        {&#39;name&#39;: &#39;butdock root&#39;, &#39;kind&#39;: &#39;Vegetable&#39;},</span>
+<span class="go">        {&#39;name&#39;: &#39;pumpkin&#39;, &#39;kind&#39;: &#39;Vegetable&#39;}&gt;</span>
+<span class="go">    },</span>
+<span class="go">    {Meat:</span>
+<span class="go">        Linq&lt;{&#39;name&#39;: &#39;hormone&#39;, &#39;kind&#39;: &#39;Meat&#39;}&gt;</span>
+<span class="go">    }</span>
+<span class="go">&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
 
 <dl class="method">
 <dt id="ilinq.ilinq.Linq.inject">
@@ -594,10 +659,16 @@ IndexError: This linq with condition is more long.
 
 <dl class="method">
 <dt id="ilinq.ilinq.Linq.sum">
-<code class="descname">sum</code><span class="sig-paren">(</span><em>filter_func=None</em>, <em>select_func=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.sum" title="Permalink to this definition">¶</a></dt>
-<dd><p>return filter_func(total of select_func(item))</p>
+<code class="descname">sum</code><span class="sig-paren">(</span><em>select_func=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.sum" title="Permalink to this definition">¶</a></dt>
+<dd><p>return total of select_func(item)</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="go">5050</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">persons</span> <span class="o">=</span> <span class="n">Linq</span><span class="p">([</span>
+<span class="go">        {&#39;name&#39;: &#39;yassu&#39;, &#39;age&#39;: 25},</span>
+<span class="go">        {&#39;name&#39;: &#39;person2&#39;, &#39;age&#39;: 3}</span>
+<span class="go">    ])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">persons</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">select_func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">])</span>
+<span class="go">28</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -618,12 +689,19 @@ IndexError: This linq with condition is more long.
 <dl class="method">
 <dt id="ilinq.ilinq.Linq.to_list">
 <code class="descname">to_list</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.to_list" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>return the list of items.
+This is equivalent list(self)</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="ilinq.ilinq.Linq.to_set">
 <code class="descname">to_set</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.to_set" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>return the set of items.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span><span class="o">.</span><span class="n">to_set</span><span class="p">()</span>
+<span class="go">{8, 2, 3, 5}</span>
+</pre></div>
+</div>
+</dd></dl>
 
 <dl class="method">
 <dt id="ilinq.ilinq.Linq.where">
