@@ -1,11 +1,17 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+"""
+This module provides grouped objects.
+"""
+
 from ilinq.ilinq import Linq
 
 
 class IPair(object):
     def __init__(self, key, value_linq):
+        if not isinstance(value_linq, Linq):
+            raise ValueError('{} is not a linq instance.'.format(value_linq))
         self._key = key
         self._value_linq = value_linq
 

@@ -432,8 +432,8 @@ class TestLinq(unittest.TestCase):
         self.assertEqual(
             linq.group_by(lambda n: n % 2),
             IGroup([
-                IPair(0, [0, 2, 4]),
-                IPair(1, [1, 3, 5])
+                IPair(0, Linq([0, 2, 4])),
+                IPair(1, Linq([1, 3, 5]))
             ]))
 
     def test_to_list(self):
