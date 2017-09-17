@@ -535,6 +535,28 @@ class Linq(list):
         return self.select(cond_func).contains(True)
 
     def group_by(self, grouping_func):
+        """
+        group items by grouping_func.
+
+        >>> foods = Linq([
+        ...     {'name': 'tomato', 'kind': 'Vegetable'},
+        ...     {'name': 'hormone', 'kind': 'Meat'},
+        ...     {'name': 'butdock root', 'kind': 'Vegetable'},
+        ...     {'name': 'pumpkin', 'kind': 'Vegetable'}
+        ... ])
+
+        >>> foods.group_by(lambda f: f['kind'])
+        Linq<
+            {Vegetable:
+                Linq<{'name': 'tomato', 'kind': 'Vegetable'},
+                {'name': 'butdock root', 'kind': 'Vegetable'},
+                {'name': 'pumpkin', 'kind': 'Vegetable'}>
+            },
+            {Meat:
+                Linq<{'name': 'hormone', 'kind': 'Meat'}>
+            }
+        >
+        """
         from ilinq.igroup import IPair, IGroup
         group = IGroup()
         group_dict = defaultdict(lambda: Linq([]))
