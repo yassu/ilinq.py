@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.0.1
+                0.0
               </div>
             
           
@@ -393,7 +393,7 @@ key_f(item) doesn’t contain key_f(other_item) items.</p>
 
 <dl class="method">
 <dt id="ilinq.ilinq.Linq.first_or_default">
-<code class="descname">first_or_default</code><span class="sig-paren">(</span><em>default=None</em>, <em>cond_f=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.first_or_default" title="Permalink to this definition">¶</a></dt>
+<code class="descname">first_or_default</code><span class="sig-paren">(</span><em>cond_f=None</em>, <em>default=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.first_or_default" title="Permalink to this definition">¶</a></dt>
 <dd><p>return the first element with cond_f(item) and default value
 is default.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span><span class="o">.</span><span class="n">first_or_default</span><span class="p">()</span>
@@ -456,7 +456,8 @@ filtered by last_f.</p>
 <dl class="method">
 <dt id="ilinq.ilinq.Linq.intersect">
 <code class="descname">intersect</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.intersect" title="Permalink to this definition">¶</a></dt>
-<dd><div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">linq1</span> <span class="o">=</span> <span class="n">Linq</span><span class="p">([</span><span class="mf">2.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">2.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.2</span><span class="p">,</span> <span class="mf">2.3</span><span class="p">,</span> <span class="mf">2.4</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.3</span><span class="p">])</span>
+<dd><p>return the intersection set of self and other.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">linq1</span> <span class="o">=</span> <span class="n">Linq</span><span class="p">([</span><span class="mf">2.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">2.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.2</span><span class="p">,</span> <span class="mf">2.3</span><span class="p">,</span> <span class="mf">2.4</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.3</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">linq2</span> <span class="o">=</span> <span class="n">Linq</span><span class="p">([</span><span class="mf">2.1</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">linq1</span><span class="o">.</span><span class="n">intersect</span><span class="p">(</span><span class="n">linq2</span><span class="p">)</span>
 <span class="go">Linq&lt;2.1&gt;</span>
@@ -478,7 +479,7 @@ filtered by last_f.</p>
 
 <dl class="method">
 <dt id="ilinq.ilinq.Linq.last_or_default">
-<code class="descname">last_or_default</code><span class="sig-paren">(</span><em>default=None</em>, <em>cond_f=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.last_or_default" title="Permalink to this definition">¶</a></dt>
+<code class="descname">last_or_default</code><span class="sig-paren">(</span><em>cond_f=None</em>, <em>default=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.last_or_default" title="Permalink to this definition">¶</a></dt>
 <dd><p>return the last element with cond_f(item) and default value
 is default.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span><span class="o">.</span><span class="n">last_or_default</span><span class="p">()</span>
@@ -589,6 +590,20 @@ computed by key_f.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="ilinq.ilinq.Linq.reverse">
+<code class="descname">reverse</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.reverse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return reversed Linq object.</p>
+<p>Note that this method is overrited from list class.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">linq</span> <span class="o">=</span> <span class="n">Linq</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">linq</span>
+<span class="go">Linq&lt;0, 1, 2, 3, 4, 5&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">linq</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+<span class="go">Linq&lt;5, 4, 3, 2, 1, 0&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
 <dt id="ilinq.ilinq.Linq.select">
 <code class="descname">select</code><span class="sig-paren">(</span><em>select_f=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.select" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the linq instance selected by select_f.</p>
@@ -599,8 +614,19 @@ computed by key_f.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="ilinq.ilinq.Linq.select_i">
+<code class="descname">select_i</code><span class="sig-paren">(</span><em>select_f=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.select_i" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the linq instance selected_by select_f with index parameter.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">linq</span> <span class="o">=</span> <span class="n">Linq</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">linq</span><span class="o">.</span><span class="n">select_i</span><span class="p">(</span><span class="k">lambda</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">**</span> <span class="n">i</span><span class="p">)</span>
+<span class="go">Linq&lt;1, 3, 4, 1, 0&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
 <dt id="ilinq.ilinq.Linq.select_many">
-<code class="descname">select_many</code><span class="sig-paren">(</span><em>select_f</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.select_many" title="Permalink to this definition">¶</a></dt>
+<code class="descname">select_many</code><span class="sig-paren">(</span><em>select_f=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.select_many" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the linq instance selected by select_f and flatten.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">linq</span> <span class="o">=</span> <span class="n">Linq</span><span class="p">([</span>
 <span class="gp">... </span>    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;yassu&quot;</span><span class="p">,</span> <span class="s2">&quot;ids&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">)},</span>
@@ -734,6 +760,11 @@ And if cond_f is None, return all items.</p>
 </div>
 <div class="section" id="module-ilinq">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-ilinq" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="ilinq.get_short_version">
+<code class="descclassname">ilinq.</code><code class="descname">get_short_version</code><span class="sig-paren">(</span><em>full_version</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.get_short_version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </div>
 </div>
 
