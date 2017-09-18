@@ -2,9 +2,10 @@
 # -*- coding: utf-8 -*-
 
 from setuptools import setup
+from ilinq import __VERSION__
 
 setup(name='ilinq',
-      version='0.0.1',
+      version=__VERSION__,
       description='linq library',
       author='yassu',
       author_email='yasu0320.dev@gmail.com',

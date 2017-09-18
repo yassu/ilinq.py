@@ -1,0 +1,10 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+
+def get_short_version(full_version):
+    return '.'.join(full_version.split('.')[:2])
+
+
+__VERSION__ = '0.0.1'
+__SHORT_VERSION__ = get_short_version(__VERSION__)
