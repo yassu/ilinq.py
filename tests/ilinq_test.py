@@ -129,6 +129,11 @@ class TestLinq(unittest.TestCase):
     def test_repeat(self):
         self.assertEqual(Linq.repeat(1, 3), Linq([1, 1, 1]))
 
+    def test_reverse(self):
+        linq = Linq(range(6)).reverse()
+        self.assertEqual(linq, Linq([5, 4, 3, 2, 1, 0]))
+        self.assertTrue(isinstance(linq, Linq))
+
     def test_order_by(self):
         items = [
             {'x': 1, 'y': 2},
@@ -165,10 +170,10 @@ class TestLinq(unittest.TestCase):
         linq = Linq([1, 2, 3, 4])
         # the equare of 0 - 1 - 2 - 3 - 4
         self.assertEqual(
-            linq.inject(0, lambda res, val: res - val, lambda x: x * x),
+            linq.inject(0, lambda res, val: res - val, last_f=lambda x: x * x),
             100)
         self.assertEqual(
-            linq.inject(0, lambda res, val: res - val, lambda x: x * x),
+            linq.inject(0, lambda res, val: res - val, last_f=lambda x: x * x),
             100)
 
     def test_count(self):

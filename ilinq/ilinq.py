@@ -175,6 +175,11 @@ class Linq(list):
         """
         return Linq([item for item in self if item in other])
 
+    def reverse(self):
+        linq = self
+        list.reverse(linq)
+        return linq
+
     def order_by(self, key_f=None, desc=False):
         """
         If desc=False and key_f=None, sort in ascending order.
@@ -247,7 +252,7 @@ class Linq(list):
                 return item
         raise IndexError('This linq with condition is Empty.')
 
-    def first_or_default(self, default=None, cond_f=None):
+    def first_or_default(self, cond_f=None, default=None,):
         """
         return the first element with cond_f(item) and default value
         is default.
@@ -333,7 +338,7 @@ class Linq(list):
         """
         return self.where(cond_f)[-1]
 
-    def last_or_default(self, default=None, cond_f=None):
+    def last_or_default(self, cond_f=None, default=None):
         """
         return the last element with cond_f(item) and default value
         is default.
