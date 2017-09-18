@@ -14,7 +14,7 @@ def run_commands(ctx, commands):
 def test(ctx):
     """ run flake8 and tests """
     ctx.run('flake8')
-    ctx.run('nosetests')
+    ctx.run('nosetests --with-coverage')
 
 
 @task
