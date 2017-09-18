@@ -56,6 +56,17 @@ class TestLinq(unittest.TestCase):
             linq.select_many(lambda x: x["ids"]),
             list(range(10)))
 
+    def test_select_many2(self):
+        linq = Linq(
+            [
+                [0, 1, 2, 3, 4, 5],
+                [6, 7, 8, 9]
+            ]
+        )
+        self.assertEqual(
+            linq.select_many(),
+            Linq(range(10)))
+
     def test_take(self):
         linq = Linq(range(100))
         self.assertEqual(linq.take(5), Linq([0, 1, 2, 3, 4]))

@@ -50,7 +50,7 @@ class Linq(list):
             item if select_f is None else
             select_f(item) for item in self[:]])
 
-    def select_many(self, select_f):
+    def select_many(self, select_f=None):
         """
         Return the linq instance selected by select_f and flatten.
 
@@ -61,7 +61,11 @@ class Linq(list):
         (12, 13, 20, 21)
         """
         return reduce(
-            lambda x, y: x + y, [select_f(item) for item in self[:]])
+            lambda x, y: x + y, [
+                (
+                    item if select_f is None
+                    else select_f(item)
+                )for item in self[:]])
 
     def take(self, num):
         """
