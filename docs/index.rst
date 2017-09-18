@@ -6,8 +6,8 @@
 ILinq Documentation
 =====================
 
-ILink project provides features Linq of C# to Python licensed under the Apache
-2.0 license.
+ILink project provides features like Linq of C# to Python licensed under the
+Apache 2.0 license.
 
 
 `Modules <apis/modules.html>`_
