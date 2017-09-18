@@ -58,9 +58,10 @@ class Linq(list):
         >>> linq.select_i(lambda i, x: x ** i)
         Linq<1, 3, 4, 1, 0>
         """
-        return Linq([(
-            item if select_f is None else
-            select_f(i, item)
+        return Linq([
+            (
+                item if select_f is None else
+                select_f(i, item)
             ) for i, item in enumerate(self)])
 
     def select_many(self, select_f=None):
