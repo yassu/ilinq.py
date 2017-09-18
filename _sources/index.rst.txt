@@ -6,7 +6,8 @@
 ILinq Documentation
 =====================
 
-ILink project is a module for appending features like C# Linq to Python.
+ILink project provides features Linq of C# to Python licensed under the Apache
+2.0 license.
 
 
 `Modules <apis/modules.html>`_
