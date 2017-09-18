@@ -45,6 +45,20 @@ class TestLinq(unittest.TestCase):
             linq.select(),
             Linq(range(5)))
 
+    def test_select_i(self):
+        linq = Linq(range(5))
+        self.assertEqual(
+            linq.select_i(),
+            Linq(range(5))
+        )
+
+    def test_select_i2(self):
+        linq = Linq(range(5)).reverse()
+        self.assertEqual(
+            linq.select_i(lambda i, x: x ** i),
+            Linq([4**0, 3**1, 2**2, 1**3, 0**4])
+        )
+
     def test_select_many(self):
         linq = Linq(
             [
