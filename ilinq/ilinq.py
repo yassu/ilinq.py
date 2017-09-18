@@ -168,6 +168,8 @@ class Linq(list):
 
     def intersect(self, other):
         """
+        return the intersection set of self and other.
+
         >>> linq1 = Linq([2.0, -2.0, 2.1, -2.2, 2.3, 2.4, 2.5, 2.3])
         >>> linq2 = Linq([2.1, 2.2])
         >>> linq1.intersect(linq2)
@@ -176,6 +178,17 @@ class Linq(list):
         return Linq([item for item in self if item in other])
 
     def reverse(self):
+        """
+        Return reversed Linq object.
+
+        Note that this method is overrited from list class.
+
+        >>> linq = Linq(range(6))
+        >>> linq
+        Linq<0, 1, 2, 3, 4, 5>
+        >>> linq.reverse()
+        Linq<5, 4, 3, 2, 1, 0>
+        """
         linq = self
         list.reverse(linq)
         return linq
