@@ -26,7 +26,7 @@ class Linq(list):
 
     def where_in(self, list_, select_f=None):
         """
-        return items which the condition that select_f(item) in list_
+        Return items which the condition that select_f(item) in list_
 
         >>> Linq([1, 3, 5, 100]).where_in([1, 2, 3])
         Linq<1, 3>
@@ -145,7 +145,7 @@ class Linq(list):
     @staticmethod
     def repeat(obj, num):
         """
-        return Linq instance which has num objs.
+        Return Linq instance which has num objs.
 
         >>> Linq.repeat('Hello', 5)
         Linq<Hello, Hello, Hello, Hello, Hello>
@@ -154,7 +154,7 @@ class Linq(list):
 
     def distinct(self, key_f=None):
         """
-        return self deleted duplicates
+        Return self deleted duplicates
 
         >>> linq1 = Linq(range(4))
         >>> linq2 = Linq(range(5)).select(lambda x: x * x)
@@ -194,7 +194,7 @@ class Linq(list):
 
     def intersect(self, other):
         """
-        return the intersection set of self and other.
+        Return the intersection set of self and other.
 
         >>> linq1 = Linq([2.0, -2.0, 2.1, -2.2, 2.3, 2.4, 2.5, 2.3])
         >>> linq2 = Linq([2.1, 2.2])
@@ -247,7 +247,7 @@ class Linq(list):
 
     def inject(self, initial_value, func, last_f=None):
         """
-        return the result of
+        Return the result of
         func(func(func(initial_value, self[0]), self[1]) .. self[length - 1])
         filtered by last_f.
 
@@ -266,7 +266,7 @@ class Linq(list):
 
     def count(self, cond_f=None):
         """
-        return the length with condition that cond_f(item).
+        Return the length with condition that cond_f(item).
 
         >>> Linq(range(10)).count()
         10
@@ -279,7 +279,7 @@ class Linq(list):
 
     def first(self, cond_f=None):
         """
-        return the first element with cond_f(item)
+        Return the first element with cond_f(item)
 
         >>> Linq([3, 2, 5, 8]).first()
         3
@@ -293,7 +293,7 @@ class Linq(list):
 
     def first_or_default(self, cond_f=None, default=None,):
         """
-        return the first element with cond_f(item) and default value
+        Return the first element with cond_f(item) and default value
         is default.
 
         >>> Linq([3, 2, 5, 8]).first_or_default()
@@ -368,7 +368,7 @@ class Linq(list):
 
     def last(self, cond_f=None):
         """
-        return the first element with cond_f(item)
+        Return the first element with cond_f(item)
 
         >>> Linq([3, 2, 5, 8]).last()
         8
@@ -379,7 +379,7 @@ class Linq(list):
 
     def last_or_default(self, cond_f=None, default=None):
         """
-        return the last element with cond_f(item) and default value
+        Return the last element with cond_f(item) and default value
         is default.
 
         >>> Linq([3, 2, 5, 8]).last_or_default()
@@ -398,7 +398,7 @@ class Linq(list):
 
     def element_at(self, ind):
         """
-        return the element at ind index.
+        Return the element at ind index.
 
         >>> Linq([3, 2, 5, 8]).element_at(2)
         5
@@ -427,7 +427,7 @@ class Linq(list):
 
     def min(self, key_f=None):
         """
-        return minimal value in this object.
+        Return minimal value in this object.
         if key_f is defined, return minimal value by key_f(item).
 
         >>> Linq([-1, 2, 3, -4.3, 2]).min()
@@ -444,7 +444,7 @@ class Linq(list):
 
     def min_all(self, key_f=None):
         """
-        return the Linq object which consists of minimal numbers
+        Return the Linq object which consists of minimal numbers
         computed by key_f.
 
         >>> linq = Linq(range(5)).concat(Linq(range(4)))
@@ -464,8 +464,8 @@ class Linq(list):
 
     def max(self, key_f=None):
         """
-        return maximal value in this object.
-        if key_fis defined, return minimal value by key_f(item).
+        Return maximal value in this object.
+        If key_fis defined, return minimal value by key_f(item).
 
         >>> Linq([-1, 2, 3, -4.3, 2]).max()
         3
@@ -481,7 +481,7 @@ class Linq(list):
 
     def max_all(self, key_f=None):
         """
-        return the Linq object which consists of maximal numbers
+        Return the Linq object which consists of maximal numbers
         computed by key_f.
 
         >>> linq = Linq(range(5)).concat(Linq(range(5)))
@@ -505,7 +505,7 @@ class Linq(list):
 
     def sum(self, select_f=None):
         """
-        return total of select_f(item)
+        Return total of select_f(item)
 
         >>> Linq(range(100 + 1)).sum()
         5050
@@ -520,7 +520,7 @@ class Linq(list):
 
     def average(self, select_f=None):
         """
-        return average of select_f(item)
+        Return average of select_f(item)
 
         >>> Linq([1, 2, 3, 4, 5]).average()
         3.0
@@ -535,7 +535,7 @@ class Linq(list):
 
     def contains(self, item, key_f=None):
         """
-        return either item is in self or not.
+        Return either item is in self or not.
 
         If key_f is setted, we compare by ``key_f`` function.
 
@@ -555,7 +555,7 @@ class Linq(list):
     def all(self, cond_f):
         """
         if all of cond_f(item) is True, return True.
-        else return False.
+        Else return False.
 
         >>> numbers = Linq([14, 28, 35])
         >>> numbers.all(lambda n: n % 7 == 0)
@@ -584,7 +584,7 @@ class Linq(list):
 
     def group_by(self, grouping_f):
         """
-        group items by grouping_f.
+        Group items by grouping_f.
 
         >>> foods = Linq([
         ...     {'name': 'tomato', 'kind': 'Vegetable'},
@@ -617,20 +617,20 @@ class Linq(list):
 
     def to_list(self):
         """
-        return the list of items.
+        Return the list of items.
         This is equivalent list(self)
         """
         return list(self)
 
     def copy(self):
         """
-        return shallow copied self
+        Return shallow copied self
         """
         return Linq(self[:])
 
     def to_set(self):
         """
-        return the set of items.
+        Return the set of items.
 
         >>> Linq([3, 2, 5, 3, 8]).to_set()
         {8, 2, 3, 5}
