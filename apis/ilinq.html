@@ -638,6 +638,19 @@ computed by key_f.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="ilinq.ilinq.Linq.select_many_i">
+<code class="descname">select_many_i</code><span class="sig-paren">(</span><em>select_f=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.select_many_i" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return selected flatten list by select_f</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">linq</span> <span class="o">=</span> <span class="n">Linq</span><span class="p">([[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">linq</span><span class="o">.</span><span class="n">select_many_i</span><span class="p">()</span>
+<span class="go">Linq&lt;9, 8, 7, 6, 5, 4, 3, 2, 1, 0&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">linq</span><span class="o">.</span><span class="n">select_many_i</span><span class="p">(</span><span class="k">lambda</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">i</span><span class="o">**</span><span class="n">x</span><span class="p">)</span>
+<span class="go">Linq&lt;0, 1, 128, 729, 1024, 625, 216, 49, 8, 1&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
 <dt id="ilinq.ilinq.Linq.single">
 <code class="descname">single</code><span class="sig-paren">(</span><em>cond_f=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.single" title="Permalink to this definition">¶</a></dt>
 <dd><p>If this object consists of one object, return this object.
