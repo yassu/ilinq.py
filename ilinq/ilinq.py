@@ -74,12 +74,24 @@ class Linq(list):
         >>> linq.select_many(lambda obj: obj["ids"])
         (12, 13, 20, 21)
         """
-        return reduce(
+        return Linq(reduce(
             lambda x, y: x + y, [
                 (
                     item if select_f is None
                     else select_f(item)
-                )for item in self[:]])
+                )for item in self[:]]))
+
+    def select_many_i(self, select_f=None):
+        """
+        Return selected flatten list by select_f
+
+        >>> linq = Linq([[9, 8, 7, 6], [5, 4, 3, 2, 1, 0]])
+        >>> linq.select_many_i()
+        Linq<9, 8, 7, 6, 5, 4, 3, 2, 1, 0>
+        >>> linq.select_many_i(lambda i, x: i**x)
+        Linq<0, 1, 128, 729, 1024, 625, 216, 49, 8, 1>
+        """
+        return self.select_many().select_i(select_f)
 
     def take(self, num):
         """

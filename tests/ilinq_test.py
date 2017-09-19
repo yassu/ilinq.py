@@ -81,6 +81,31 @@ class TestLinq(unittest.TestCase):
             linq.select_many(),
             Linq(range(10)))
 
+    def test_select_many_i(self):
+        linq = Linq(
+            [
+                [0, 1, 2, 3, 4, 5],
+                [6, 7, 8, 9]
+            ]
+        )
+        self.assertEqual(
+            linq.select_many_i(),
+            Linq(range(10))
+        )
+
+    def test_select_many_i2(self):
+        linq = Linq(
+            [
+                [9, 8, 7, 6],
+                [5, 4, 3, 2, 1, 0]
+            ]
+        )
+        self.assertEqual(
+            linq.select_many_i(lambda i, x: i ** x),
+            Linq(
+                [0 ** 9, 1**8, 2**7, 3**6, 4**5, 5**4, 6**3, 7**2, 8**1, 9**0])
+        )
+
     def test_take(self):
         linq = Linq(range(100))
         self.assertEqual(linq.take(5), Linq([0, 1, 2, 3, 4]))
