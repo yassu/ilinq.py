@@ -708,6 +708,27 @@ IndexError: This linq with condition is more long.
 </dd></dl>
 
 <dl class="method">
+<dt id="ilinq.ilinq.Linq.skip_while">
+<code class="descname">skip_while</code><span class="sig-paren">(</span><em>cond_f=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.skip_while" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the linq skipped first some elements such that <code class="docutils literal"><span class="pre">cond_f(item)</span></code>.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">102</span><span class="p">])</span><span class="o">.</span><span class="n">skip_while</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">)</span>
+<span class="go">Linq&lt;100, 2, 101, 1, 102&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="ilinq.ilinq.Linq.skip_while_i">
+<code class="descname">skip_while_i</code><span class="sig-paren">(</span><em>cond_f=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.skip_while_i" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the linq skipped first some elements such
+that <code class="docutils literal"><span class="pre">cond_f(i,</span> <span class="pre">item)</span></code>.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span><span class="o">.</span><span class="n">skip_while_i</span><span class="p">(</span><span class="k">lambda</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">i</span> <span class="o">*</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span>
+<span class="go">Linq&lt;4, 5, 6, 7, 8, 9&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
 <dt id="ilinq.ilinq.Linq.sum">
 <code class="descname">sum</code><span class="sig-paren">(</span><em>select_f=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.sum" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return total of select_f(item)</p>
