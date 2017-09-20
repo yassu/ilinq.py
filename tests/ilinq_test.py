@@ -129,6 +129,17 @@ class TestLinq(unittest.TestCase):
     def test_skip3(self):
         Linq(range(2)).skip(5)
 
+    def test_skip_while(self):
+        self.assertEqual(
+            Linq([5, 4, 3, 100, 2, 101, 1, 102]).skip_while(),
+            Linq([5, 4, 3, 100, 2, 101, 1, 102]))
+
+    def test_skip_while2(self):
+        self.assertEqual(
+            Linq([5, 4, 3, 100, 2, 101, 1, 102]).skip_while(
+                lambda x: x < 50),
+            Linq([100, 2, 101, 1, 102]))
+
     def test_concat(self):
         linq1 = Linq([1, 2])
         linq2 = Linq([3, 4])

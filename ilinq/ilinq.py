@@ -7,6 +7,7 @@ This module provides Linq class, which is a python version of linq like c#.
 
 from collections import defaultdict
 from functools import reduce
+import itertools
 
 
 class Linq(list):
@@ -116,6 +117,18 @@ class Linq(list):
             return self[num:]
         else:
             raise IndexError('Linq: {} is so short.'.format(self))
+
+    def skip_while(self, cond_f=None):
+        """
+        Return the linq skipped first some elements such that ``cond_f(item)``.
+
+        >>> Linq([5, 4, 3, 100, 2, 101, 1, 102]).skip_while(lambda x: x < 50)
+        Linq<100, 2, 101, 1, 102>
+        """
+        res = itertools.dropwhile(
+            lambda x: False is cond_f if cond_f is None else cond_f(x),
+            self)
+        return Linq(res)
 
     def concat(self, *linqs):
         """
