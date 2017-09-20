@@ -140,6 +140,18 @@ class TestLinq(unittest.TestCase):
                 lambda x: x < 50),
             Linq([100, 2, 101, 1, 102]))
 
+    def test_skip_while_i(self):
+        self.assertEqual(
+            Linq(range(10)).skip_while_i(),
+            Linq(range(10))
+        )
+
+    def test_skip_while_i2(self):
+        self.assertEqual(
+            Linq(range(10)).skip_while_i(lambda i, x: i * x < 10),
+            Linq([4, 5, 6, 7, 8, 9])
+        )
+
     def test_concat(self):
         linq1 = Linq([1, 2])
         linq2 = Linq([3, 4])

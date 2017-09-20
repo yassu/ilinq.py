@@ -130,6 +130,22 @@ class Linq(list):
             self)
         return Linq(res)
 
+    def skip_while_i(self, cond_f=None):
+        """
+        Return the linq skipped first some elements such
+        that ``cond_f(i, item)``.
+
+        >>> Linq(range(10)).skip_while_i(lambda i, x: i * x < 10)
+        Linq<4, 5, 6, 7, 8, 9>
+        """
+        if cond_f is None:
+            return self
+
+        j = 0
+        while j < self.count() and cond_f(j, self[j]):
+            j += 1
+        return self[j:]
+
     def concat(self, *linqs):
         """
         >>> linq = Linq(range(4))
