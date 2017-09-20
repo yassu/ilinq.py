@@ -698,6 +698,16 @@ IndexError: This linq with condition is more long.
 </dd></dl>
 
 <dl class="method">
+<dt id="ilinq.ilinq.Linq.skip">
+<code class="descname">skip</code><span class="sig-paren">(</span><em>num</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.skip" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the linq skipped first <code class="docutils literal"><span class="pre">num</span></code> elements.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span><span class="o">.</span><span class="n">skip</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">Linq&lt;6, 5, 4, 3, 2, 1, 0&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
 <dt id="ilinq.ilinq.Linq.sum">
 <code class="descname">sum</code><span class="sig-paren">(</span><em>select_f=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.sum" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return total of select_f(item)</p>
@@ -773,11 +783,6 @@ And if cond_f is None, return all items.</p>
 </div>
 <div class="section" id="module-ilinq">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-ilinq" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="ilinq.get_short_version">
-<code class="descclassname">ilinq.</code><code class="descname">get_short_version</code><span class="sig-paren">(</span><em>full_version</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.get_short_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 </div>
 </div>
 
