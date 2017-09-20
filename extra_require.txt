@@ -2,9 +2,11 @@ alabaster==0.7.10
 Babel==2.5.0
 certifi==2017.7.27.1
 chardet==3.0.4
+coverage==4.4.1
 docutils==0.14
 flake8==3.4.1
 idna==2.6
+-e git+https://github.com/yassu/Ilinq.py.git@f696d0c7c8d22c4b61bad970253ab32165b4eaa1#egg=ilinq
 imagesize==0.7.1
 invoke==0.20.4
 Jinja2==2.9.6
