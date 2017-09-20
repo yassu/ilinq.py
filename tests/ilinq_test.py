@@ -114,6 +114,21 @@ class TestLinq(unittest.TestCase):
         linq = Linq([1, 2])
         self.assertEqual(linq.take(5), Linq([1, 2]))
 
+    def test_skip(self):
+        self.assertEqual(
+            Linq(range(10)).reverse().skip(3),
+            Linq([6, 5, 4, 3, 2, 1, 0]))
+
+    def test_skip2(self):
+        self.assertEqual(
+            Linq([3, 2, 1]).skip(3),
+            Linq([])
+        )
+
+    @raises(IndexError)
+    def test_skip3(self):
+        Linq(range(2)).skip(5)
+
     def test_concat(self):
         linq1 = Linq([1, 2])
         linq2 = Linq([3, 4])

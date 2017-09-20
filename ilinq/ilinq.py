@@ -105,6 +105,18 @@ class Linq(list):
         """
         return Linq([self[j] for j in range(min(num, len(self)))])
 
+    def skip(self, num):
+        """
+        Return the linq skipped first ``num`` elements.
+
+        >>> Linq(range(10)).reverse().skip(3)
+        Linq<6, 5, 4, 3, 2, 1, 0>
+        """
+        if self.count() >= num:
+            return self[num:]
+        else:
+            raise IndexError('Linq: {} is so short.'.format(self))
+
     def concat(self, *linqs):
         """
         >>> linq = Linq(range(4))
