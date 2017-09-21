@@ -114,6 +114,21 @@ class TestLinq(unittest.TestCase):
         linq = Linq([1, 2])
         self.assertEqual(linq.take(5), Linq([1, 2]))
 
+    def test_take_while(self):
+        self.assertEqual(
+            Linq(range(10)).take_while(lambda x: x < 5),
+            Linq(range(5)))
+
+    def test_take_while2(self):
+        self.assertEqual(
+            Linq(range(10)).take_while(lambda x: x < 100),
+            Linq(range(10)))
+
+    def test_take_while3(self):
+        self.assertEqual(
+            Linq(range(10)).take_while(),
+            Linq(range(10)))
+
     def test_skip(self):
         self.assertEqual(
             Linq(range(10)).reverse().skip(3),

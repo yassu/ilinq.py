@@ -106,6 +106,28 @@ class Linq(list):
         """
         return Linq([self[j] for j in range(min(num, len(self)))])
 
+    def take_while(self, cond_f=None):
+        """
+        Return Linq object consisted by first some elements such that
+        ``cond_f(item)``.
+
+        >>> Linq(range(10)).take_while(lambda x: x < 5)
+        Linq<0, 1, 2, 3, 4>
+        """
+
+        if cond_f is None:
+            return self.copy()
+
+        list_ = list()
+        j = 0
+        while j < self.count():
+            if cond_f(self[j]):
+                list_.append(self[j])
+            else:
+                return Linq(list_)
+            j += 1
+        return Linq(list_)
+
     def skip(self, num):
         """
         Return the linq skipped first ``num`` elements.
