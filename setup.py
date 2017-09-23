@@ -9,5 +9,5 @@ setup(name='ilinq',
       description='linq library',
       author='yassu',
       author_email='yasu0320.dev@gmail.com',
-      url='https://github.com/yassu/Ilinq.py',
+      url='https://github.com/yassu/ilinq.py',
       )
