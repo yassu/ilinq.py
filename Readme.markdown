@@ -1,6 +1,8 @@
 ILinq
 =======
 
+![Symbol of ILinq](docs/images/symbol.png)
+
 This project provides the module like linq of C# for Python.
 
 ## How To Install
@@ -21,8 +23,6 @@ $ pip install -r extra_require.txt
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# We obtain the last prime less than 10^4.
-
 from ilinq.ilinq import Linq
 
 
@@ -40,8 +40,7 @@ def is_prime(n):
 if __name__ == '__main__':
     print(
         Linq(range(10**4))
-        .where(is_prime)
-        .last())
+        .last(is_prime))
     # => 9973
 ```
 
