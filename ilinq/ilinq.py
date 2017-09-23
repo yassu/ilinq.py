@@ -721,6 +721,28 @@ class Linq(list):
         """
         return set(self)
 
+    def to_dict(self, key_f=None, value_f=None):
+        """
+        Return dictionary consisted of [key_f(item), value_f(item)].
+
+        >>> Linq(range(4)).to_dict(key_f=lambda x: x, value_f=lambda x: x * x)
+        {0: 0, 1: 1, 2: 4, 3: 9}
+
+        If key_f or value_f is Identity function, this keyword is omitted.
+
+        >>> Linq(range(4)).to_dict(value_f=lambda x: x * x)
+        {0: 0, 1: 1, 2: 4, 3: 9}
+        """
+        mat = Linq([
+            [
+                item if key_f is None else key_f(item),
+                item if value_f is None else value_f(item)
+            ] for item in self])
+        if mat.distinct(key_f=lambda row: row[0]) == mat:
+            return dict(mat)
+        else:
+            raise ValueError('key numbers are dupplicated.')
+
     def __getitem__(self, val):
         if isinstance(val, int):
             return super().__getitem__(val)

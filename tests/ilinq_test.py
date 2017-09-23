@@ -571,6 +571,28 @@ class TestLinq(unittest.TestCase):
     def test_to_set(self):
         self.assertEqual(Linq([1, 1, 2, 3, 5]).to_set(), {1, 1, 2, 3, 5})
 
+    def test_to_dict(self):
+        self.assertEqual(
+            Linq(range(4)).to_dict(key_f=lambda x: x, value_f=lambda x: x * x),
+            {0: 0, 1: 1, 2: 4, 3: 9}
+        )
+
+    def test_to_dict2(self):
+        self.assertEqual(
+            Linq(range(4)).to_dict(value_f=lambda x: x * x),
+            {0: 0, 1: 1, 2: 4, 3: 9}
+        )
+
+    def test_to_dict3(self):
+        self.assertEqual(
+            Linq(range(4)).to_dict(key_f=lambda x: x * x),
+            {0: 0, 1: 1, 4: 2, 9: 3}
+        )
+
+    @raises(ValueError)
+    def test_to_dict4(self):
+        Linq(range(4)).to_dict(key_f=lambda _: 1)
+
     def test_slice(self):
         linq = Linq(range(5))
         self.assertTrue(linq[3] == 3)
