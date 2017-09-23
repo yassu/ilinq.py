@@ -119,8 +119,7 @@ class Linq(list):
             return self.copy()
 
         list_ = list()
-        j = 0
-        while j < self.count():
+        for j in range(self.count()):
             if cond_f(self[j]):
                 list_.append(self[j])
             else:
