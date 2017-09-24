@@ -300,6 +300,21 @@ class Linq(list):
                 list_.append(item)
         return list_
 
+    def zip(self, other, zip_f):
+        """
+        collect self_items and other_items by zip_f.
+
+        >>> Linq([1, 2, 3]).zip(Linq([4, 5, 6]), lambda x, y: (x, y))
+        Linq<(1, 4), (2, 5), (3, 6)>
+        >>> Linq([1, 2, 3]).zip(Linq([4, 5]), lambda x, y: (x, y))
+        Linq<(1, 4), (2, 5)>
+        >>> Linq([1, 2]).zip(Linq([4, 5, 6]), lambda x, y: (x, y))
+        Linq<(1, 4), (2, 5)>
+        """
+        return Linq([
+            zip_f(self[i], other[i]) for i in range(
+                min(len(self), len(other)))])
+
     def reverse(self):
         """
         Return reversed Linq object.
