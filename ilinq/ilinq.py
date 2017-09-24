@@ -287,6 +287,13 @@ class Linq(list):
         """
         return Linq([item for item in self if item in other])
 
+    def union(self, other, key_f=None):
+        list_ = self.distinct(key_f=key_f)
+        for item in other:
+            if item not in list_:
+                list_.append(item)
+        return list_
+
     def reverse(self):
         """
         Return reversed Linq object.

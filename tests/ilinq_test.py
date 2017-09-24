@@ -232,6 +232,38 @@ class TestLinq(unittest.TestCase):
                 linq2),
             Linq([2.1]))
 
+    def test_union(self):
+        linq = Linq('abcdef').union('xyz')
+        self.assertEqual(
+            linq,
+            Linq('abcdefxyz'))
+        self.assertTrue(isinstance(linq, Linq))
+
+    def test_union2(self):
+        linq = Linq('abcdef').union('defdefxyz')
+        self.assertEqual(
+            linq,
+            Linq('abcdefxyz'))
+        self.assertTrue(isinstance(linq, Linq))
+
+    # def test_union3(self):
+    #     person11 = {'name': 'person1', 'id': 23}
+    #     person12 = {'name': 'person2', 'id': 24}
+    #     person21 = {'name': 'person2', 'id': 25}
+    #     person22 = {'name': 'person3', 'id': 26}
+    #     print(
+    #         Linq(
+    #             [person11, person12]).union(
+    #                 [person21, person22],
+    #                 key_f=lambda p: p['name']))
+    #     self.assertEqual(
+    #         Linq(
+    #             [person11, person12]).union(
+    #                 [person21, person22],
+    #                 key_f=lambda p: p['name']),
+    #         Linq([person11, person12, person22])
+    #     )
+
     def test_repeat(self):
         self.assertEqual(Linq.repeat(1, 3), Linq([1, 1, 1]))
 
