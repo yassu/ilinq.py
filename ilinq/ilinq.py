@@ -48,8 +48,7 @@ class Linq(list):
         Linq<0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1>
         """
         return Linq([
-            item if select_f is None else
-            select_f(item) for item in self[:]])
+            _act(select_f, item) for item in self[:]])
 
     def select_i(self, select_f=None):
         """
@@ -59,11 +58,8 @@ class Linq(list):
         >>> linq.select_i(lambda i, x: x ** i)
         Linq<1, 3, 4, 1, 0>
         """
-        return Linq([
-            (
-                item if select_f is None else
-                select_f(i, item)
-            ) for i, item in enumerate(self)])
+        return Linq([(
+            _act_i(select_f, i, item)) for i, item in enumerate(self)])
 
     def select_many(self, select_f=None):
         """
@@ -76,11 +72,8 @@ class Linq(list):
         (12, 13, 20, 21)
         """
         return Linq(reduce(
-            lambda x, y: x + y, [
-                (
-                    item if select_f is None
-                    else select_f(item)
-                )for item in self[:]]))
+            lambda x, y: x + y,
+            [(_act(select_f, item))for item in self[:]]))
 
     def select_many_i(self, select_f=None):
         """
@@ -248,7 +241,7 @@ class Linq(list):
         list_ = list()
         val_list = list()
         for item in self[:]:
-            val = item if key_f is None else key_f(item)
+            val = _act(key_f, item)
             if val not in val_list:
                 list_.append(item)
                 val_list.append(val)
@@ -271,7 +264,7 @@ class Linq(list):
         """
         res = list()
         for item in self[:]:
-            val = item if key_f is None else key_f(item)
+            val = _act(key_f, item)
             if val not in other:
                 res.append(item)
         return Linq(res)
@@ -374,7 +367,7 @@ class Linq(list):
         res = initial_value
         for item in self[:]:
             res = func(res, item)
-        return res if last_f is None else last_f(res)
+        return _act(last_f, res)
 
     def count(self, cond_f=None):
         """
@@ -550,7 +543,7 @@ class Linq(list):
         try:
             return min(
                 self,
-                key=lambda x: x if key_f is None else key_f(x))
+                key=lambda x: _act(key_f, x))
         except ValueError:
             raise StopIteration('This linq is empty.')
 
@@ -572,7 +565,7 @@ class Linq(list):
         min_value = self.select(key_f).min()
         return self.where(
             cond_f=lambda item:
-            (item if key_f is None else key_f(item)) == min_value)
+            _act(key_f, item) == min_value)
 
     def max(self, key_f=None):
         """
@@ -587,7 +580,7 @@ class Linq(list):
         try:
             return max(
                 self,
-                key=lambda x: x if key_f is None else key_f(x))
+                key=lambda x: _act(key_f, x))
         except ValueError:
             raise StopIteration('This linq is empty.')
 
@@ -609,11 +602,7 @@ class Linq(list):
 
         max_value = self.max(key_f=key_f)
         return Linq([
-            item for item in self if
-            (
-                item if key_f is None else
-                key_f(item)
-            ) == max_value])
+            item for item in self if _act(key_f, item) == max_value])
 
     def sum(self, select_f=None):
         """
@@ -660,9 +649,7 @@ class Linq(list):
         ...     key_f=lambda b: b['code'])
         True
         """
-        return (
-            item if key_f is None else
-            key_f(item)) in self.select(key_f)
+        return _act(key_f, item) in self.select(key_f)
 
     def all(self, cond_f):
         """
@@ -763,8 +750,8 @@ class Linq(list):
         """
         mat = Linq([
             [
-                item if key_f is None else key_f(item),
-                item if value_f is None else value_f(item)
+                _act(key_f, item),
+                _act(value_f, item)
             ] for item in self])
         if mat.distinct(key_f=lambda row: row[0]) == mat:
             return dict(mat)
@@ -788,3 +775,11 @@ class Linq(list):
 
     def __repr__(self):
         return str(self)
+
+
+def _act(func, item):
+    return item if func is None else func(item)
+
+
+def _act_i(func, i, item):
+    return item if func is None else func(i, item)
