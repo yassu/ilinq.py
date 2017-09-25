@@ -35,6 +35,20 @@ def view_doc(ctx):
 
 
 @task
+def release(ctx):
+    from ilinq import __VERSION__
+    run_commands(
+        ctx,
+        [
+            'rm dist/*',
+            'python setup.py sdist bdist_wheel',
+            'twine upload dist/*',
+            'git tag {}'.format(__VERSION__)
+        ])
+    deploy_doc(ctx)
+
+
+@task
 def deploy_doc(ctx):
     build_doc(ctx)
     run_commands(
