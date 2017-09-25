@@ -58,6 +58,7 @@ def deploy_doc(ctx):
             'cp -r docs/_build/html/ /tmp/.build',
             'git checkout gh-pages',
             'git clean -fdx',
+            'rm -rf *',
             'git rm -rf *',
             'mv /tmp/.build/* .',
             'touch .nojekyll',
