@@ -20,6 +20,7 @@ setup(
     name='ilinq',
     version=__VERSION__,
     description='linq library',
+    long_description=open('Readme.rst').read(),
     author='yassu',
     author_email='yasu0320.dev@gmail.com',
     classifiers=classifiers,
