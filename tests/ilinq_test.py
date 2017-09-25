@@ -248,18 +248,24 @@ class TestLinq(unittest.TestCase):
 
     def test_zip(self):
         self.assertEqual(
-            Linq([1, 2, 3]).zip([4, 5, 6], lambda x, y: x + y),
+            Linq([1, 2, 3]).zip([4, 5, 6], zip_f=lambda x, y: x + y),
             Linq([1 + 4, 2 + 5, 3 + 6]))
 
     def test_zip2(self):
         self.assertEqual(
-            Linq([1, 2]).zip([4, 5, 6], lambda x, y: x - y),
+            Linq([1, 2]).zip([4, 5, 6], zip_f=lambda x, y: x - y),
             Linq([1 - 4, 2 - 5]))
 
     def test_zip3(self):
         self.assertEqual(
-            Linq([1, 2, 3]).zip([4, 5], lambda x, y: x + y),
+            Linq([1, 2, 3]).zip([4, 5], zip_f=lambda x, y: x + y),
             Linq([1 + 4, 2 + 5]))
+
+    def test_zip4(self):
+        self.assertEqual(
+            Linq([1, 2, 3]).zip([4, 5, 6]),
+            Linq([(1, 4), (2, 5), (3, 6)])
+        )
 
     def test_repeat(self):
         self.assertEqual(Linq.repeat(1, 3), Linq([1, 1, 1]))

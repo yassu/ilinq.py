@@ -293,20 +293,24 @@ class Linq(list):
                 list_.append(item)
         return list_
 
-    def zip(self, other, zip_f):
+    def zip(self, other, zip_f=None):
         """
         collect self_items and other_items by zip_f.
 
-        >>> Linq([1, 2, 3]).zip(Linq([4, 5, 6]), lambda x, y: (x, y))
-        Linq<(1, 4), (2, 5), (3, 6)>
-        >>> Linq([1, 2, 3]).zip(Linq([4, 5]), lambda x, y: (x, y))
-        Linq<(1, 4), (2, 5)>
-        >>> Linq([1, 2]).zip(Linq([4, 5, 6]), lambda x, y: (x, y))
-        Linq<(1, 4), (2, 5)>
+        >>> Linq(['a11', 'a12', 'a13']).zip(['a21', 'a22', 'a23'])
+        Linq<('a11', 'a21'), ('a12', 'a22'), ('a13', 'a23')>
+        >>> Linq(['a11', 'a12', 'a13']).zip(['a21', 'a22'])
+        Linq<('a11', 'a21'), ('a12', 'a22')>
+        >>> Linq(['a11', 'a12']).zip(['a21', 'a22', 'a23'])
+        Linq<('a11', 'a21'), ('a12', 'a22')>
+        >>> Linq(['a11', 'a12', 'a13']).zip(
+        ...     ['a21', 'a22', 'a23'], zip_f=lambda s1, s2: s1 + s2)
+        Linq<a11a21, a12a22, a13a23>
         """
         return Linq([
-            zip_f(self[i], other[i]) for i in range(
-                min(len(self), len(other)))])
+            (self[i], other[i]) if zip_f is None else
+            zip_f(self[i], other[i])
+            for i in range(min(len(self), len(other)))])
 
     def reverse(self):
         """
