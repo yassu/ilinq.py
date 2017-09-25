@@ -40,7 +40,6 @@ def release(ctx):
     run_commands(
         ctx,
         [
-            'rm dist/*',
             'python setup.py sdist bdist_wheel',
             'twine upload dist/*',
             'git tag {}'.format(__VERSION__)
