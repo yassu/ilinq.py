@@ -34,6 +34,20 @@ class IPair(object):
 
 
 class IGroup(Linq):
+    def __init__(self, pairs=None):
+        if pairs is None:
+            pairs = list()
+
+        for pair in pairs:
+            if not isinstance(pair, IPair):
+                raise ValueError('{} is not a IPair instance.')
+
+        keys = list(map(lambda x: x.key, pairs))
+        if len(keys) != len(set(keys)):
+            raise ValueError('{} has overlap.')
+
+        super().__init__(pairs)
+
     @property
     def keys(self):
         return [pair.key for pair in self]

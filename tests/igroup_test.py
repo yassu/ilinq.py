@@ -39,6 +39,21 @@ class TestIGroup(unittest.TestCase):
             IPair(0, Linq([0, 1, 2]))
         ])
 
+    @raises(ValueError)
+    def test_init2(self):
+        IGroup([
+            0,
+            IPair(1, Linq([1, 2, 3]))
+        ])
+
+    @raises(ValueError)
+    def test_init3(self):
+        IGroup([
+            IPair(0, Linq([1, 2, 3])),
+            IPair(1, Linq([2, 3, 4])),
+            IPair(1, Linq([2, 3, 4]))
+        ])
+
     def test_keys(self):
         group = IGroup([
             IPair(0, Linq([0, 1, 2]))
