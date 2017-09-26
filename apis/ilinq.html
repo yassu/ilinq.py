@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ilinq package &mdash; ILinq 0.1.1 documentation</title>
+  <title>ilinq package &mdash; ILinq 0.1.2 documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="ILinq 0.1.1 documentation" href="../index.html"/> 
+    <link rel="top" title="ILinq 0.1.2 documentation" href="../index.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -173,7 +173,7 @@
 <p>This module provides grouped objects.</p>
 <dl class="class">
 <dt id="ilinq.igroup.IGroup">
-<em class="property">class </em><code class="descclassname">ilinq.igroup.</code><code class="descname">IGroup</code><a class="headerlink" href="#ilinq.igroup.IGroup" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">ilinq.igroup.</code><code class="descname">IGroup</code><span class="sig-paren">(</span><em>pairs=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.igroup.IGroup" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#ilinq.ilinq.Linq" title="ilinq.ilinq.Linq"><code class="xref py py-class docutils literal"><span class="pre">ilinq.ilinq.Linq</span></code></a></p>
 <dl class="attribute">
 <dt id="ilinq.igroup.IGroup.keys">
@@ -458,12 +458,16 @@ filtered by last_f.</p>
 
 <dl class="method">
 <dt id="ilinq.ilinq.Linq.intersect">
-<code class="descname">intersect</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.intersect" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the intersection set of self and other.</p>
+<code class="descname">intersect</code><span class="sig-paren">(</span><em>other</em>, <em>key_f=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.intersect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the intersection set of self and other by filtered key_f.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">linq1</span> <span class="o">=</span> <span class="n">Linq</span><span class="p">([</span><span class="mf">2.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">2.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.2</span><span class="p">,</span> <span class="mf">2.3</span><span class="p">,</span> <span class="mf">2.4</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.3</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">linq2</span> <span class="o">=</span> <span class="n">Linq</span><span class="p">([</span><span class="mf">2.1</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">linq1</span><span class="o">.</span><span class="n">intersect</span><span class="p">(</span><span class="n">linq2</span><span class="p">)</span>
 <span class="go">Linq&lt;2.1&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">linq1</span> <span class="o">=</span> <span class="n">Linq</span><span class="p">([</span><span class="mf">2.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.2</span><span class="p">,</span> <span class="mf">2.3</span><span class="p">,</span> <span class="mf">2.4</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.3</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">linq2</span> <span class="o">=</span> <span class="n">Linq</span><span class="p">([</span><span class="mf">2.1</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">,</span> <span class="mf">2.1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">linq1</span><span class="o">.</span><span class="n">intersect</span><span class="p">(</span><span class="n">linq2</span><span class="p">,</span> <span class="n">key_f</span><span class="o">=</span><span class="nb">abs</span><span class="p">)</span>
+<span class="go">Linq&lt;-2.1, -2.2&gt;</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -912,7 +916,7 @@ And if cond_f is None, return all items.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.1.1',
+            VERSION:'0.1.2',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
