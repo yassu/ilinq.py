@@ -13,4 +13,5 @@ ILink project provides features like Linq of C# to Python licensed under the
 Apache 2.0 license.
 
 
-`Modules <apis/modules.html>`_
+* `Modules <apis/modules.html>`_
+* `License <license.html>`_
