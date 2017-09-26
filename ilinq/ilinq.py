@@ -269,16 +269,23 @@ class Linq(list):
                 res.append(item)
         return Linq(res)
 
-    def intersect(self, other):
+    def intersect(self, other, key_f=None):
         """
-        Return the intersection set of self and other.
+        Return the intersection set of self and other by filtered key_f.
 
         >>> linq1 = Linq([2.0, -2.0, 2.1, -2.2, 2.3, 2.4, 2.5, 2.3])
         >>> linq2 = Linq([2.1, 2.2])
         >>> linq1.intersect(linq2)
         Linq<2.1>
+        >>> linq1 = Linq([2.0, -2.0, -2.1, -2.2, 2.3, 2.4, 2.5, 2.3, -2.1])
+        >>> linq2 = Linq([2.1, 2.2, 2.1])
+        >>> linq1.intersect(linq2, key_f=abs)
+        Linq<-2.1, -2.2>
         """
-        return Linq([item for item in self if item in other]).distinct()
+        val_list = other.select(key_f)
+        return Linq(
+            [item for item in self if _act(key_f, item) in val_list])   \
+            .distinct()
 
     def union(self, other):
         """

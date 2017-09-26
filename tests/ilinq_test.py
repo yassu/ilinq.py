@@ -232,6 +232,13 @@ class TestLinq(unittest.TestCase):
                 linq2),
             Linq([2.1]))
 
+    def test_intersect2(self):
+        linq1 = Linq([2.0, -2.0, -2.1, -2.2, 2.3, 2.4, 2.5, 2.3, -2.1])
+        linq2 = Linq([2.1, 2.2, 2.1])
+        self.assertEqual(linq1.intersect(
+                linq2, key_f=abs),
+            Linq([-2.1, -2.2]))
+
     def test_union(self):
         linq = Linq('abcdef').union('xyz')
         self.assertEqual(
