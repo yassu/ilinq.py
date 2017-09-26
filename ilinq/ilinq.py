@@ -769,7 +769,7 @@ class Linq(list):
             return Linq(super().__getitem__(val))
 
     def __str__(self):
-        s = 'Linq<'
+        s = '{}<'.format(self.__class__.__name__)
         for item in self:
             s += str(item)
             s += ', '
