@@ -226,8 +226,8 @@ class TestLinq(unittest.TestCase):
             Linq([2.0, -2.0, 2.3, 2.4, 2.5, 2.3]))
 
     def test_intersect(self):
-        linq1 = Linq([2.0, -2.0, 2.1, -2.2, 2.3, 2.4, 2.5, 2.3])
-        linq2 = Linq([2.1, 2.2])
+        linq1 = Linq([2.0, -2.0, 2.1, -2.2, 2.3, 2.4, 2.5, 2.3, 2.1])
+        linq2 = Linq([2.1, 2.2, 2.1])
         self.assertEqual(linq1.intersect(
                 linq2),
             Linq([2.1]))

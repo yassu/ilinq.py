@@ -278,7 +278,7 @@ class Linq(list):
         >>> linq1.intersect(linq2)
         Linq<2.1>
         """
-        return Linq([item for item in self if item in other])
+        return Linq([item for item in self if item in other]).distinct()
 
     def union(self, other):
         """
