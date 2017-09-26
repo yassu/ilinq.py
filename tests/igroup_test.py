@@ -79,3 +79,12 @@ class TestIGroup(unittest.TestCase):
                 Linq([0, 1, 3])
             ]
         )
+
+    def test_str(self):
+        group = IGroup([
+            IPair(0, Linq([0, 1, 2])),
+            IPair(1, Linq([0, 1, 3]))
+        ])
+        self.assertEqual(
+            str(group),
+            'IGroup<{0: Linq<0, 1, 2>}, {1: Linq<0, 1, 3>}>')
