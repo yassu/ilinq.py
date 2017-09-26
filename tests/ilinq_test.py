@@ -246,6 +246,13 @@ class TestLinq(unittest.TestCase):
             Linq('abcdefxyz'))
         self.assertTrue(isinstance(linq, Linq))
 
+    def test_union3(self):
+        linq = Linq('abcabcdef').union('defxyz')
+        self.assertEqual(
+            linq,
+            Linq('abcdefxyz'))
+        self.assertTrue(isinstance(linq, Linq))
+
     def test_zip(self):
         self.assertEqual(
             Linq([1, 2, 3]).zip([4, 5, 6], zip_f=lambda x, y: x + y),
