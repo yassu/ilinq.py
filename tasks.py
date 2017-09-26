@@ -67,3 +67,5 @@ def deploy_doc(ctx):
             'git checkout master',
             'git stash pop',
         ])
+
+    build_doc(ctx)
