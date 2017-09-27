@@ -336,6 +336,63 @@ class TestLinq(unittest.TestCase):
             linq.inject(0, lambda res, val: res - val, last_f=lambda x: x * x),
             100)
 
+    def test_join1(self):
+        persons = Linq([
+            "person1",
+            "person2"
+        ])
+        dogs = Linq([
+            {"name": "dog1", "owner": "person1"},
+            {"name": "dog2", "owner": "person2"},
+            {"name": "dog3", "owner": "person1"},
+            {"name": "dog4", "owner": "person2"},
+        ])
+        self.assertEqual(
+            persons.join(
+                dogs,
+                lambda p: p,
+                lambda d: d["owner"],
+                lambda p, d: {
+                    "person": p,
+                    "dog": d["name"],
+                }
+            ),
+            Linq([
+                {"person": "person1", "dog": "dog1"},
+                {"person": "person1", "dog": "dog3"},
+                {"person": "person2", "dog": "dog2"},
+                {"person": "person2", "dog": "dog4"}
+            ])
+        )
+
+    def test_join2(self):
+        persons = Linq([
+            "person1",
+            "person2"
+        ])
+        dogs = Linq([
+            {"name": "dog1", "owner": "person1"},
+            {"name": "dog2", "owner": "person2"},
+            {"name": "dog3", "owner": "person1"},
+            {"name": "dog4", "owner": "person3"},
+        ])
+        self.assertEqual(
+            persons.join(
+                dogs,
+                lambda p: p,
+                lambda d: d["owner"],
+                lambda p, d: {
+                    "person": p,
+                    "dog": d["name"],
+                }
+            ),
+            Linq([
+                {"person": "person1", "dog": "dog1"},
+                {"person": "person1", "dog": "dog3"},
+                {"person": "person2", "dog": "dog2"},
+            ])
+        )
+
     def test_count(self):
         self.assertEqual(Linq([2, 4, 6, 8, 10]).count(), 5)
 

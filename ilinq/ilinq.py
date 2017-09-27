@@ -382,6 +382,40 @@ class Linq(list):
             res = func(res, item)
         return _act(last_f, res)
 
+    def join(self, other, key_f, val_f, select_f):
+        """
+        inner join self and other by key_f and val_f and select_f.
+
+        >>> persons = Linq([
+        ...     "person1",
+        ...     "person2"
+        ... ])
+        >>> dogs = Linq([
+        ...     {"name": "dog1", "owner": "person1"},
+        ...     {"name": "dog2", "owner": "person2"},
+        ...     {"name": "dog3", "owner": "person1"},
+        ...     {"name": "dog4", "owner": "person3"}
+        ... ])
+        >>> persons.join(
+        ...     dogs,
+        ...     lambda p: p,
+        ...     lambda d: d["owner"],
+        ...     lambda p, d: {
+        ...         "person": p,
+        ...         "dog": d["name"]
+        ...     }
+        ... )
+        Linq<
+            {'person': 'person1', 'dog': 'dog1'},
+            {'person': 'person1', 'dog': 'dog3'},
+            {'person': 'person2', 'dog': 'dog2'}
+        >
+        """
+        return Linq([
+            select_f(item, item2)
+            for item in self for item2 in other
+            if key_f(item) == val_f(item2)])
+
     def count(self, cond_f=None):
         """
         Return the length with condition that cond_f(item).
