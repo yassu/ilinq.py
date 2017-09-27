@@ -289,7 +289,7 @@ class Linq(list):
 
     def union(self, other, key_f=None):
         """
-        return Linq object of the union set.
+        return Linq object of the union set by using key_f.
 
         >>> Linq([1, 2, 2, 3]).union([3, 4, 5, 6])
         Linq<1, 2, 3, 4, 5, 6>
