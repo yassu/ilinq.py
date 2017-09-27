@@ -795,7 +795,7 @@ class Linq(list):
     def __getitem__(self, val):
         if isinstance(val, int):
             return super().__getitem__(val)
-        elif isinstance(val, slice):
+        else:
             return Linq(super().__getitem__(val))
 
     def __str__(self):

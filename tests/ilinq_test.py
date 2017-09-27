@@ -140,7 +140,7 @@ class TestLinq(unittest.TestCase):
         linq = Linq(range(10)).concat(Linq(range(10)).reverse())
         self.assertEqual(
             linq.take_while_i(lambda i, x: i * x <= 100),
-            Linq(range(4))
+            linq
         )
 
     def test_take_while_i3(self):
