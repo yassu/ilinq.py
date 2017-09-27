@@ -35,19 +35,22 @@ class TestIPair(unittest.TestCase):
 
 class TestIGroup(unittest.TestCase):
     def test_init(self):
+        self.assertEqual(IGroup().count(), 0)
+
+    def test_init2(self):
         IGroup([
             IPair(0, Linq([0, 1, 2]))
         ])
 
     @raises(ValueError)
-    def test_init2(self):
+    def test_init3(self):
         IGroup([
             0,
             IPair(1, Linq([1, 2, 3]))
         ])
 
     @raises(ValueError)
-    def test_init3(self):
+    def test_init4(self):
         IGroup([
             IPair(0, Linq([1, 2, 3])),
             IPair(1, Linq([2, 3, 4])),
