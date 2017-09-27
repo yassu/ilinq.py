@@ -287,7 +287,7 @@ class Linq(list):
             [item for item in self if _act(key_f, item) in val_list])   \
             .distinct()
 
-    def union(self, other):
+    def union(self, other, key_f=None):
         """
         return Linq object of the union set.
 
@@ -295,8 +295,10 @@ class Linq(list):
         Linq<1, 2, 3, 4, 5, 6>
         """
         list_ = self.distinct()
-        for item in other:
-            if item not in list_:
+        val_list = list_.select(key_f)
+        for item in Linq(other).distinct():
+            val = _act(key_f, item)
+            if val not in val_list:
                 list_.append(item)
         return list_
 

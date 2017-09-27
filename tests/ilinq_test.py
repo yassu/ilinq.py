@@ -260,6 +260,11 @@ class TestLinq(unittest.TestCase):
             Linq('abcdefxyz'))
         self.assertTrue(isinstance(linq, Linq))
 
+    def test_union4(self):
+        self.assertEqual(
+            Linq([1, 2, -3]).union(Linq([3, 4, 5, 4, -2]), key_f=abs),
+            Linq([1, 2, -3, 4, 5]))
+
     def test_zip(self):
         self.assertEqual(
             Linq([1, 2, 3]).zip([4, 5, 6], zip_f=lambda x, y: x + y),
