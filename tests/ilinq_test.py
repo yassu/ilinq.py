@@ -338,22 +338,22 @@ class TestLinq(unittest.TestCase):
 
     def test_join1(self):
         persons = Linq([
-            "person1",
-            "person2"
+            {"name": "person1", "person_id": 1},
+            {"name": "person2", "person_id": 2}
         ])
         dogs = Linq([
-            {"name": "dog1", "owner": "person1"},
-            {"name": "dog2", "owner": "person2"},
-            {"name": "dog3", "owner": "person1"},
-            {"name": "dog4", "owner": "person2"},
+            {"name": "dog1", "person_id": 1},
+            {"name": "dog2", "person_id": 2},
+            {"name": "dog3", "person_id": 1},
+            {"name": "dog4", "person_id": 2},
         ])
         self.assertEqual(
             persons.join(
                 dogs,
-                lambda p: p,
-                lambda d: d["owner"],
+                lambda p: p["person_id"],
+                lambda d: d["person_id"],
                 lambda p, d: {
-                    "person": p,
+                    "person": p["name"],
                     "dog": d["name"],
                 }
             ),
@@ -367,22 +367,22 @@ class TestLinq(unittest.TestCase):
 
     def test_join2(self):
         persons = Linq([
-            "person1",
-            "person2"
+            {"name": "person1", "person_id": 1},
+            {"name": "person2", "person_id": 2}
         ])
         dogs = Linq([
-            {"name": "dog1", "owner": "person1"},
-            {"name": "dog2", "owner": "person2"},
-            {"name": "dog3", "owner": "person1"},
-            {"name": "dog4", "owner": "person3"},
+            {"name": "dog1", "person_id": 1},
+            {"name": "dog2", "person_id": 2},
+            {"name": "dog3", "person_id": 1},
+            {"name": "dog4", "person_id": 3},
         ])
         self.assertEqual(
             persons.join(
                 dogs,
-                lambda p: p,
-                lambda d: d["owner"],
+                lambda p: p["person_id"],
+                lambda d: d["person_id"],
                 lambda p, d: {
-                    "person": p,
+                    "person": p["name"],
                     "dog": d["name"],
                 }
             ),
