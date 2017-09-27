@@ -473,6 +473,38 @@ filtered by last_f.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="ilinq.ilinq.Linq.join">
+<code class="descname">join</code><span class="sig-paren">(</span><em>other</em>, <em>key_f</em>, <em>val_f</em>, <em>select_f</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.join" title="Permalink to this definition">¶</a></dt>
+<dd><p>inner join self and other by key_f and val_f and select_f.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">persons</span> <span class="o">=</span> <span class="n">Linq</span><span class="p">([</span>
+<span class="gp">... </span>    <span class="s2">&quot;person1&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;person2&quot;</span>
+<span class="gp">... </span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dogs</span> <span class="o">=</span> <span class="n">Linq</span><span class="p">([</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dog1&quot;</span><span class="p">,</span> <span class="s2">&quot;owner&quot;</span><span class="p">:</span> <span class="s2">&quot;person1&quot;</span><span class="p">},</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dog2&quot;</span><span class="p">,</span> <span class="s2">&quot;owner&quot;</span><span class="p">:</span> <span class="s2">&quot;person2&quot;</span><span class="p">},</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dog3&quot;</span><span class="p">,</span> <span class="s2">&quot;owner&quot;</span><span class="p">:</span> <span class="s2">&quot;person1&quot;</span><span class="p">},</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dog4&quot;</span><span class="p">,</span> <span class="s2">&quot;owner&quot;</span><span class="p">:</span> <span class="s2">&quot;person3&quot;</span><span class="p">}</span>
+<span class="gp">... </span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">persons</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">dogs</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="n">p</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">d</span><span class="p">[</span><span class="s2">&quot;owner&quot;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="k">lambda</span> <span class="n">p</span><span class="p">,</span> <span class="n">d</span><span class="p">:</span> <span class="p">{</span>
+<span class="gp">... </span>        <span class="s2">&quot;person&quot;</span><span class="p">:</span> <span class="n">p</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;dog&quot;</span><span class="p">:</span> <span class="n">d</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+<span class="gp">... </span>    <span class="p">}</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">Linq&lt;</span>
+<span class="go">    {&#39;person&#39;: &#39;person1&#39;, &#39;dog&#39;: &#39;dog1&#39;},</span>
+<span class="go">    {&#39;person&#39;: &#39;person1&#39;, &#39;dog&#39;: &#39;dog3&#39;},</span>
+<span class="go">    {&#39;person&#39;: &#39;person2&#39;, &#39;dog&#39;: &#39;dog2&#39;}</span>
+<span class="go">&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
 <dt id="ilinq.ilinq.Linq.last">
 <code class="descname">last</code><span class="sig-paren">(</span><em>cond_f=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.last" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the first element with cond_f(item)</p>
