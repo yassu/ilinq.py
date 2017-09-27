@@ -6,6 +6,8 @@
 ILinq Documentation
 =====================
 
+Version |release|
+
 .. image:: images/symbol.png
     :align: center
 
