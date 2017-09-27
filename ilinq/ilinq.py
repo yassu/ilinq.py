@@ -639,8 +639,7 @@ class Linq(list):
             return Linq()
 
         max_value = self.max(key_f=key_f)
-        return Linq([
-            item for item in self if _act(key_f, item) == max_value])
+        return self.where(lambda item: _act(key_f, item) == max_value)
 
     def sum(self, select_f=None):
         """
@@ -700,10 +699,7 @@ class Linq(list):
         >>> numbers.all(lambda n: n % 8 == 0)
         False
         """
-        for item in self:
-            if cond_f(item) is False:
-                return False
-        return True
+        return not(False in self.select(cond_f))
 
     def any(self, cond_f=None):
         """
@@ -743,14 +739,11 @@ class Linq(list):
         >
         """
         from ilinq.igroup import IPair, IGroup
-        group = IGroup()
         group_dict = defaultdict(lambda: Linq([]))
         for item in self[:]:
             group_dict[grouping_f(item)].append(item)
 
-        for key, values in group_dict.items():
-            group.append(IPair(key, values))
-        return group
+        return IGroup([IPair(*pair) for pair in group_dict.items()])
 
     def to_list(self):
         """
