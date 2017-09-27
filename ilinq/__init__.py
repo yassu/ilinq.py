@@ -6,5 +6,5 @@ def _get_short_version(full_version):
     return '.'.join(full_version.split('.')[:2])
 
 
-__VERSION__ = '0.1.2'
+__VERSION__ = '0.1.3'
 __SHORT_VERSION__ = _get_short_version(__VERSION__)
