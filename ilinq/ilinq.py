@@ -290,11 +290,10 @@ class Linq(list):
         """
         list_ = self.distinct()
         val_list = list_.select(key_f)
-        for item in Linq(other).distinct():
-            val = _act(key_f, item)
-            if val not in val_list:
-                list_.append(item)
-        return list_
+        return list_ + \
+            Linq([
+                item for item in Linq(other).distinct()
+                if _act(key_f, item) not in val_list])
 
     def zip(self, other, zip_f=None):
         """
@@ -419,9 +418,7 @@ class Linq(list):
         >>> Linq(range(10)).count(lambda x: x >= 8)
         2
         """
-        return len(self.where(
-            cond_f if cond_f is not None else
-            lambda x: True))
+        return len(self.where(cond_f))
 
     def first(self, cond_f=None):
         """
