@@ -704,6 +704,13 @@ class TestLinq(unittest.TestCase):
     def test_to_dict4(self):
         Linq(range(4)).to_dict(key_f=lambda _: 1)
 
+    def test_add(self):
+        linq1 = Linq([1, 2])
+        linq2 = Linq([3, 4])
+        linq = linq1 + linq2
+        self.assertTrue(isinstance(linq, Linq))
+        self.assertEqual(linq.to_list(), [1, 2, 3, 4])
+
     def test_slice(self):
         linq = Linq(range(5))
         self.assertTrue(linq[3] == 3)

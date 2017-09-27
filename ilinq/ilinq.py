@@ -799,6 +799,9 @@ class Linq(list):
         else:
             raise ValueError('key numbers are dupplicated.')
 
+    def __add__(self, other):
+        return Linq(super().__add__(other))
+
     def __getitem__(self, val):
         if isinstance(val, int):
             return super().__getitem__(val)
