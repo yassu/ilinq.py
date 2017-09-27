@@ -112,12 +112,11 @@ class Linq(list):
             return self.copy()
 
         list_ = list()
-        for j in range(self.count()):
-            if cond_f(self[j]):
-                list_.append(self[j])
+        for item in self:
+            if cond_f(item):
+                list_.append(item)
             else:
                 return Linq(list_)
-            j += 1
         return Linq(list_)
 
     def take_while_i(self, cond_f=None):
@@ -262,12 +261,7 @@ class Linq(list):
         >>> linq1.except_(linq2, key_f=lambda x: abs(x))
         Linq<1, -4>
         """
-        res = list()
-        for item in self[:]:
-            val = _act(key_f, item)
-            if val not in other:
-                res.append(item)
-        return Linq(res)
+        return Linq([item for item in self if _act(key_f, item) not in other])
 
     def intersect(self, other, key_f=None):
         """
