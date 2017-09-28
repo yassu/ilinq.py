@@ -411,16 +411,6 @@ class TestLinq(unittest.TestCase):
             {"name": "dog3", "person_id": 1},
             {"name": "dog4", "person_id": 2},
         ])
-        print(
-            persons.group_join(
-                dogs,
-                lambda p: p["person_id"],
-                lambda d: d["person_id"],
-                lambda p, ds: {
-                    "person": p["name"],
-                    "dogs": ds.select(lambda d: d["name"]),
-                })
-        )
         self.assertEqual(
             persons.group_join(
                 dogs,
@@ -428,12 +418,41 @@ class TestLinq(unittest.TestCase):
                 lambda d: d["person_id"],
                 lambda p, ds: {
                     "person": p["name"],
-                    "dogs": ds.select_many(lambda d: d["name"]),
+                    "dogs": ds.select(lambda d: d["name"]),
                 }
             ),
             Linq([
-                {"person": "person1", "dog": Linq(["dog1", "dog3"])},
-                {"person": "person2", "dog": Linq(["dog2", "dog4"])},
+                {"person": "person1", "dogs": Linq(["dog1", "dog3"])},
+                {"person": "person2", "dogs": Linq(["dog2", "dog4"])},
+            ])
+        )
+
+    def test_group_join2(self):
+        persons = Linq([
+            {"name": "person1", "person_id": 1},
+            {"name": "person2", "person_id": 2},
+            {"name": "person-1", "person_id": -1}
+        ])
+        dogs = Linq([
+            {"name": "dog1", "person_id": 1},
+            {"name": "dog2", "person_id": 2},
+            {"name": "dog3", "person_id": 1},
+            {"name": "dog4", "person_id": 2},
+        ])
+        self.assertEqual(
+            persons.group_join(
+                dogs,
+                lambda p: p["person_id"],
+                lambda d: d["person_id"],
+                lambda p, ds: {
+                    "person": p["name"],
+                    "dogs": ds.select(lambda d: d["name"]),
+                }
+            ),
+            Linq([
+                {"person": "person1", "dogs": Linq(["dog1", "dog3"])},
+                {"person": "person2", "dogs": Linq(["dog2", "dog4"])},
+                {"person": "person-1", "dogs": Linq()},
             ])
         )
 

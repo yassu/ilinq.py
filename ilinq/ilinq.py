@@ -409,6 +409,48 @@ class Linq(list):
             for item in self for item2 in other
             if key_f(item) == val_f(item2)])
 
+    def group_join(self, other, key_f, value_f, select_f):
+        """
+        Grouping by key_f, value_f and select_f.
+
+        >>> persons = Linq([
+        ...     {"name": "person1", "person_id": 1},
+        ...     {"name": "person2", "person_id": 2},
+        ...     {"name": "person-1", "person_id": -1}
+        ... ])
+        >>> dogs = Linq([
+        ...     {"name": "dog1", "person_id": 1},
+        ...     {"name": "dog2", "person_id": 2},
+        ...     {"name": "dog3", "person_id": 1},
+        ...     {"name": "dog4", "person_id": 2}
+        ... ])
+        >>> persons.group_join(
+        ...     dogs,
+        ...     lambda p: p["person_id"],
+        ...     lambda d: d["person_id"],
+        ...     lambda p, ds: {
+        ...         "person": p["name"],
+        ...         "dogs": ds.select(lambda d: d["name"])
+        ...     }
+        ... )
+        Linq<
+            {'person': 'person1', 'dogs': Linq<dog1, dog3>},
+            {'person': 'person2', 'dogs': Linq<dog2, dog4>},
+            {'person': 'person-1', 'dogs': Linq<>}
+        >
+        """
+        linq = Linq()
+        for item in self:
+            key_value = key_f(item)
+            value_linq = Linq()
+            for item2 in other:
+                value_value = value_f(item2)
+                if key_value == value_value:
+                    value_linq.append(item2)
+            linq.append(select_f(item, value_linq))
+        res = linq
+        return res
+
     def count(self, cond_f=None):
         """
         Return the length with condition that cond_f(item).
