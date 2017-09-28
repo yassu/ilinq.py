@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import unittest
-from nose.tools import raises
+from nose.tools import assert_equal, raises
 from ilinq.igroup import IPair, IGroup
 from ilinq.ilinq import Linq
 
@@ -17,25 +17,25 @@ class TestIPair(unittest.TestCase):
 
     def test_key(self):
         pair = IPair(0, Linq([1]))
-        self.assertEqual(pair.key, 0)
+        assert_equal(pair.key, 0)
 
     def test_values(self):
         pair = IPair(0, Linq([1]))
-        self.assertEqual(pair.values, Linq([1]))
+        assert_equal(pair.values, Linq([1]))
 
     def test_str(self):
-        self.assertEqual(str(IPair(0, Linq([1]))), '{0: Linq<1>}')
+        assert_equal(str(IPair(0, Linq([1]))), '{0: Linq<1>}')
 
     def test_repr(self):
-        self.assertEqual(repr(IPair(0, Linq([1]))), 'IPair{0: Linq<1>}')
+        assert_equal(repr(IPair(0, Linq([1]))), 'IPair{0: Linq<1>}')
 
     def test_eq(self):
-        self.assertEqual(IPair(0, Linq([0, 1])), IPair(0, Linq([0, 1])))
+        assert_equal(IPair(0, Linq([0, 1])), IPair(0, Linq([0, 1])))
 
 
 class TestIGroup(unittest.TestCase):
     def test_init(self):
-        self.assertEqual(IGroup().count(), 0)
+        assert_equal(IGroup().count(), 0)
 
     def test_init2(self):
         IGroup([
@@ -61,21 +61,21 @@ class TestIGroup(unittest.TestCase):
         group = IGroup([
             IPair(0, Linq([0, 1, 2]))
         ])
-        self.assertEqual(group.keys, [0])
+        assert_equal(group.keys, [0])
 
     def test_keys2(self):
         group = IGroup([
             IPair(0, Linq([0, 1, 2])),
             IPair(1, Linq([0, 1, 3]))
         ])
-        self.assertEqual(group.keys, [0, 1])
+        assert_equal(group.keys, [0, 1])
 
     def test_values(self):
         group = IGroup([
             IPair(0, Linq([0, 1, 2])),
             IPair(1, Linq([0, 1, 3]))
         ])
-        self.assertEqual(
+        assert_equal(
             group.values,
             [
                 Linq([0, 1, 2]),
@@ -88,6 +88,6 @@ class TestIGroup(unittest.TestCase):
             IPair(0, Linq([0, 1, 2])),
             IPair(1, Linq([0, 1, 3]))
         ])
-        self.assertEqual(
+        assert_equal(
             str(group),
             'IGroup<{0: Linq<0, 1, 2>}, {1: Linq<0, 1, 3>}>')
