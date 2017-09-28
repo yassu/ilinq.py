@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ilinq package &mdash; ILinq 0.1.3 documentation</title>
+  <title>ilinq package &mdash; ILinq 0.1.4 documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="ILinq 0.1.3 documentation" href="../index.html"/> 
+    <link rel="top" title="ILinq 0.1.4 documentation" href="../index.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -434,6 +434,39 @@ is default.</p>
 <span class="go">    {Meat:</span>
 <span class="go">        Linq&lt;{&#39;name&#39;: &#39;hormone&#39;, &#39;kind&#39;: &#39;Meat&#39;}&gt;</span>
 <span class="go">    }</span>
+<span class="go">&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="ilinq.ilinq.Linq.group_join">
+<code class="descname">group_join</code><span class="sig-paren">(</span><em>other</em>, <em>key_f</em>, <em>value_f</em>, <em>select_f</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.group_join" title="Permalink to this definition">¶</a></dt>
+<dd><p>Grouping by key_f, value_f and select_f.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">persons</span> <span class="o">=</span> <span class="n">Linq</span><span class="p">([</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;person1&quot;</span><span class="p">,</span> <span class="s2">&quot;person_id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;person2&quot;</span><span class="p">,</span> <span class="s2">&quot;person_id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;person-1&quot;</span><span class="p">,</span> <span class="s2">&quot;person_id&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">}</span>
+<span class="gp">... </span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dogs</span> <span class="o">=</span> <span class="n">Linq</span><span class="p">([</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dog1&quot;</span><span class="p">,</span> <span class="s2">&quot;person_id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dog2&quot;</span><span class="p">,</span> <span class="s2">&quot;person_id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dog3&quot;</span><span class="p">,</span> <span class="s2">&quot;person_id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dog4&quot;</span><span class="p">,</span> <span class="s2">&quot;person_id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+<span class="gp">... </span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">persons</span><span class="o">.</span><span class="n">group_join</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">dogs</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="n">p</span><span class="p">[</span><span class="s2">&quot;person_id&quot;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">d</span><span class="p">[</span><span class="s2">&quot;person_id&quot;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="k">lambda</span> <span class="n">p</span><span class="p">,</span> <span class="n">ds</span><span class="p">:</span> <span class="p">{</span>
+<span class="gp">... </span>        <span class="s2">&quot;person&quot;</span><span class="p">:</span> <span class="n">p</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="s2">&quot;dogs&quot;</span><span class="p">:</span> <span class="n">ds</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">d</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+<span class="gp">... </span>    <span class="p">}</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">Linq&lt;</span>
+<span class="go">    {&#39;person&#39;: &#39;person1&#39;, &#39;dogs&#39;: Linq&lt;dog1, dog3&gt;},</span>
+<span class="go">    {&#39;person&#39;: &#39;person2&#39;, &#39;dogs&#39;: Linq&lt;dog2, dog4&gt;},</span>
+<span class="go">    {&#39;person&#39;: &#39;person-1&#39;, &#39;dogs&#39;: Linq&lt;&gt;}</span>
 <span class="go">&gt;</span>
 </pre></div>
 </div>
@@ -948,7 +981,7 @@ And if cond_f is None, return all items.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.1.3',
+            VERSION:'0.1.4',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
