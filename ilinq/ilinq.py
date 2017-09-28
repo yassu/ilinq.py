@@ -451,6 +451,9 @@ class Linq(list):
         res = linq
         return res
 
+    def to_lookup(self, key_f=None, value_f=None):
+        return {_act(key_f, item): _act(value_f, item) for item in self}
+
     def count(self, cond_f=None):
         """
         Return the length with condition that cond_f(item).

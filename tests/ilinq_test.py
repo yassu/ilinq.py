@@ -732,6 +732,51 @@ class TestLinq:
                 IPair(1, Linq([1, 3, 5]))
             ]))
 
+    def test_to_lookup(self):
+        assert_equal(
+            Linq(range(4)).to_lookup(),
+            {
+                0: 0,
+                1: 1,
+                2: 2,
+                3: 3
+            }
+        )
+
+    def test_to_lookup2(self):
+        assert_equal(
+            Linq(range(4)).to_lookup(key_f=lambda n: n * 2),
+            {
+                0: 0,
+                2: 1,
+                4: 2,
+                6: 3
+            }
+        )
+
+    def test_to_lookup3(self):
+        assert_equal(
+            Linq(range(4)).to_lookup(value_f=lambda n: n * 3),
+            {
+                0: 0,
+                1: 3,
+                2: 6,
+                3: 9
+            }
+        )
+
+    def test_to_lookup4(self):
+        assert_equal(
+            Linq(range(4)).to_lookup(
+                key_f=lambda n: n * 2, value_f=lambda n: n * 3),
+            {
+                0: 0,
+                2: 3,
+                4: 6,
+                6: 9
+            }
+        )
+
     def test_to_list(self):
         assert_equal(Linq([1]).to_list(), [1])
         assert_equal(Linq([1, 1, 2, 3, 5]).to_list(), [1, 1, 2, 3, 5])
