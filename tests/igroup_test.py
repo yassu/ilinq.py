@@ -1,13 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import unittest
 from nose.tools import assert_equal, raises
 from ilinq.igroup import IPair, IGroup
 from ilinq.ilinq import Linq
 
 
-class TestIPair(unittest.TestCase):
+class TestIPair:
     def test_init(self):
         IPair(0, Linq([range(3)]))
 
@@ -33,7 +32,7 @@ class TestIPair(unittest.TestCase):
         assert_equal(IPair(0, Linq([0, 1])), IPair(0, Linq([0, 1])))
 
 
-class TestIGroup(unittest.TestCase):
+class TestIGroup:
     def test_init(self):
         assert_equal(IGroup().count(), 0)
 
