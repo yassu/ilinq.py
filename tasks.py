@@ -11,10 +11,14 @@ def run_commands(ctx, commands):
 
 
 @task
-def test(ctx):
+def test(ctx, verbose=False):
     """ run flake8 and tests """
     ctx.run('flake8')
-    ctx.run('nosetests --with-coverage --cover-branches --cover-html')
+
+    nose_command = 'nosetests --with-coverage --cover-branches --cover-html'
+    if verbose:
+        nose_command += " --verbose"
+    ctx.run(nose_command)
 
 
 @task
