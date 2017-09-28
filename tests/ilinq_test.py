@@ -5,6 +5,7 @@ from nose.tools import (
     assert_equal, assert_true, assert_false, raises, assert_is_instance)
 from ilinq.ilinq import Linq
 from ilinq.igroup import IPair, IGroup
+from ilinq.ilookup import ILookup
 
 
 class TestLinq:
@@ -733,8 +734,9 @@ class TestLinq:
             ]))
 
     def test_to_lookup(self):
+        lookup = Linq(range(4)).to_lookup()
         assert_equal(
-            Linq(range(4)).to_lookup(),
+            lookup,
             {
                 0: 0,
                 1: 1,
@@ -742,6 +744,7 @@ class TestLinq:
                 3: 3
             }
         )
+        assert_is_instance(lookup, ILookup)
 
     def test_to_lookup2(self):
         assert_equal(

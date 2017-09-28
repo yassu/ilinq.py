@@ -452,7 +452,9 @@ class Linq(list):
         return res
 
     def to_lookup(self, key_f=None, value_f=None):
-        return {_act(key_f, item): _act(value_f, item) for item in self}
+        from ilinq.ilookup import ILookup
+        return ILookup(
+            {_act(key_f, item): _act(value_f, item) for item in self})
 
     def count(self, cond_f=None):
         """
