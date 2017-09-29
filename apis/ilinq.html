@@ -97,6 +97,7 @@
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
 <li><a class="reference internal" href="#module-ilinq.igroup">ilinq.igroup module</a></li>
 <li><a class="reference internal" href="#module-ilinq.ilinq">ilinq.ilinq module</a></li>
+<li><a class="reference internal" href="#module-ilinq.ilookup">ilinq.ilookup module</a></li>
 <li><a class="reference internal" href="#module-ilinq">Module contents</a></li>
 </ul>
 </li>
@@ -877,6 +878,11 @@ This is equivalent list(self)</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="ilinq.ilinq.Linq.to_lookup">
+<code class="descname">to_lookup</code><span class="sig-paren">(</span><em>key_f=None</em>, <em>value_f=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.to_lookup" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ilinq.ilinq.Linq.to_set">
 <code class="descname">to_set</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.to_set" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the set of items.</p>
@@ -937,6 +943,22 @@ And if cond_f is None, return all items.</p>
 </pre></div>
 </div>
 </dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-ilinq.ilookup">
+<span id="ilinq-ilookup-module"></span><h2>ilinq.ilookup module<a class="headerlink" href="#module-ilinq.ilookup" title="Permalink to this headline">¶</a></h2>
+<p>This module provides lookup objects.</p>
+<dl class="class">
+<dt id="ilinq.ilookup.ILookup">
+<em class="property">class </em><code class="descclassname">ilinq.ilookup.</code><code class="descname">ILookup</code><a class="headerlink" href="#ilinq.ilookup.ILookup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">dict</span></code></p>
+<p>Simple object class which be able to convert to a Linq object.</p>
+<dl class="method">
+<dt id="ilinq.ilookup.ILookup.to_linq">
+<code class="descname">to_linq</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilookup.ILookup.to_linq" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
