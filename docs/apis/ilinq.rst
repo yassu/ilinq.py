@@ -20,6 +20,14 @@ ilinq\.ilinq module
     :undoc-members:
     :show-inheritance:
 
+ilinq\.ilookup module
+---------------------
+
+.. automodule:: ilinq.ilookup
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 
 Module contents
 ---------------
