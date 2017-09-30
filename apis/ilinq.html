@@ -176,15 +176,19 @@
 <dt id="ilinq.igroup.IGroup">
 <em class="property">class </em><code class="descclassname">ilinq.igroup.</code><code class="descname">IGroup</code><span class="sig-paren">(</span><em>pairs=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.igroup.IGroup" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#ilinq.ilinq.Linq" title="ilinq.ilinq.Linq"><code class="xref py py-class docutils literal"><span class="pre">ilinq.ilinq.Linq</span></code></a></p>
+<p>This object shows the list of IPair.
+This object is used for Linq.group_by().</p>
 <dl class="attribute">
 <dt id="ilinq.igroup.IGroup.keys">
 <code class="descname">keys</code><a class="headerlink" href="#ilinq.igroup.IGroup.keys" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>return all key objects.</p>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="ilinq.igroup.IGroup.values">
 <code class="descname">values</code><a class="headerlink" href="#ilinq.igroup.IGroup.values" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>return all value objects.</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -192,15 +196,18 @@
 <dt id="ilinq.igroup.IPair">
 <em class="property">class </em><code class="descclassname">ilinq.igroup.</code><code class="descname">IPair</code><span class="sig-paren">(</span><em>key</em>, <em>value_linq</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.igroup.IPair" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>This object shows pair of key and value which Linq instance.</p>
 <dl class="attribute">
 <dt id="ilinq.igroup.IPair.key">
 <code class="descname">key</code><a class="headerlink" href="#ilinq.igroup.IPair.key" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>return key object</p>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="ilinq.igroup.IPair.values">
 <code class="descname">values</code><a class="headerlink" href="#ilinq.igroup.IPair.values" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>return value object</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -426,15 +433,13 @@ is default.</p>
 </pre></div>
 </div>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">foods</span><span class="o">.</span><span class="n">group_by</span><span class="p">(</span><span class="k">lambda</span> <span class="n">f</span><span class="p">:</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;kind&#39;</span><span class="p">])</span>
-<span class="go">Linq&lt;</span>
+<span class="go">IGroup&lt;</span>
 <span class="go">    {Vegetable:</span>
 <span class="go">        Linq&lt;{&#39;name&#39;: &#39;tomato&#39;, &#39;kind&#39;: &#39;Vegetable&#39;},</span>
 <span class="go">        {&#39;name&#39;: &#39;butdock root&#39;, &#39;kind&#39;: &#39;Vegetable&#39;},</span>
-<span class="go">        {&#39;name&#39;: &#39;pumpkin&#39;, &#39;kind&#39;: &#39;Vegetable&#39;}&gt;</span>
-<span class="go">    },</span>
+<span class="go">        {&#39;name&#39;: &#39;pumpkin&#39;, &#39;kind&#39;: &#39;Vegetable&#39;}&gt;},</span>
 <span class="go">    {Meat:</span>
-<span class="go">        Linq&lt;{&#39;name&#39;: &#39;hormone&#39;, &#39;kind&#39;: &#39;Meat&#39;}&gt;</span>
-<span class="go">    }</span>
+<span class="go">        Linq&lt;{&#39;name&#39;: &#39;hormone&#39;, &#39;kind&#39;: &#39;Meat&#39;}&gt;}</span>
 <span class="go">&gt;</span>
 </pre></div>
 </div>
@@ -889,7 +894,10 @@ This is equivalent list(self)</p>
 <span class="gp">... </span>    <span class="n">key_f</span><span class="o">=</span><span class="k">lambda</span> <span class="n">f</span><span class="p">:</span> <span class="n">f</span><span class="p">[</span><span class="s2">&quot;department&quot;</span><span class="p">],</span>
 <span class="gp">... </span>    <span class="n">value_f</span><span class="o">=</span><span class="k">lambda</span> <span class="n">f</span><span class="p">:</span> <span class="n">f</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
 <span class="gp">... </span><span class="p">)</span>
-<span class="go">{&#39;Legumeidae&#39;: Linq&lt;natto, Kidney beans&gt;, &#39;Solanaceae&#39;: Linq&lt;tomato&gt;}</span>
+<span class="go">ILookup&lt;</span>
+<span class="go">    Legumeidae: Linq&lt;natto, Kidney beans&gt;,</span>
+<span class="go">    Solanaceae: Linq&lt;tomato&gt;</span>
+<span class="go">&gt;</span>
 </pre></div>
 </div>
 </dd></dl>
