@@ -14,3 +14,15 @@ class ILookup(dict):
     """
     def to_linq(self):
         return Linq([(key, val) for key, val in self.items()])
+
+    def __str__(self):
+        s = '{}<'.format(self.__class__.__name__)
+        for key, val in self.items():
+            s += '{}: {}'.format(key, val)
+            s += ', '
+        if len(self) > 0:
+            s = s[:-2]
+        return s + '>'
+
+    def __repr__(self):
+        return str(self)
