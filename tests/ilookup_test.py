@@ -3,7 +3,7 @@
 
 from ilinq.ilookup import ILookup
 from ilinq.ilinq import Linq
-from nose.tools import assert_equal
+from nose.tools import assert_equal, assert_in
 
 
 class Test_ILookup(object):
@@ -17,3 +17,13 @@ class Test_ILookup(object):
         assert_equal(
             ILookup({1: 2, 2: 3, 3: 6}).to_linq(),
             Linq([(1, 2), (2, 3), (3, 6)]))
+
+    def str_test(self):
+        # if version < 3.6, order is not guaranteed
+        assert_in(
+            str(ILookup({'a': 'b', 'c': 'd'})),
+            (
+                'ILookup<a: b, c: d>',
+                'ILookup<c: d, a: b>'
+            )
+        )

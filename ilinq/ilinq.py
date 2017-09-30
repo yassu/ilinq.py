@@ -463,7 +463,10 @@ class Linq(list):
         ...     key_f=lambda f: f["department"],
         ...     value_f=lambda f: f["name"]
         ... )
-        {'Legumeidae': Linq<natto, Kidney beans>, 'Solanaceae': Linq<tomato>}
+        ILookup<
+            Legumeidae: Linq<natto, Kidney beans>,
+            Solanaceae: Linq<tomato>
+        >
         """
         from ilinq.ilookup import ILookup
         d = defaultdict(lambda: Linq([]))
