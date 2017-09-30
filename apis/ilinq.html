@@ -95,10 +95,9 @@
               <div class="local-toc"><ul>
 <li><a class="reference internal" href="#">ilinq package</a><ul>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-ilinq.igroup">ilinq.igroup module</a></li>
 <li><a class="reference internal" href="#module-ilinq.ilinq">ilinq.ilinq module</a></li>
+<li><a class="reference internal" href="#module-ilinq.igroup">ilinq.igroup module</a></li>
 <li><a class="reference internal" href="#module-ilinq.ilookup">ilinq.ilookup module</a></li>
-<li><a class="reference internal" href="#module-ilinq">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -168,50 +167,6 @@
 <h1>ilinq package<a class="headerlink" href="#ilinq-package" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="module-ilinq.igroup">
-<span id="ilinq-igroup-module"></span><h2>ilinq.igroup module<a class="headerlink" href="#module-ilinq.igroup" title="Permalink to this headline">¶</a></h2>
-<p>This module provides grouped objects.</p>
-<dl class="class">
-<dt id="ilinq.igroup.IGroup">
-<em class="property">class </em><code class="descclassname">ilinq.igroup.</code><code class="descname">IGroup</code><span class="sig-paren">(</span><em>pairs=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.igroup.IGroup" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#ilinq.ilinq.Linq" title="ilinq.ilinq.Linq"><code class="xref py py-class docutils literal"><span class="pre">ilinq.ilinq.Linq</span></code></a></p>
-<p>This object shows the list of <code class="docutils literal"><span class="pre">IPair</span></code>.
-This object is used for
-<a class="reference external" href="ilinq.html#ilinq.ilinq.Linq.group_by">ilinq.Linq.group_by</a>.</p>
-<dl class="attribute">
-<dt id="ilinq.igroup.IGroup.keys">
-<code class="descname">keys</code><a class="headerlink" href="#ilinq.igroup.IGroup.keys" title="Permalink to this definition">¶</a></dt>
-<dd><p>return all key objects.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="ilinq.igroup.IGroup.values">
-<code class="descname">values</code><a class="headerlink" href="#ilinq.igroup.IGroup.values" title="Permalink to this definition">¶</a></dt>
-<dd><p>return all value objects.</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="ilinq.igroup.IPair">
-<em class="property">class </em><code class="descclassname">ilinq.igroup.</code><code class="descname">IPair</code><span class="sig-paren">(</span><em>key</em>, <em>value_linq</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.igroup.IPair" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
-<p>This object shows pair of key and value which Linq instance.</p>
-<dl class="attribute">
-<dt id="ilinq.igroup.IPair.key">
-<code class="descname">key</code><a class="headerlink" href="#ilinq.igroup.IPair.key" title="Permalink to this definition">¶</a></dt>
-<dd><p>return key object</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="ilinq.igroup.IPair.values">
-<code class="descname">values</code><a class="headerlink" href="#ilinq.igroup.IPair.values" title="Permalink to this definition">¶</a></dt>
-<dd><p>return value object</p>
-</dd></dl>
-
-</dd></dl>
-
 </div>
 <div class="section" id="module-ilinq.ilinq">
 <span id="ilinq-ilinq-module"></span><h2>ilinq.ilinq module<a class="headerlink" href="#module-ilinq.ilinq" title="Permalink to this headline">¶</a></h2>
@@ -324,9 +279,7 @@ Else return <code class="docutils literal"><span class="pre">False</span></code>
 <span class="go">Linq&lt;0, 1, 2&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span><span class="o">.</span><span class="n">default_if_empty</span><span class="p">(</span><span class="s2">&quot;default&quot;</span><span class="p">)</span>
 <span class="go">Linq&lt;0, 1, 2&gt;</span>
-</pre></div>
-</div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">([])</span><span class="o">.</span><span class="n">default_if_empty</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">([])</span><span class="o">.</span><span class="n">default_if_empty</span><span class="p">()</span>
 <span class="go">Linq&lt;None&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">([])</span><span class="o">.</span><span class="n">default_if_empty</span><span class="p">(</span><span class="s2">&quot;default&quot;</span><span class="p">)</span>
 <span class="go">Linq&lt;default&gt;</span>
@@ -430,9 +383,7 @@ is <code class="docutils literal"><span class="pre">default</span></code>.</p>
 <span class="gp">... </span>    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;butdock root&#39;</span><span class="p">,</span> <span class="s1">&#39;kind&#39;</span><span class="p">:</span> <span class="s1">&#39;Vegetable&#39;</span><span class="p">},</span>
 <span class="gp">... </span>    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;pumpkin&#39;</span><span class="p">,</span> <span class="s1">&#39;kind&#39;</span><span class="p">:</span> <span class="s1">&#39;Vegetable&#39;</span><span class="p">}</span>
 <span class="gp">... </span><span class="p">])</span>
-</pre></div>
-</div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">foods</span><span class="o">.</span><span class="n">group_by</span><span class="p">(</span><span class="k">lambda</span> <span class="n">f</span><span class="p">:</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;kind&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">foods</span><span class="o">.</span><span class="n">group_by</span><span class="p">(</span><span class="k">lambda</span> <span class="n">f</span><span class="p">:</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;kind&#39;</span><span class="p">])</span>
 <span class="go">IGroup&lt;</span>
 <span class="go">    {Vegetable:</span>
 <span class="go">        Linq&lt;{&#39;name&#39;: &#39;tomato&#39;, &#39;kind&#39;: &#39;Vegetable&#39;},</span>
@@ -970,6 +921,50 @@ And if <code class="docutils literal"><span class="pre">cond_f</span></code> is 
 </dd></dl>
 
 </div>
+<div class="section" id="module-ilinq.igroup">
+<span id="ilinq-igroup-module"></span><h2>ilinq.igroup module<a class="headerlink" href="#module-ilinq.igroup" title="Permalink to this headline">¶</a></h2>
+<p>This module provides grouped objects.</p>
+<dl class="class">
+<dt id="ilinq.igroup.IGroup">
+<em class="property">class </em><code class="descclassname">ilinq.igroup.</code><code class="descname">IGroup</code><span class="sig-paren">(</span><em>pairs=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.igroup.IGroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ilinq.ilinq.Linq" title="ilinq.ilinq.Linq"><code class="xref py py-class docutils literal"><span class="pre">ilinq.ilinq.Linq</span></code></a></p>
+<p>This object shows the list of <code class="docutils literal"><span class="pre">IPair</span></code>.
+This object is used for
+<a class="reference external" href="ilinq.html#ilinq.ilinq.Linq.group_by">ilinq.Linq.group_by</a>.</p>
+<dl class="attribute">
+<dt id="ilinq.igroup.IGroup.keys">
+<code class="descname">keys</code><a class="headerlink" href="#ilinq.igroup.IGroup.keys" title="Permalink to this definition">¶</a></dt>
+<dd><p>return all key objects.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ilinq.igroup.IGroup.values">
+<code class="descname">values</code><a class="headerlink" href="#ilinq.igroup.IGroup.values" title="Permalink to this definition">¶</a></dt>
+<dd><p>return all value objects.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ilinq.igroup.IPair">
+<em class="property">class </em><code class="descclassname">ilinq.igroup.</code><code class="descname">IPair</code><span class="sig-paren">(</span><em>key</em>, <em>value_linq</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.igroup.IPair" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>This object shows pair of key and value which <code class="docutils literal"><span class="pre">Linq</span></code> instance.</p>
+<dl class="attribute">
+<dt id="ilinq.igroup.IPair.key">
+<code class="descname">key</code><a class="headerlink" href="#ilinq.igroup.IPair.key" title="Permalink to this definition">¶</a></dt>
+<dd><p>return key object</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ilinq.igroup.IPair.values">
+<code class="descname">values</code><a class="headerlink" href="#ilinq.igroup.IPair.values" title="Permalink to this definition">¶</a></dt>
+<dd><p>return value object</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
 <div class="section" id="module-ilinq.ilookup">
 <span id="ilinq-ilookup-module"></span><h2>ilinq.ilookup module<a class="headerlink" href="#module-ilinq.ilookup" title="Permalink to this headline">¶</a></h2>
 <p>This module provides <code class="docutils literal"><span class="pre">lookup</span></code> objects.</p>
@@ -977,7 +972,7 @@ And if <code class="docutils literal"><span class="pre">cond_f</span></code> is 
 <dt id="ilinq.ilookup.ILookup">
 <em class="property">class </em><code class="descclassname">ilinq.ilookup.</code><code class="descname">ILookup</code><a class="headerlink" href="#ilinq.ilookup.ILookup" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">dict</span></code></p>
-<p>Simple object class which be able to convert to a Linq object.</p>
+<p>Simple object class which be able to convert to a <code class="docutils literal"><span class="pre">Linq</span></code> object.</p>
 <dl class="method">
 <dt id="ilinq.ilookup.ILookup.to_linq">
 <code class="descname">to_linq</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilookup.ILookup.to_linq" title="Permalink to this definition">¶</a></dt>
@@ -986,9 +981,6 @@ And if <code class="docutils literal"><span class="pre">cond_f</span></code> is 
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-ilinq">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-ilinq" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
