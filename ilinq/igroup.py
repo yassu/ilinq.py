@@ -44,8 +44,9 @@ class IPair(object):
 
 class IGroup(Linq):
     """
-    This object shows the list of IPair.
-    This object is used for Linq.group_by().
+    This object shows the list of ``IPair``.
+    This object is used for
+    `ilinq.Linq.group_by <ilinq.html#ilinq.ilinq.Linq.group_by>`_.
     """
     def __init__(self, pairs=None):
         if pairs is None:

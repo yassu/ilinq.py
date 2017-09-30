@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-This module provides Linq class, which is a python version of linq like c#.
+This module provides ``Linq`` class, which is a python version of linq like c#.
 """
 
 from collections import defaultdict
@@ -14,8 +14,8 @@ class Linq(list):
     """  Class for handling Linq like C# """
     def where(self, cond_f=None):
         """
-        Return the Linq instance filtered by cond_f.
-        And if cond_f is None, return all items.
+        Return the Linq instance filtered by ``cond_f``.
+        And if ``cond_f`` is ``None``, return all items.
 
         >>> Linq(range(10 + 1)).where(lambda n: n % 5 == 0)
         Linq<0, 5, 10>
@@ -27,7 +27,7 @@ class Linq(list):
 
     def where_in(self, list_, select_f=None):
         """
-        Return items which the condition that select_f(item) in list_
+        Return items which the condition that ``select_f(item)`` in ``list_``.
 
         >>> Linq([1, 3, 5, 100]).where_in([1, 2, 3])
         Linq<1, 3>
@@ -42,7 +42,7 @@ class Linq(list):
 
     def select(self, select_f=None):
         """
-        Return the linq instance selected by select_f.
+        Return the linq instance selected by ``select_f``.
 
         >>> Linq(range(10 + 1)).select(lambda n: n % 3)
         Linq<0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1>
@@ -52,7 +52,7 @@ class Linq(list):
 
     def select_i(self, select_f=None):
         """
-        Return the linq instance selected_by select_f with index parameter.
+        Return the linq instance selected by ``select_f`` with index parameter.
 
         >>> linq = Linq(range(5)).reverse()
         >>> linq.select_i(lambda i, x: x ** i)
@@ -63,7 +63,7 @@ class Linq(list):
 
     def select_many(self, select_f=None):
         """
-        Return the linq instance selected by select_f and flatten.
+        Return the linq instance selected by ``select_f`` and flatten.
 
         >>> linq = Linq([
         ...     {"name": "yassu", "ids": (12, 13)},
@@ -77,7 +77,7 @@ class Linq(list):
 
     def select_many_i(self, select_f=None):
         """
-        Return selected flatten list by select_f
+        Return selected flatten list by ``select_f``.
 
         >>> linq = Linq([[9, 8, 7, 6], [5, 4, 3, 2, 1, 0]])
         >>> linq.select_many_i()
@@ -89,7 +89,7 @@ class Linq(list):
 
     def take(self, num):
         """
-        Return first num numbers of this object.
+        Return first ``num`` numbers of this object.
 
         >>> linq = Linq(range(10))
         >>> linq.take(4)
@@ -186,7 +186,6 @@ class Linq(list):
         >>> linq = Linq(range(4))
         >>> linq.concat(Linq(range(5)).select(lambda x: x*x))
         Linq<0, 1, 2, 3, 0, 1, 4, 9, 16>
-
         >>> linq1 = Linq(range(5))
         >>> linq2 = Linq(range(4)).select(lambda x: x * x)
         >>> linq3 = Linq(range(3)).select(lambda x: x * x * x)
@@ -200,7 +199,7 @@ class Linq(list):
 
     def default_if_empty(self, default=None):
         """
-        if self is empty, return Linq([default]) else self.
+        if ``self`` is empty, return ``Linq([default])`` else ``self``.
 
         >>> Linq(range(3)).default_if_empty()
         Linq<0, 1, 2>
@@ -221,7 +220,7 @@ class Linq(list):
     @staticmethod
     def repeat(obj, num):
         """
-        Return Linq instance which has num objs.
+        Return Linq instance which has ``num`` objs.
 
         >>> Linq.repeat('Hello', 5)
         Linq<Hello, Hello, Hello, Hello, Hello>
@@ -230,7 +229,7 @@ class Linq(list):
 
     def distinct(self, key_f=None):
         """
-        Return self deleted duplicates
+        Return ``self`` deleted duplicates
 
         >>> linq1 = Linq(range(4))
         >>> linq2 = Linq(range(5)).select(lambda x: x * x)
@@ -248,13 +247,14 @@ class Linq(list):
 
     def except_(self, other, key_f=None):
         """
-        If key_f is None, return self values except for other values.
+        If ``key_f`` is ``None``, return ``self`` values except for ``other``
+        values.
 
         >>> Linq(range(10)).except_(Linq(range(4)))
         Linq<4, 5, 6, 7, 8, 9>
 
-        If key_f is not None, return self values with condition that
-        key_f(item) doesn't contain key_f(other_item) items.
+        If ``key_f`` is not ``None``, return ``self`` values with condition
+        that ``key_f(item)`` doesn't contain ``key_f(other_item)`` items.
 
         >>> linq1 = Linq([1, 2, -3, -4, -5])
         >>> linq2 = Linq([2, 3, 5, 7, 6])
@@ -265,7 +265,8 @@ class Linq(list):
 
     def intersect(self, other, key_f=None):
         """
-        Return the intersection set of self and other by filtered key_f.
+        Return the intersection set of ``self`` and other by filtered
+        ``key_f``.
 
         >>> linq1 = Linq([2.0, -2.0, 2.1, -2.2, 2.3, 2.4, 2.5, 2.3])
         >>> linq2 = Linq([2.1, 2.2])
@@ -283,7 +284,7 @@ class Linq(list):
 
     def union(self, other, key_f=None):
         """
-        return Linq object of the union set by using key_f.
+        return Linq object of the union set by using ``key_f``.
 
         >>> Linq([1, 2, 2, 3]).union([3, 4, 5, 6])
         Linq<1, 2, 3, 4, 5, 6>
@@ -297,7 +298,7 @@ class Linq(list):
 
     def zip(self, other, zip_f=None):
         """
-        collect self_items and other_items by zip_f.
+        collect ``self`` items and ``other`` items by ``zip_f``.
 
         >>> Linq(['a11', 'a12', 'a13']).zip(['a21', 'a22', 'a23'])
         Linq<('a11', 'a21'), ('a12', 'a22'), ('a13', 'a23')>
@@ -332,17 +333,17 @@ class Linq(list):
 
     def order_by(self, key_f=None, desc=False):
         """
-        If desc=False and key_f=None, sort in ascending order.
+        If ``desc=False`` and ``key_f=None``, sort in ascending order.
 
         >>> Linq([1.1, 2.3, -2, 5.3, 1.3]).order_by()
         Linq<-2, 1.1, 1.3, 2.3, 5.3>
 
-        If desc=True, sort in descending order
+        If ``desc=True``, sort in descending order
 
         >>> Linq([1.1, 2.3, -2, 5.3, 1.3]).order_by(desc=True)
         Linq<5.3, 2.3, 1.3, 1.1, -2>
 
-        If key_f is not None, sort by result of key_f
+        If ``key_f`` is not ``None``, sort by result of ``key_f``.
 
         >>> linq = Linq([
         ...     {"name": "person1", "age": 23},
@@ -359,8 +360,10 @@ class Linq(list):
     def inject(self, initial_value, func, last_f=None):
         """
         Return the result of
+
         func(func(func(initial_value, self[0]), self[1]) .. self[length - 1])
-        filtered by last_f.
+
+        filtered by ``last_f``.
 
         >>> Linq(range(100 + 1)).inject(0, lambda res, x: res + x)
         5050
@@ -377,7 +380,8 @@ class Linq(list):
 
     def join(self, other, key_f, val_f, select_f):
         """
-        inner join self and other by key_f and val_f and select_f.
+        inner join ``self`` and ``other`` by ``key_f``, ``val_f`` and
+        ``select_f``.
 
         >>> persons = Linq([
         ...     "person1",
@@ -411,7 +415,7 @@ class Linq(list):
 
     def group_join(self, other, key_f, value_f, select_f):
         """
-        Grouping by key_f, value_f and select_f.
+        Grouping by ``key_f``, ``value_f`` and ``select_f``.
 
         >>> persons = Linq([
         ...     {"name": "person1", "person_id": 1},
@@ -478,7 +482,7 @@ class Linq(list):
 
     def count(self, cond_f=None):
         """
-        Return the length with condition that cond_f(item).
+        Return the length with condition that ``cond_f(item)``.
 
         >>> Linq(range(10)).count()
         10
@@ -489,7 +493,7 @@ class Linq(list):
 
     def first(self, cond_f=None):
         """
-        Return the first element with cond_f(item)
+        Return the first element with ``cond_f(item)``.
 
         >>> Linq([3, 2, 5, 8]).first()
         3
@@ -503,8 +507,8 @@ class Linq(list):
 
     def first_or_default(self, cond_f=None, default=None,):
         """
-        Return the first element with cond_f(item) and default value
-        is default.
+        Return the first element with ``cond_f(item)`` and ``default`` value
+        is ``default``.
 
         >>> Linq([3, 2, 5, 8]).first_or_default()
         3
@@ -552,7 +556,7 @@ class Linq(list):
         """
         If this obj consists only one object, return this object.
 
-        If this obj is empty, return default.
+        If this obj is empty, return ``default``.
 
         If this obj consists more than one objects, error is occured.
 
@@ -578,7 +582,7 @@ class Linq(list):
 
     def last(self, cond_f=None):
         """
-        Return the first element with cond_f(item)
+        Return the first element with ``cond_f(item)``.
 
         >>> Linq([3, 2, 5, 8]).last()
         8
@@ -589,8 +593,8 @@ class Linq(list):
 
     def last_or_default(self, cond_f=None, default=None):
         """
-        Return the last element with cond_f(item) and default value
-        is default.
+        Return the last element with ``cond_f(item)`` and default value
+        is ``default``.
 
         >>> Linq([3, 2, 5, 8]).last_or_default()
         8
@@ -608,7 +612,7 @@ class Linq(list):
 
     def element_at(self, ind):
         """
-        Return the element at ind index.
+        Return the element at ``ind`` index.
 
         >>> Linq([3, 2, 5, 8]).element_at(2)
         5
@@ -620,8 +624,8 @@ class Linq(list):
 
     def element_at_or_default(self, num, default=None):
         """
-        If there is num-th element, return this.
-        Else return default value.
+        If there is ``num``-th element, return this.
+        Else return ``default`` value.
 
         >>> from ilinq.ilinq import Linq
         >>> linq = Linq([1, 2])
@@ -638,7 +642,7 @@ class Linq(list):
     def min(self, key_f=None):
         """
         Return minimal value in this object.
-        if key_f is defined, return minimal value by key_f(item).
+        if ``key_f`` is defined, return minimal value by ``key_f(item)``.
 
         >>> Linq([-1, 2, 3, -4.3, 2]).min()
         -4.3
@@ -655,7 +659,7 @@ class Linq(list):
     def min_all(self, key_f=None):
         """
         Return the Linq object which consists of minimal numbers
-        computed by key_f.
+        computed by ``key_f``.
 
         >>> linq = Linq(range(5)).concat(Linq(range(4)))
         >>> linq
@@ -675,7 +679,7 @@ class Linq(list):
     def max(self, key_f=None):
         """
         Return maximal value in this object.
-        If key_fis defined, return minimal value by key_f(item).
+        If ``key_f`` is defined, return minimal value by ``key_f(item)``.
 
         >>> Linq([-1, 2, 3, -4.3, 2]).max()
         3
@@ -692,7 +696,7 @@ class Linq(list):
     def max_all(self, key_f=None):
         """
         Return the Linq object which consists of maximal numbers
-        computed by key_f.
+        computed by ``key_f``.
 
         >>> linq = Linq(range(5)).concat(Linq(range(5)))
         >>> linq
@@ -710,7 +714,7 @@ class Linq(list):
 
     def sum(self, select_f=None):
         """
-        Return total of select_f(item)
+        Return total of ``select_f(item)``.
 
         >>> Linq(range(100 + 1)).sum()
         5050
@@ -725,7 +729,7 @@ class Linq(list):
 
     def average(self, select_f=None):
         """
-        Return average of select_f(item)
+        Return average of ``select_f(item)``.
 
         >>> Linq([1, 2, 3, 4, 5]).average()
         3.0
@@ -740,9 +744,9 @@ class Linq(list):
 
     def contains(self, item, key_f=None):
         """
-        Return either item is in self or not.
+        Return either ``item`` is in ``self`` or not.
 
-        If key_f is setted, we compare by ``key_f`` function.
+        If ``key_f`` is setted, we compare by ``key_f`` function.
 
         >>> books = Linq([
         ...     {'name': 'book1', 'code': '23'},
@@ -757,8 +761,8 @@ class Linq(list):
 
     def all(self, cond_f):
         """
-        if all of cond_f(item) is True, return True.
-        Else return False.
+        if all of ``cond_f(item)`` is ``True``, return ``True``.
+        Else return ``False``.
 
         >>> numbers = Linq([14, 28, 35])
         >>> numbers.all(lambda n: n % 7 == 0)
@@ -770,8 +774,8 @@ class Linq(list):
 
     def any(self, cond_f=None):
         """
-        If there exists item such that cond_f(item), return True.
-        Else return false.
+        If there exists item such that ``cond_f(item)``, return ``True``.
+        Else return ``False``.
 
         >>> Linq([1, 2, 3, 4, 5]).any()
         True
@@ -784,7 +788,7 @@ class Linq(list):
 
     def group_by(self, grouping_f):
         """
-        Group items by grouping_f.
+        Group items by ``grouping_f``.
 
         >>> foods = Linq([
         ...     {'name': 'tomato', 'kind': 'Vegetable'},
@@ -813,7 +817,7 @@ class Linq(list):
     def to_list(self):
         """
         Return the list of items.
-        This is equivalent list(self)
+        This is equivalent ``list(self)``.
         """
         return list(self)
 
@@ -834,12 +838,13 @@ class Linq(list):
 
     def to_dict(self, key_f=None, value_f=None):
         """
-        Return dictionary consisted of [key_f(item), value_f(item)].
+        Return dictionary consisted of ``[key_f(item), value_f(item)]``.
 
         >>> Linq(range(4)).to_dict(key_f=lambda x: x, value_f=lambda x: x * x)
         {0: 0, 1: 1, 2: 4, 3: 9}
 
-        If key_f or value_f is Identity function, this keyword is omitted.
+        If ``key_f`` or ``value_f`` is Identity function, this keyword is
+        omitted.
 
         >>> Linq(range(4)).to_dict(value_f=lambda x: x * x)
         {0: 0, 1: 1, 2: 4, 3: 9}
