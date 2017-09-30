@@ -9,6 +9,9 @@ from ilinq.ilinq import Linq
 
 
 class IPair(object):
+    """
+    This object shows pair of key and value which Linq instance.
+    """
     def __init__(self, key, value_linq):
         if not isinstance(value_linq, Linq):
             raise ValueError('{} is not a linq instance.'.format(value_linq))
@@ -17,10 +20,16 @@ class IPair(object):
 
     @property
     def key(self):
+        """
+        return key object
+        """
         return self._key
 
     @property
     def values(self):
+        """
+        return value object
+        """
         return self._value_linq
 
     def __str__(self):
@@ -34,6 +43,10 @@ class IPair(object):
 
 
 class IGroup(Linq):
+    """
+    This object shows the list of IPair.
+    This object is used for Linq.group_by().
+    """
     def __init__(self, pairs=None):
         if pairs is None:
             pairs = list()
@@ -50,8 +63,14 @@ class IGroup(Linq):
 
     @property
     def keys(self):
+        """
+        return all key objects.
+        """
         return [pair.key for pair in self]
 
     @property
     def values(self):
+        """
+        return all value objects.
+        """
         return [pair.values for pair in self]
