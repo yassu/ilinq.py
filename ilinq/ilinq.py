@@ -452,9 +452,26 @@ class Linq(list):
         return res
 
     def to_lookup(self, key_f=None, value_f=None):
+        """
+        Return the dictionary from ``key_f(item)`` to Linq object of some of
+        ``key_f(item)``.
+
+        >>> natto = {"name": "natto", "department": "Legumeidae"}
+        >>> tomato = {"name": "tomato", "department": "Solanaceae"}
+        >>> kidney_beans = {"name": "Kidney beans", "department": "Legumeidae"}
+        >>> Linq([natto, tomato, kidney_beans]).to_lookup(
+        ...     key_f=lambda f: f["department"],
+        ...     value_f=lambda f: f["name"]
+        ... )
+        {'Legumeidae': Linq<natto, Kidney beans>, 'Solanaceae': Linq<tomato>}
+        """
         from ilinq.ilookup import ILookup
-        return ILookup(
-            {_act(key_f, item): _act(value_f, item) for item in self})
+        d = defaultdict(lambda: Linq([]))
+        for item in self:
+            key = _act(key_f, item)
+            value = _act(value_f, item)
+            d[key].append(value)
+        return ILookup(d)
 
     def count(self, cond_f=None):
         """

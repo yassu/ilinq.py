@@ -734,50 +734,48 @@ class TestLinq:
             ]))
 
     def test_to_lookup(self):
-        lookup = Linq(range(4)).to_lookup()
+        foods = Linq([
+            {"name": "natto", "department": "Legumeidae"},
+            {"name": "tomato", "department": "Solanaceae"},
+            {"name": "Kidney beans", "department": "Legumeidae"}
+        ])
         assert_equal(
-            lookup,
-            {
-                0: 0,
-                1: 1,
-                2: 2,
-                3: 3
-            }
+            foods.to_lookup(
+                key_f=lambda f: f["department"],
+                value_f=lambda f: f["name"]),
+            ILookup({
+                "Legumeidae": Linq(["natto", "Kidney beans"]),
+                "Solanaceae": Linq(["tomato"])
+            })
         )
-        assert_is_instance(lookup, ILookup)
 
     def test_to_lookup2(self):
+        natto = {"name": "natto", "department": "Legumeidae"}
+        tomato = {"name": "tomato", "department": "Solanaceae"}
+        kidney_beans = {"name": "Kidney beans", "department": "Legumeidae"}
         assert_equal(
-            Linq(range(4)).to_lookup(key_f=lambda n: n * 2),
-            {
-                0: 0,
-                2: 1,
-                4: 2,
-                6: 3
-            }
-        )
+            Linq([natto, tomato, kidney_beans]).to_lookup(
+                key_f=lambda f: f["name"]),
+            ILookup({
+                "natto": Linq([natto]),
+                "tomato": Linq([tomato]),
+                "Kidney beans": Linq([kidney_beans])}))
 
     def test_to_lookup3(self):
         assert_equal(
-            Linq(range(4)).to_lookup(value_f=lambda n: n * 3),
-            {
-                0: 0,
-                1: 3,
-                2: 6,
-                3: 9
-            }
-        )
-
-    def test_to_lookup4(self):
-        assert_equal(
-            Linq(range(4)).to_lookup(
-                key_f=lambda n: n * 2, value_f=lambda n: n * 3),
-            {
-                0: 0,
-                2: 3,
-                4: 6,
-                6: 9
-            }
+            Linq(range(10)).to_lookup(value_f=lambda n: n % 3),
+            ILookup({
+                0: Linq([0]),
+                1: Linq([1]),
+                2: Linq([2]),
+                3: Linq([0]),
+                4: Linq([1]),
+                5: Linq([2]),
+                6: Linq([0]),
+                7: Linq([1]),
+                8: Linq([2]),
+                9: Linq([0])
+            })
         )
 
     def test_to_list(self):
