@@ -8,7 +8,7 @@ How To Install
 
 ::
 
-    $ python setup.py install
+    $ pip install ilinq
 
 For developers, we enter
 
