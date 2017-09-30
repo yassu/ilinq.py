@@ -10,7 +10,7 @@ from ilinq.ilinq import Linq
 
 class IPair(object):
     """
-    This object shows pair of key and value which Linq instance.
+    This object shows pair of key and value which ``Linq`` instance.
     """
     def __init__(self, key, value_linq):
         if not isinstance(value_linq, Linq):

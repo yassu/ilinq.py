@@ -10,7 +10,7 @@ from ilinq.ilinq import Linq
 
 class ILookup(dict):
     """
-    Simple object class which be able to convert to a Linq object.
+    Simple object class which be able to convert to a ``Linq`` object.
     """
     def to_linq(self):
         """

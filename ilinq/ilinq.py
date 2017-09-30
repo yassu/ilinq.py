@@ -205,7 +205,6 @@ class Linq(list):
         Linq<0, 1, 2>
         >>> Linq(range(3)).default_if_empty("default")
         Linq<0, 1, 2>
-
         >>> Linq([]).default_if_empty()
         Linq<None>
         >>> Linq([]).default_if_empty("default")
@@ -796,7 +795,6 @@ class Linq(list):
         ...     {'name': 'butdock root', 'kind': 'Vegetable'},
         ...     {'name': 'pumpkin', 'kind': 'Vegetable'}
         ... ])
-
         >>> foods.group_by(lambda f: f['kind'])
         IGroup<
             {Vegetable:
