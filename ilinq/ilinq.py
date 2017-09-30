@@ -791,15 +791,13 @@ class Linq(list):
         ... ])
 
         >>> foods.group_by(lambda f: f['kind'])
-        Linq<
+        IGroup<
             {Vegetable:
                 Linq<{'name': 'tomato', 'kind': 'Vegetable'},
                 {'name': 'butdock root', 'kind': 'Vegetable'},
-                {'name': 'pumpkin', 'kind': 'Vegetable'}>
-            },
+                {'name': 'pumpkin', 'kind': 'Vegetable'}>},
             {Meat:
-                Linq<{'name': 'hormone', 'kind': 'Meat'}>
-            }
+                Linq<{'name': 'hormone', 'kind': 'Meat'}>}
         >
         """
         from ilinq.igroup import IPair, IGroup
