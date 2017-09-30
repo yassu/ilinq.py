@@ -27,3 +27,13 @@ class Test_ILookup(object):
                 'ILookup<c: d, a: b>'
             )
         )
+
+    def repr_test(self):
+        # if version < 3.6, order is not guaranteed
+        assert_in(
+            repr(ILookup({'a': 'b', 'c': 'd'})),
+            (
+                'ILookup<a: b, c: d>',
+                'ILookup<c: d, a: b>'
+            )
+        )
