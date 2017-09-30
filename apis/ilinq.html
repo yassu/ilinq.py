@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ilinq package &mdash; ILinq 0.1.4 documentation</title>
+  <title>ilinq package &mdash; ILinq 0.2.0 documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="ILinq 0.1.4 documentation" href="../index.html"/> 
+    <link rel="top" title="ILinq 0.2.0 documentation" href="../index.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                0.1
+                0.2
               </div>
             
           
@@ -880,7 +880,19 @@ This is equivalent list(self)</p>
 <dl class="method">
 <dt id="ilinq.ilinq.Linq.to_lookup">
 <code class="descname">to_lookup</code><span class="sig-paren">(</span><em>key_f=None</em>, <em>value_f=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.to_lookup" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Return the dictionary from <code class="docutils literal"><span class="pre">key_f(item)</span></code> to Linq object of some of
+<code class="docutils literal"><span class="pre">key_f(item)</span></code>.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">natto</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;natto&quot;</span><span class="p">,</span> <span class="s2">&quot;department&quot;</span><span class="p">:</span> <span class="s2">&quot;Legumeidae&quot;</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tomato</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;tomato&quot;</span><span class="p">,</span> <span class="s2">&quot;department&quot;</span><span class="p">:</span> <span class="s2">&quot;Solanaceae&quot;</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kidney_beans</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Kidney beans&quot;</span><span class="p">,</span> <span class="s2">&quot;department&quot;</span><span class="p">:</span> <span class="s2">&quot;Legumeidae&quot;</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">([</span><span class="n">natto</span><span class="p">,</span> <span class="n">tomato</span><span class="p">,</span> <span class="n">kidney_beans</span><span class="p">])</span><span class="o">.</span><span class="n">to_lookup</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">key_f</span><span class="o">=</span><span class="k">lambda</span> <span class="n">f</span><span class="p">:</span> <span class="n">f</span><span class="p">[</span><span class="s2">&quot;department&quot;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="n">value_f</span><span class="o">=</span><span class="k">lambda</span> <span class="n">f</span><span class="p">:</span> <span class="n">f</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">{&#39;Legumeidae&#39;: Linq&lt;natto, Kidney beans&gt;, &#39;Solanaceae&#39;: Linq&lt;tomato&gt;}</span>
+</pre></div>
+</div>
+</dd></dl>
 
 <dl class="method">
 <dt id="ilinq.ilinq.Linq.to_set">
@@ -1003,7 +1015,7 @@ And if cond_f is None, return all items.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.1.4',
+            VERSION:'0.2.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
