@@ -176,8 +176,9 @@
 <dt id="ilinq.igroup.IGroup">
 <em class="property">class </em><code class="descclassname">ilinq.igroup.</code><code class="descname">IGroup</code><span class="sig-paren">(</span><em>pairs=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.igroup.IGroup" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#ilinq.ilinq.Linq" title="ilinq.ilinq.Linq"><code class="xref py py-class docutils literal"><span class="pre">ilinq.ilinq.Linq</span></code></a></p>
-<p>This object shows the list of IPair.
-This object is used for Linq.group_by().</p>
+<p>This object shows the list of <code class="docutils literal"><span class="pre">IPair</span></code>.
+This object is used for
+<a class="reference external" href="ilinq.html#ilinq.ilinq.Linq.group_by">ilinq.Linq.group_by</a>.</p>
 <dl class="attribute">
 <dt id="ilinq.igroup.IGroup.keys">
 <code class="descname">keys</code><a class="headerlink" href="#ilinq.igroup.IGroup.keys" title="Permalink to this definition">¶</a></dt>
@@ -214,7 +215,7 @@ This object is used for Linq.group_by().</p>
 </div>
 <div class="section" id="module-ilinq.ilinq">
 <span id="ilinq-ilinq-module"></span><h2>ilinq.ilinq module<a class="headerlink" href="#module-ilinq.ilinq" title="Permalink to this headline">¶</a></h2>
-<p>This module provides Linq class, which is a python version of linq like c#.</p>
+<p>This module provides <code class="docutils literal"><span class="pre">Linq</span></code> class, which is a python version of linq like c#.</p>
 <dl class="class">
 <dt id="ilinq.ilinq.Linq">
 <em class="property">class </em><code class="descclassname">ilinq.ilinq.</code><code class="descname">Linq</code><a class="headerlink" href="#ilinq.ilinq.Linq" title="Permalink to this definition">¶</a></dt>
@@ -223,8 +224,8 @@ This object is used for Linq.group_by().</p>
 <dl class="method">
 <dt id="ilinq.ilinq.Linq.all">
 <code class="descname">all</code><span class="sig-paren">(</span><em>cond_f</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.all" title="Permalink to this definition">¶</a></dt>
-<dd><p>if all of cond_f(item) is True, return True.
-Else return False.</p>
+<dd><p>if all of <code class="docutils literal"><span class="pre">cond_f(item)</span></code> is <code class="docutils literal"><span class="pre">True</span></code>, return <code class="docutils literal"><span class="pre">True</span></code>.
+Else return <code class="docutils literal"><span class="pre">False</span></code>.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">numbers</span> <span class="o">=</span> <span class="n">Linq</span><span class="p">([</span><span class="mi">14</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">35</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">numbers</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">7</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
 <span class="go">True</span>
@@ -237,8 +238,8 @@ Else return False.</p>
 <dl class="method">
 <dt id="ilinq.ilinq.Linq.any">
 <code class="descname">any</code><span class="sig-paren">(</span><em>cond_f=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.any" title="Permalink to this definition">¶</a></dt>
-<dd><p>If there exists item such that cond_f(item), return True.
-Else return false.</p>
+<dd><p>If there exists item such that <code class="docutils literal"><span class="pre">cond_f(item)</span></code>, return <code class="docutils literal"><span class="pre">True</span></code>.
+Else return <code class="docutils literal"><span class="pre">False</span></code>.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span><span class="o">.</span><span class="n">any</span><span class="p">()</span>
 <span class="go">True</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">)</span>
@@ -252,7 +253,7 @@ Else return false.</p>
 <dl class="method">
 <dt id="ilinq.ilinq.Linq.average">
 <code class="descname">average</code><span class="sig-paren">(</span><em>select_f=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.average" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return average of select_f(item)</p>
+<dd><p>Return average of <code class="docutils literal"><span class="pre">select_f(item)</span></code>.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span><span class="o">.</span><span class="n">average</span><span class="p">()</span>
 <span class="go">3.0</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">persons</span> <span class="o">=</span> <span class="n">Linq</span><span class="p">([</span>
@@ -271,9 +272,7 @@ Else return false.</p>
 <dd><div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">linq</span> <span class="o">=</span> <span class="n">Linq</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">linq</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">Linq</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="p">))</span>
 <span class="go">Linq&lt;0, 1, 2, 3, 0, 1, 4, 9, 16&gt;</span>
-</pre></div>
-</div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">linq1</span> <span class="o">=</span> <span class="n">Linq</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">linq1</span> <span class="o">=</span> <span class="n">Linq</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">linq2</span> <span class="o">=</span> <span class="n">Linq</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">linq3</span> <span class="o">=</span> <span class="n">Linq</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">linq1</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">linq2</span><span class="p">,</span> <span class="n">linq3</span><span class="p">)</span>
@@ -285,8 +284,8 @@ Else return false.</p>
 <dl class="method">
 <dt id="ilinq.ilinq.Linq.contains">
 <code class="descname">contains</code><span class="sig-paren">(</span><em>item</em>, <em>key_f=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.contains" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return either item is in self or not.</p>
-<p>If key_f is setted, we compare by <code class="docutils literal"><span class="pre">key_f</span></code> function.</p>
+<dd><p>Return either <code class="docutils literal"><span class="pre">item</span></code> is in <code class="docutils literal"><span class="pre">self</span></code> or not.</p>
+<p>If <code class="docutils literal"><span class="pre">key_f</span></code> is setted, we compare by <code class="docutils literal"><span class="pre">key_f</span></code> function.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">books</span> <span class="o">=</span> <span class="n">Linq</span><span class="p">([</span>
 <span class="gp">... </span>    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;book1&#39;</span><span class="p">,</span> <span class="s1">&#39;code&#39;</span><span class="p">:</span> <span class="s1">&#39;23&#39;</span><span class="p">},</span>
 <span class="gp">... </span>    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;book2&#39;</span><span class="p">,</span> <span class="s1">&#39;code&#39;</span><span class="p">:</span> <span class="s1">&#39;32&#39;</span><span class="p">}</span>
@@ -308,7 +307,7 @@ Else return false.</p>
 <dl class="method">
 <dt id="ilinq.ilinq.Linq.count">
 <code class="descname">count</code><span class="sig-paren">(</span><em>cond_f=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.count" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the length with condition that cond_f(item).</p>
+<dd><p>Return the length with condition that <code class="docutils literal"><span class="pre">cond_f(item)</span></code>.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
 <span class="go">10</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">8</span><span class="p">)</span>
@@ -320,7 +319,7 @@ Else return false.</p>
 <dl class="method">
 <dt id="ilinq.ilinq.Linq.default_if_empty">
 <code class="descname">default_if_empty</code><span class="sig-paren">(</span><em>default=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.default_if_empty" title="Permalink to this definition">¶</a></dt>
-<dd><p>if self is empty, return Linq([default]) else self.</p>
+<dd><p>if <code class="docutils literal"><span class="pre">self</span></code> is empty, return <code class="docutils literal"><span class="pre">Linq([default])</span></code> else <code class="docutils literal"><span class="pre">self</span></code>.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span><span class="o">.</span><span class="n">default_if_empty</span><span class="p">()</span>
 <span class="go">Linq&lt;0, 1, 2&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span><span class="o">.</span><span class="n">default_if_empty</span><span class="p">(</span><span class="s2">&quot;default&quot;</span><span class="p">)</span>
@@ -338,7 +337,7 @@ Else return false.</p>
 <dl class="method">
 <dt id="ilinq.ilinq.Linq.distinct">
 <code class="descname">distinct</code><span class="sig-paren">(</span><em>key_f=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.distinct" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return self deleted duplicates</p>
+<dd><p>Return <code class="docutils literal"><span class="pre">self</span></code> deleted duplicates</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">linq1</span> <span class="o">=</span> <span class="n">Linq</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">linq2</span> <span class="o">=</span> <span class="n">Linq</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">linq1</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">linq2</span><span class="p">)</span><span class="o">.</span><span class="n">distinct</span><span class="p">()</span>
@@ -350,7 +349,7 @@ Else return false.</p>
 <dl class="method">
 <dt id="ilinq.ilinq.Linq.element_at">
 <code class="descname">element_at</code><span class="sig-paren">(</span><em>ind</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.element_at" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the element at ind index.</p>
+<dd><p>Return the element at <code class="docutils literal"><span class="pre">ind</span></code> index.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span><span class="o">.</span><span class="n">element_at</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 <span class="go">5</span>
 </pre></div>
@@ -360,8 +359,8 @@ Else return false.</p>
 <dl class="method">
 <dt id="ilinq.ilinq.Linq.element_at_or_default">
 <code class="descname">element_at_or_default</code><span class="sig-paren">(</span><em>num</em>, <em>default=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.element_at_or_default" title="Permalink to this definition">¶</a></dt>
-<dd><p>If there is num-th element, return this.
-Else return default value.</p>
+<dd><p>If there is <code class="docutils literal"><span class="pre">num</span></code>-th element, return this.
+Else return <code class="docutils literal"><span class="pre">default</span></code> value.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ilinq.ilinq</span> <span class="k">import</span> <span class="n">Linq</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">linq</span> <span class="o">=</span> <span class="n">Linq</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">linq</span><span class="o">.</span><span class="n">element_at_or_default</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -375,13 +374,14 @@ Else return default value.</p>
 <dl class="method">
 <dt id="ilinq.ilinq.Linq.except_">
 <code class="descname">except_</code><span class="sig-paren">(</span><em>other</em>, <em>key_f=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.except_" title="Permalink to this definition">¶</a></dt>
-<dd><p>If key_f is None, return self values except for other values.</p>
+<dd><p>If <code class="docutils literal"><span class="pre">key_f</span></code> is <code class="docutils literal"><span class="pre">None</span></code>, return <code class="docutils literal"><span class="pre">self</span></code> values except for <code class="docutils literal"><span class="pre">other</span></code>
+values.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span><span class="o">.</span><span class="n">except_</span><span class="p">(</span><span class="n">Linq</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)))</span>
 <span class="go">Linq&lt;4, 5, 6, 7, 8, 9&gt;</span>
 </pre></div>
 </div>
-<p>If key_f is not None, return self values with condition that
-key_f(item) doesn’t contain key_f(other_item) items.</p>
+<p>If <code class="docutils literal"><span class="pre">key_f</span></code> is not <code class="docutils literal"><span class="pre">None</span></code>, return <code class="docutils literal"><span class="pre">self</span></code> values with condition
+that <code class="docutils literal"><span class="pre">key_f(item)</span></code> doesn’t contain <code class="docutils literal"><span class="pre">key_f(other_item)</span></code> items.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">linq1</span> <span class="o">=</span> <span class="n">Linq</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">linq2</span> <span class="o">=</span> <span class="n">Linq</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">linq1</span><span class="o">.</span><span class="n">except_</span><span class="p">(</span><span class="n">linq2</span><span class="p">,</span> <span class="n">key_f</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
@@ -393,7 +393,7 @@ key_f(item) doesn’t contain key_f(other_item) items.</p>
 <dl class="method">
 <dt id="ilinq.ilinq.Linq.first">
 <code class="descname">first</code><span class="sig-paren">(</span><em>cond_f=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.first" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the first element with cond_f(item)</p>
+<dd><p>Return the first element with <code class="docutils literal"><span class="pre">cond_f(item)</span></code>.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
 <span class="go">3</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span><span class="o">.</span><span class="n">first</span><span class="p">(</span><span class="n">cond_f</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
@@ -405,8 +405,8 @@ key_f(item) doesn’t contain key_f(other_item) items.</p>
 <dl class="method">
 <dt id="ilinq.ilinq.Linq.first_or_default">
 <code class="descname">first_or_default</code><span class="sig-paren">(</span><em>cond_f=None</em>, <em>default=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.first_or_default" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the first element with cond_f(item) and default value
-is default.</p>
+<dd><p>Return the first element with <code class="docutils literal"><span class="pre">cond_f(item)</span></code> and <code class="docutils literal"><span class="pre">default</span></code> value
+is <code class="docutils literal"><span class="pre">default</span></code>.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span><span class="o">.</span><span class="n">first_or_default</span><span class="p">()</span>
 <span class="go">3</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span><span class="o">.</span><span class="n">first_or_default</span><span class="p">(</span>
@@ -423,7 +423,7 @@ is default.</p>
 <dl class="method">
 <dt id="ilinq.ilinq.Linq.group_by">
 <code class="descname">group_by</code><span class="sig-paren">(</span><em>grouping_f</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.group_by" title="Permalink to this definition">¶</a></dt>
-<dd><p>Group items by grouping_f.</p>
+<dd><p>Group items by <code class="docutils literal"><span class="pre">grouping_f</span></code>.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">foods</span> <span class="o">=</span> <span class="n">Linq</span><span class="p">([</span>
 <span class="gp">... </span>    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;tomato&#39;</span><span class="p">,</span> <span class="s1">&#39;kind&#39;</span><span class="p">:</span> <span class="s1">&#39;Vegetable&#39;</span><span class="p">},</span>
 <span class="gp">... </span>    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;hormone&#39;</span><span class="p">,</span> <span class="s1">&#39;kind&#39;</span><span class="p">:</span> <span class="s1">&#39;Meat&#39;</span><span class="p">},</span>
@@ -448,7 +448,7 @@ is default.</p>
 <dl class="method">
 <dt id="ilinq.ilinq.Linq.group_join">
 <code class="descname">group_join</code><span class="sig-paren">(</span><em>other</em>, <em>key_f</em>, <em>value_f</em>, <em>select_f</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.group_join" title="Permalink to this definition">¶</a></dt>
-<dd><p>Grouping by key_f, value_f and select_f.</p>
+<dd><p>Grouping by <code class="docutils literal"><span class="pre">key_f</span></code>, <code class="docutils literal"><span class="pre">value_f</span></code> and <code class="docutils literal"><span class="pre">select_f</span></code>.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">persons</span> <span class="o">=</span> <span class="n">Linq</span><span class="p">([</span>
 <span class="gp">... </span>    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;person1&quot;</span><span class="p">,</span> <span class="s2">&quot;person_id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
 <span class="gp">... </span>    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;person2&quot;</span><span class="p">,</span> <span class="s2">&quot;person_id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span>
@@ -481,9 +481,9 @@ is default.</p>
 <dl class="method">
 <dt id="ilinq.ilinq.Linq.inject">
 <code class="descname">inject</code><span class="sig-paren">(</span><em>initial_value</em>, <em>func</em>, <em>last_f=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.inject" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the result of
-func(func(func(initial_value, self[0]), self[1]) .. self[length - 1])
-filtered by last_f.</p>
+<dd><p>Return the result of</p>
+<p>func(func(func(initial_value, self[0]), self[1]) .. self[length - 1])</p>
+<p>filtered by <code class="docutils literal"><span class="pre">last_f</span></code>.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">inject</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">res</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">res</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span>
 <span class="go">5050</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">inject</span><span class="p">(</span>
@@ -498,7 +498,8 @@ filtered by last_f.</p>
 <dl class="method">
 <dt id="ilinq.ilinq.Linq.intersect">
 <code class="descname">intersect</code><span class="sig-paren">(</span><em>other</em>, <em>key_f=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.intersect" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the intersection set of self and other by filtered key_f.</p>
+<dd><p>Return the intersection set of <code class="docutils literal"><span class="pre">self</span></code> and other by filtered
+<code class="docutils literal"><span class="pre">key_f</span></code>.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">linq1</span> <span class="o">=</span> <span class="n">Linq</span><span class="p">([</span><span class="mf">2.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">2.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.2</span><span class="p">,</span> <span class="mf">2.3</span><span class="p">,</span> <span class="mf">2.4</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.3</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">linq2</span> <span class="o">=</span> <span class="n">Linq</span><span class="p">([</span><span class="mf">2.1</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">linq1</span><span class="o">.</span><span class="n">intersect</span><span class="p">(</span><span class="n">linq2</span><span class="p">)</span>
@@ -514,7 +515,8 @@ filtered by last_f.</p>
 <dl class="method">
 <dt id="ilinq.ilinq.Linq.join">
 <code class="descname">join</code><span class="sig-paren">(</span><em>other</em>, <em>key_f</em>, <em>val_f</em>, <em>select_f</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.join" title="Permalink to this definition">¶</a></dt>
-<dd><p>inner join self and other by key_f and val_f and select_f.</p>
+<dd><p>inner join <code class="docutils literal"><span class="pre">self</span></code> and <code class="docutils literal"><span class="pre">other</span></code> by <code class="docutils literal"><span class="pre">key_f</span></code>, <code class="docutils literal"><span class="pre">val_f</span></code> and
+<code class="docutils literal"><span class="pre">select_f</span></code>.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">persons</span> <span class="o">=</span> <span class="n">Linq</span><span class="p">([</span>
 <span class="gp">... </span>    <span class="s2">&quot;person1&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="s2">&quot;person2&quot;</span>
@@ -546,7 +548,7 @@ filtered by last_f.</p>
 <dl class="method">
 <dt id="ilinq.ilinq.Linq.last">
 <code class="descname">last</code><span class="sig-paren">(</span><em>cond_f=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.last" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the first element with cond_f(item)</p>
+<dd><p>Return the first element with <code class="docutils literal"><span class="pre">cond_f(item)</span></code>.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span><span class="o">.</span><span class="n">last</span><span class="p">()</span>
 <span class="go">8</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span><span class="o">.</span><span class="n">last</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
@@ -558,8 +560,8 @@ filtered by last_f.</p>
 <dl class="method">
 <dt id="ilinq.ilinq.Linq.last_or_default">
 <code class="descname">last_or_default</code><span class="sig-paren">(</span><em>cond_f=None</em>, <em>default=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.last_or_default" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the last element with cond_f(item) and default value
-is default.</p>
+<dd><p>Return the last element with <code class="docutils literal"><span class="pre">cond_f(item)</span></code> and default value
+is <code class="docutils literal"><span class="pre">default</span></code>.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span><span class="o">.</span><span class="n">last_or_default</span><span class="p">()</span>
 <span class="go">8</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span><span class="o">.</span><span class="n">last_or_default</span><span class="p">(</span><span class="n">cond_f</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
@@ -576,7 +578,7 @@ is default.</p>
 <dt id="ilinq.ilinq.Linq.max">
 <code class="descname">max</code><span class="sig-paren">(</span><em>key_f=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.max" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return maximal value in this object.
-If key_fis defined, return minimal value by key_f(item).</p>
+If <code class="docutils literal"><span class="pre">key_f</span></code> is defined, return minimal value by <code class="docutils literal"><span class="pre">key_f(item)</span></code>.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.3</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
 <span class="go">3</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.3</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">)</span>
@@ -589,7 +591,7 @@ If key_fis defined, return minimal value by key_f(item).</p>
 <dt id="ilinq.ilinq.Linq.max_all">
 <code class="descname">max_all</code><span class="sig-paren">(</span><em>key_f=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.max_all" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the Linq object which consists of maximal numbers
-computed by key_f.</p>
+computed by <code class="docutils literal"><span class="pre">key_f</span></code>.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">linq</span> <span class="o">=</span> <span class="n">Linq</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">Linq</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">linq</span>
 <span class="go">Linq&lt;0, 1, 2, 3, 4, 0, 1, 2, 3, 4&gt;</span>
@@ -605,7 +607,7 @@ computed by key_f.</p>
 <dt id="ilinq.ilinq.Linq.min">
 <code class="descname">min</code><span class="sig-paren">(</span><em>key_f=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.min" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return minimal value in this object.
-if key_f is defined, return minimal value by key_f(item).</p>
+if <code class="docutils literal"><span class="pre">key_f</span></code> is defined, return minimal value by <code class="docutils literal"><span class="pre">key_f(item)</span></code>.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.3</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
 <span class="go">-4.3</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.3</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="nb">abs</span><span class="p">)</span>
@@ -618,7 +620,7 @@ if key_f is defined, return minimal value by key_f(item).</p>
 <dt id="ilinq.ilinq.Linq.min_all">
 <code class="descname">min_all</code><span class="sig-paren">(</span><em>key_f=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.min_all" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the Linq object which consists of minimal numbers
-computed by key_f.</p>
+computed by <code class="docutils literal"><span class="pre">key_f</span></code>.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">linq</span> <span class="o">=</span> <span class="n">Linq</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">Linq</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">linq</span>
 <span class="go">Linq&lt;0, 1, 2, 3, 4, 0, 1, 2, 3&gt;</span>
@@ -633,17 +635,17 @@ computed by key_f.</p>
 <dl class="method">
 <dt id="ilinq.ilinq.Linq.order_by">
 <code class="descname">order_by</code><span class="sig-paren">(</span><em>key_f=None</em>, <em>desc=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.order_by" title="Permalink to this definition">¶</a></dt>
-<dd><p>If desc=False and key_f=None, sort in ascending order.</p>
+<dd><p>If <code class="docutils literal"><span class="pre">desc=False</span></code> and <code class="docutils literal"><span class="pre">key_f=None</span></code>, sort in ascending order.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">([</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">2.3</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mf">5.3</span><span class="p">,</span> <span class="mf">1.3</span><span class="p">])</span><span class="o">.</span><span class="n">order_by</span><span class="p">()</span>
 <span class="go">Linq&lt;-2, 1.1, 1.3, 2.3, 5.3&gt;</span>
 </pre></div>
 </div>
-<p>If desc=True, sort in descending order</p>
+<p>If <code class="docutils literal"><span class="pre">desc=True</span></code>, sort in descending order</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">([</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">2.3</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mf">5.3</span><span class="p">,</span> <span class="mf">1.3</span><span class="p">])</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="go">Linq&lt;5.3, 2.3, 1.3, 1.1, -2&gt;</span>
 </pre></div>
 </div>
-<p>If key_f is not None, sort by result of key_f</p>
+<p>If <code class="docutils literal"><span class="pre">key_f</span></code> is not <code class="docutils literal"><span class="pre">None</span></code>, sort by result of <code class="docutils literal"><span class="pre">key_f</span></code>.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">linq</span> <span class="o">=</span> <span class="n">Linq</span><span class="p">([</span>
 <span class="gp">... </span>    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;person1&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">23</span><span class="p">},</span>
 <span class="gp">... </span>    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;person2&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">25</span><span class="p">},</span>
@@ -660,7 +662,7 @@ computed by key_f.</p>
 <dl class="staticmethod">
 <dt id="ilinq.ilinq.Linq.repeat">
 <em class="property">static </em><code class="descname">repeat</code><span class="sig-paren">(</span><em>obj</em>, <em>num</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.repeat" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return Linq instance which has num objs.</p>
+<dd><p>Return Linq instance which has <code class="docutils literal"><span class="pre">num</span></code> objs.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="s1">&#39;Hello&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 <span class="go">Linq&lt;Hello, Hello, Hello, Hello, Hello&gt;</span>
 </pre></div>
@@ -684,7 +686,7 @@ computed by key_f.</p>
 <dl class="method">
 <dt id="ilinq.ilinq.Linq.select">
 <code class="descname">select</code><span class="sig-paren">(</span><em>select_f=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.select" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the linq instance selected by select_f.</p>
+<dd><p>Return the linq instance selected by <code class="docutils literal"><span class="pre">select_f</span></code>.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">3</span><span class="p">)</span>
 <span class="go">Linq&lt;0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1&gt;</span>
 </pre></div>
@@ -694,7 +696,7 @@ computed by key_f.</p>
 <dl class="method">
 <dt id="ilinq.ilinq.Linq.select_i">
 <code class="descname">select_i</code><span class="sig-paren">(</span><em>select_f=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.select_i" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the linq instance selected_by select_f with index parameter.</p>
+<dd><p>Return the linq instance selected by <code class="docutils literal"><span class="pre">select_f</span></code> with index parameter.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">linq</span> <span class="o">=</span> <span class="n">Linq</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">linq</span><span class="o">.</span><span class="n">select_i</span><span class="p">(</span><span class="k">lambda</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">**</span> <span class="n">i</span><span class="p">)</span>
 <span class="go">Linq&lt;1, 3, 4, 1, 0&gt;</span>
@@ -705,7 +707,7 @@ computed by key_f.</p>
 <dl class="method">
 <dt id="ilinq.ilinq.Linq.select_many">
 <code class="descname">select_many</code><span class="sig-paren">(</span><em>select_f=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.select_many" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the linq instance selected by select_f and flatten.</p>
+<dd><p>Return the linq instance selected by <code class="docutils literal"><span class="pre">select_f</span></code> and flatten.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">linq</span> <span class="o">=</span> <span class="n">Linq</span><span class="p">([</span>
 <span class="gp">... </span>    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;yassu&quot;</span><span class="p">,</span> <span class="s2">&quot;ids&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">)},</span>
 <span class="gp">... </span>    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;aiya&quot;</span><span class="p">,</span>  <span class="s2">&quot;ids&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">21</span><span class="p">)}])</span>
@@ -718,7 +720,7 @@ computed by key_f.</p>
 <dl class="method">
 <dt id="ilinq.ilinq.Linq.select_many_i">
 <code class="descname">select_many_i</code><span class="sig-paren">(</span><em>select_f=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.select_many_i" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return selected flatten list by select_f</p>
+<dd><p>Return selected flatten list by <code class="docutils literal"><span class="pre">select_f</span></code>.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">linq</span> <span class="o">=</span> <span class="n">Linq</span><span class="p">([[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">linq</span><span class="o">.</span><span class="n">select_many_i</span><span class="p">()</span>
 <span class="go">Linq&lt;9, 8, 7, 6, 5, 4, 3, 2, 1, 0&gt;</span>
@@ -755,7 +757,7 @@ IndexError: This linq with condition is more long.
 <dt id="ilinq.ilinq.Linq.single_or_default">
 <code class="descname">single_or_default</code><span class="sig-paren">(</span><em>default=None</em>, <em>cond_f=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.single_or_default" title="Permalink to this definition">¶</a></dt>
 <dd><p>If this obj consists only one object, return this object.</p>
-<p>If this obj is empty, return default.</p>
+<p>If this obj is empty, return <code class="docutils literal"><span class="pre">default</span></code>.</p>
 <p>If this obj consists more than one objects, error is occured.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>&gt;&gt;&gt; Linq([]).single_or_default(16)
 16
@@ -809,7 +811,7 @@ that <code class="docutils literal"><span class="pre">cond_f(i,</span> <span cla
 <dl class="method">
 <dt id="ilinq.ilinq.Linq.sum">
 <code class="descname">sum</code><span class="sig-paren">(</span><em>select_f=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.sum" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return total of select_f(item)</p>
+<dd><p>Return total of <code class="docutils literal"><span class="pre">select_f(item)</span></code>.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="go">5050</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">persons</span> <span class="o">=</span> <span class="n">Linq</span><span class="p">([</span>
@@ -825,7 +827,7 @@ that <code class="docutils literal"><span class="pre">cond_f(i,</span> <span cla
 <dl class="method">
 <dt id="ilinq.ilinq.Linq.take">
 <code class="descname">take</code><span class="sig-paren">(</span><em>num</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.take" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return first num numbers of this object.</p>
+<dd><p>Return first <code class="docutils literal"><span class="pre">num</span></code> numbers of this object.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">linq</span> <span class="o">=</span> <span class="n">Linq</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">linq</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 <span class="go">Linq&lt;0, 1, 2, 3&gt;</span>
@@ -863,12 +865,13 @@ that <code class="docutils literal"><span class="pre">cond_f(i,</span> <span cla
 <dl class="method">
 <dt id="ilinq.ilinq.Linq.to_dict">
 <code class="descname">to_dict</code><span class="sig-paren">(</span><em>key_f=None</em>, <em>value_f=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.to_dict" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return dictionary consisted of [key_f(item), value_f(item)].</p>
+<dd><p>Return dictionary consisted of <code class="docutils literal"><span class="pre">[key_f(item),</span> <span class="pre">value_f(item)]</span></code>.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">key_f</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="n">value_f</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span>
 <span class="go">{0: 0, 1: 1, 2: 4, 3: 9}</span>
 </pre></div>
 </div>
-<p>If key_f or value_f is Identity function, this keyword is omitted.</p>
+<p>If <code class="docutils literal"><span class="pre">key_f</span></code> or <code class="docutils literal"><span class="pre">value_f</span></code> is Identity function, this keyword is
+omitted.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">value_f</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span>
 <span class="go">{0: 0, 1: 1, 2: 4, 3: 9}</span>
 </pre></div>
@@ -879,7 +882,7 @@ that <code class="docutils literal"><span class="pre">cond_f(i,</span> <span cla
 <dt id="ilinq.ilinq.Linq.to_list">
 <code class="descname">to_list</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.to_list" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the list of items.
-This is equivalent list(self)</p>
+This is equivalent <code class="docutils literal"><span class="pre">list(self)</span></code>.</p>
 </dd></dl>
 
 <dl class="method">
@@ -915,7 +918,7 @@ This is equivalent list(self)</p>
 <dl class="method">
 <dt id="ilinq.ilinq.Linq.union">
 <code class="descname">union</code><span class="sig-paren">(</span><em>other</em>, <em>key_f=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.union" title="Permalink to this definition">¶</a></dt>
-<dd><p>return Linq object of the union set by using key_f.</p>
+<dd><p>return Linq object of the union set by using <code class="docutils literal"><span class="pre">key_f</span></code>.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">union</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
 <span class="go">Linq&lt;1, 2, 3, 4, 5, 6&gt;</span>
 </pre></div>
@@ -925,8 +928,8 @@ This is equivalent list(self)</p>
 <dl class="method">
 <dt id="ilinq.ilinq.Linq.where">
 <code class="descname">where</code><span class="sig-paren">(</span><em>cond_f=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.where" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the Linq instance filtered by cond_f.
-And if cond_f is None, return all items.</p>
+<dd><p>Return the Linq instance filtered by <code class="docutils literal"><span class="pre">cond_f</span></code>.
+And if <code class="docutils literal"><span class="pre">cond_f</span></code> is <code class="docutils literal"><span class="pre">None</span></code>, return all items.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
 <span class="go">Linq&lt;0, 5, 10&gt;</span>
 </pre></div>
@@ -936,7 +939,7 @@ And if cond_f is None, return all items.</p>
 <dl class="method">
 <dt id="ilinq.ilinq.Linq.where_in">
 <code class="descname">where_in</code><span class="sig-paren">(</span><em>list_</em>, <em>select_f=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.where_in" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return items which the condition that select_f(item) in <a href="#id1"><span class="problematic" id="id2">list_</span></a></p>
+<dd><p>Return items which the condition that <code class="docutils literal"><span class="pre">select_f(item)</span></code> in <code class="docutils literal"><span class="pre">list_</span></code>.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">100</span><span class="p">])</span><span class="o">.</span><span class="n">where_in</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 <span class="go">Linq&lt;1, 3&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">100</span><span class="p">])</span><span class="o">.</span><span class="n">where_in</span><span class="p">(</span>
@@ -950,7 +953,7 @@ And if cond_f is None, return all items.</p>
 <dl class="method">
 <dt id="ilinq.ilinq.Linq.zip">
 <code class="descname">zip</code><span class="sig-paren">(</span><em>other</em>, <em>zip_f=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.zip" title="Permalink to this definition">¶</a></dt>
-<dd><p>collect self_items and other_items by zip_f.</p>
+<dd><p>collect <code class="docutils literal"><span class="pre">self</span></code> items and <code class="docutils literal"><span class="pre">other</span></code> items by <code class="docutils literal"><span class="pre">zip_f</span></code>.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">([</span><span class="s1">&#39;a11&#39;</span><span class="p">,</span> <span class="s1">&#39;a12&#39;</span><span class="p">,</span> <span class="s1">&#39;a13&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">zip</span><span class="p">([</span><span class="s1">&#39;a21&#39;</span><span class="p">,</span> <span class="s1">&#39;a22&#39;</span><span class="p">,</span> <span class="s1">&#39;a23&#39;</span><span class="p">])</span>
 <span class="go">Linq&lt;(&#39;a11&#39;, &#39;a21&#39;), (&#39;a12&#39;, &#39;a22&#39;), (&#39;a13&#39;, &#39;a23&#39;)&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">([</span><span class="s1">&#39;a11&#39;</span><span class="p">,</span> <span class="s1">&#39;a12&#39;</span><span class="p">,</span> <span class="s1">&#39;a13&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">zip</span><span class="p">([</span><span class="s1">&#39;a21&#39;</span><span class="p">,</span> <span class="s1">&#39;a22&#39;</span><span class="p">])</span>
@@ -969,7 +972,7 @@ And if cond_f is None, return all items.</p>
 </div>
 <div class="section" id="module-ilinq.ilookup">
 <span id="ilinq-ilookup-module"></span><h2>ilinq.ilookup module<a class="headerlink" href="#module-ilinq.ilookup" title="Permalink to this headline">¶</a></h2>
-<p>This module provides lookup objects.</p>
+<p>This module provides <code class="docutils literal"><span class="pre">lookup</span></code> objects.</p>
 <dl class="class">
 <dt id="ilinq.ilookup.ILookup">
 <em class="property">class </em><code class="descclassname">ilinq.ilookup.</code><code class="descname">ILookup</code><a class="headerlink" href="#ilinq.ilookup.ILookup" title="Permalink to this definition">¶</a></dt>
@@ -978,7 +981,8 @@ And if cond_f is None, return all items.</p>
 <dl class="method">
 <dt id="ilinq.ilookup.ILookup.to_linq">
 <code class="descname">to_linq</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilookup.ILookup.to_linq" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>return <code class="docutils literal"><span class="pre">Linq</span></code> instance which consisted by elements of (key, value).</p>
+</dd></dl>
 
 </dd></dl>
 
