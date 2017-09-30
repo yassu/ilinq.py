@@ -1,6 +1,9 @@
 ILinq
 =====
 
+.. image:: https://travis-ci.org/yassu/ilinq.py.svg?branch=master
+    :target: https://travis-ci.org/yassu/ilinq.py
+
 This project provides the module like linq of C# for Python.
 
 How To Install
