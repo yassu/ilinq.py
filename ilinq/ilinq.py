@@ -226,6 +226,13 @@ class Linq(list):
         """
         return Linq([obj] * num)
 
+    @staticmethod
+    def range(*args):
+        """
+        alias to Linq(range(*args))
+        """
+        return Linq(range(*args))
+
     def distinct(self, key_f=None):
         """
         Return ``self`` deleted duplicates

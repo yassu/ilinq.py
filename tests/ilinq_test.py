@@ -297,6 +297,15 @@ class TestLinq:
     def test_repeat(self):
         assert_equal(Linq.repeat(1, 3), Linq([1, 1, 1]))
 
+    def test_range(self):
+        assert_equal(Linq.range(100), Linq(range(100)))
+
+    def test_range2(self):
+        assert_equal(Linq.range(1, 100), Linq(range(1, 100)))
+
+    def test_range3(self):
+        assert_equal(Linq.range(1, 100, 3), Linq(range(1, 100, 3)))
+
     def test_reverse(self):
         linq = Linq(range(6)).reverse()
         assert_equal(linq, Linq([5, 4, 3, 2, 1, 0]))
