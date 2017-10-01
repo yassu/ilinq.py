@@ -20,9 +20,8 @@ class Linq(list):
         >>> Linq(range(10 + 1)).where(lambda n: n % 5 == 0)
         Linq<0, 5, 10>
         """
-        list_ = self[:]
         return Linq([
-            item for item in list_
+            item for item in self
             if cond_f is None or cond_f(item)])
 
     def where_in(self, list_, select_f=None):
@@ -73,7 +72,7 @@ class Linq(list):
         """
         return Linq(reduce(
             lambda x, y: x + y,
-            [(_act(select_f, item))for item in self[:]]))
+            [(_act(select_f, item)) for item in self[:]]))
 
     def select_many_i(self, select_f=None):
         """
@@ -192,10 +191,7 @@ class Linq(list):
         >>> linq1.concat(linq2, linq3)
         Linq<0, 1, 2, 3, 4, 0, 1, 4, 9, 0, 1, 8>
         """
-        res = self
-        for linq in linqs:
-            res = Linq(res.to_list() + linq.to_list())
-        return res
+        return self + Linq(linqs).inject(Linq([]), lambda x, y: x + y)
 
     def default_if_empty(self, default=None):
         """
