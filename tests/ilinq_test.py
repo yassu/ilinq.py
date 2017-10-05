@@ -31,7 +31,7 @@ class TestLinq:
         assert_equal(
             Linq(range(10)).where_in(
                 (1, 3, 7, 9, 13, 15),
-                select_f=lambda x: x % 5),
+                key_f=lambda x: x % 5),
             Linq([1, 3, 6, 8]))
 
     def test_select(self):
@@ -674,8 +674,8 @@ class TestLinq:
 
     def test_sum2(self):
         linq = Linq([1, 1, 4, 2, 2])
-        assert_equal(linq.sum(select_f=lambda x: x*x), 26)
-        assert_equal(linq.sum(select_f=lambda x: x*x), 26)
+        assert_equal(linq.sum(key_f=lambda x: x*x), 26)
+        assert_equal(linq.sum(key_f=lambda x: x*x), 26)
 
     def test_sum3(self):
         linq = Linq([])

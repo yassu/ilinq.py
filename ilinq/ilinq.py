@@ -25,7 +25,7 @@ class Linq(list):
             item for item in self
             if cond_f is None or cond_f(item)])
 
-    def where_in(self, list_, select_f=None):
+    def where_in(self, list_, key_f=None):
         """
         Return items which the condition that ``select_f(item)`` in ``list_``.
 
@@ -37,8 +37,8 @@ class Linq(list):
         Linq<1, 3, 5>
         """
         return self.where(
-            lambda x: x in list_ if select_f is None else
-            select_f(x) in list_)
+            lambda x: x in list_ if key_f is None else
+            key_f(x) in list_)
 
     def select(self, select_f=None):
         """
@@ -729,7 +729,7 @@ class Linq(list):
         max_value = self.max(key_f=key_f)
         return self.where(lambda item: _act(key_f, item) == max_value)
 
-    def sum(self, select_f=None):
+    def sum(self, key_f=None):
         """
         Return total of ``select_f(item)``.
 
@@ -739,10 +739,10 @@ class Linq(list):
         ...     {'name': 'yassu', 'age': 25},
         ...     {'name': 'person2', 'age': 3}
         ... ])
-        >>> persons.sum(select_f=lambda x: x['age'])
+        >>> persons.sum(key_f=lambda x: x['age'])
         28
         """
-        return sum(self.select(select_f))
+        return sum(self.select(key_f))
 
     def average(self, select_f=None):
         """
@@ -766,7 +766,7 @@ class Linq(list):
         values = self.select(key_f)
         ave = values.average()
         return sqrt(
-            values.sum(select_f=lambda x: (x - ave)**2)/float(values.count()))
+            values.sum(key_f=lambda x: (x - ave)**2)/float(values.count()))
 
     def contains(self, item, key_f=None):
         """
