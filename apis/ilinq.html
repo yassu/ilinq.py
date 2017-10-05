@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ilinq package &mdash; ILinq 0.2.5 documentation</title>
+  <title>ilinq package &mdash; ILinq 0.2.6 documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="ILinq 0.2.5 documentation" href="../index.html"/> 
+    <link rel="top" title="ILinq 0.2.6 documentation" href="../index.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -641,6 +641,16 @@ computed by <code class="docutils literal"><span class="pre">key_f</span></code>
 </dd></dl>
 
 <dl class="method">
+<dt id="ilinq.ilinq.Linq.scan">
+<code class="descname">scan</code><span class="sig-paren">(</span><em>initial_value</em>, <em>func</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.scan" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns a list of successive reduced values from the left</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Linq</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">res</span><span class="p">,</span> <span class="n">val</span><span class="p">:</span> <span class="n">res</span> <span class="o">-</span> <span class="n">val</span><span class="p">)</span>
+<span class="go">Linq&lt;0, -1, -3, -6, -10&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
 <dt id="ilinq.ilinq.Linq.select">
 <code class="descname">select</code><span class="sig-paren">(</span><em>select_f=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.select" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the linq instance selected by <code class="docutils literal"><span class="pre">select_f</span></code>.</p>
@@ -763,6 +773,12 @@ that <code class="docutils literal"><span class="pre">cond_f(i,</span> <span cla
 <span class="go">Linq&lt;4, 5, 6, 7, 8, 9&gt;</span>
 </pre></div>
 </div>
+</dd></dl>
+
+<dl class="method">
+<dt id="ilinq.ilinq.Linq.std">
+<code class="descname">std</code><span class="sig-paren">(</span><em>key_f=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ilinq.ilinq.Linq.std" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return standard deviation</p>
 </dd></dl>
 
 <dl class="method">
@@ -1025,7 +1041,7 @@ This object is used for
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.2.5',
+            VERSION:'0.2.6',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
