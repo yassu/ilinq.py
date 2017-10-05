@@ -337,6 +337,14 @@ class TestLinq:
             Linq([{'x': 3, 'y': 4}, {'x': 1, 'y': 2}, {'x': 1, 'y': 1}])
         )
 
+    def test_scan(self):
+        linq = Linq([1, 2, 3, 4]).scan(0, lambda res, val: res - val)
+        assert_equal(
+            linq,
+            Linq([0, -1, -3, -6, -10])
+        )
+        assert_is_instance(linq, Linq)
+
     def test_inject(self):
         linq = Linq([1, 2, 3, 4])
         # 0 - 1 - 2 - 3 - 4

@@ -359,6 +359,20 @@ class Linq(list):
         """
         return Linq(sorted(self[:], key=key_f, reverse=desc))
 
+    def scan(self, initial_value, func):
+        """
+        returns a list of successive reduced values from the left
+
+        >>> Linq(range(1, 4 + 1)).scan(0, lambda res, val: res - val)
+        Linq<0, -1, -3, -6, -10>
+        """
+        val = initial_value
+        l = Linq([val])
+        for item in self:
+            val = func(val, item)
+            l.append(val)
+        return l
+
     def inject(self, initial_value, func, last_f=None):
         """
         Return the result of
