@@ -29,6 +29,9 @@ def build_doc(ctx):
 
 @task
 def clean_doc(ctx):
+    """
+    delete junk files for doc
+    """
     ctx.run('cd docs/ && make clean')
 
 
@@ -40,6 +43,9 @@ def view_doc(ctx):
 
 @task
 def release(ctx):
+    """
+    release this project
+    """
     from ilinq import __VERSION__
     run_commands(
         ctx,
@@ -53,6 +59,9 @@ def release(ctx):
 
 @task
 def deploy_doc(ctx):
+    """
+    deploy to github.io
+    """
     build_doc(ctx)
     run_commands(
         ctx,
