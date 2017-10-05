@@ -5,6 +5,7 @@
 This module provides ``Linq`` class, which is a python version of linq like c#.
 """
 
+from math import sqrt
 from collections import defaultdict
 from functools import reduce
 import itertools
@@ -757,6 +758,15 @@ class Linq(list):
         14.0
         """
         return self.select(select_f).sum() / float(self.count())
+
+    def std(self, key_f=None):
+        """
+        Return standard deviation
+        """
+        values = self.select(key_f)
+        ave = values.average()
+        return sqrt(
+            values.sum(select_f=lambda x: (x - ave)**2)/float(values.count()))
 
     def contains(self, item, key_f=None):
         """

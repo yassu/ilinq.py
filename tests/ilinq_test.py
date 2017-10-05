@@ -696,6 +696,20 @@ class TestLinq:
         linq = Linq([])
         linq.average()
 
+    def test_std(self):
+        val = Linq([71, 80, 89, 80, 54]).std()
+        assert_true(val < 7.35 - 0.0001 or val > 7.35 + 0.0001)
+
+    def test_std2(self):
+        linq = Linq([
+            {"math": 71, "english": 71},
+            {"math": 80, "english": 70},
+            {"math": 89, "english": 68},
+            {"math": 80, "english": 65},
+            {"math": 54, "english": "61"}])
+        val = linq.std(key_f=lambda obj: obj["math"])
+        assert_true(val < 7.35 - 0.0001 or val > 7.35 + 0.0001)
+
     def test_contain(self):
         linq = Linq([1, 6, 1, 4, 2, 2])
         assert_true(linq.contains(2))
