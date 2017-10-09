@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from setuptools import setup
+from setuptools import setup, find_packages
 from ilinq import __VERSION__
 
 classifiers = [
@@ -24,5 +24,6 @@ setup(
     author='yassu',
     author_email='yasu0320.dev@gmail.com',
     classifiers=classifiers,
+    packages=find_packages(),
     url='https://github.com/yassu/ilinq.py',
   )
