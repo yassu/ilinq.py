@@ -189,6 +189,15 @@ class TestLinq:
             Linq([4, 5, 6, 7, 8, 9])
         )
 
+    def test_span(self):
+        assert_equal(
+            Linq(range(10)).span(lambda x: x < 5),
+            tuple([
+                Linq([0, 1, 2, 3, 4]),
+                Linq([5, 6, 7, 8, 9])
+            ])
+        )
+
     def test_concat(self):
         linq1 = Linq([1, 2])
         linq2 = Linq([3, 4])
