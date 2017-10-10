@@ -181,6 +181,25 @@ class Linq(list):
             j += 1
         return self[j:]
 
+    def span(self, cond_f=None):
+        """
+        Similar to ``take_while``,
+        but the remained elements are returned.
+
+        >>> linq = Linq(range(10))
+        >>> linq.span(lambda x: x < 5)
+        (Linq<0, 1, 2, 3, 4>, Linq<5, 6, 7, 8, 9>)
+        >>> linq.span(lambda x: x % 2 == 0)
+        (Linq<0>, Linq<1, 2, 3, 4, 5, 6, 7, 8, 9>)
+        """
+        if cond_f is None:
+            return self.copy()
+
+        n = self.take_while(cond_f).count()
+        body = self[:n]
+        tail = self[n:]
+        return tuple([body, tail])
+
     def concat(self, *linqs):
         """
         >>> linq = Linq(range(4))
