@@ -3,6 +3,8 @@ ILinq
 
 .. image:: https://travis-ci.org/yassu/ilinq.py.svg?branch=master
     :target: https://travis-ci.org/yassu/ilinq.py
+.. image:: https://badge.fury.io/py/ilinq.svg
+    :target: https://badge.fury.io/py/ilinq
 
 This project provides the module like linq of C# for Python.
 
