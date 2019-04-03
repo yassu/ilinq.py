@@ -17,7 +17,8 @@ For developers, we enter
 
 ::
 
-    $ pip install -r extra_require.txt
+    $ pip install pipenv
+    $ pipenv install --dev
 
 First Example
 -------------
