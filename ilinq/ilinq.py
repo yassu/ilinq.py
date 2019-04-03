@@ -368,11 +368,11 @@ class Linq(list):
         Linq<0, -1, -3, -6, -10>
         """
         val = initial_value
-        l = Linq([val])
+        scaned_list = Linq([val])
         for item in self:
             val = func(val, item)
-            l.append(val)
-        return l
+            scaned_list.append(val)
+        return scaned_list
 
     def inject(self, initial_value, func, last_f=None):
         """

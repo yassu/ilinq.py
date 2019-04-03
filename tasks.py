@@ -38,7 +38,7 @@ def clean_doc(ctx):
 @task
 def view_doc(ctx):
     """ open readme of sphinx docs"""
-    ctx.run("open -a Google\ Chrome docs/_build/html/index.html")
+    ctx.run("open -a 'Google Chrome' docs/_build/html/index.html")
 
 
 @task
