@@ -15,6 +15,8 @@ def test(ctx, verbose=False):
     """ run flake8 and tests """
     ctx.run('flake8')
 
+    ctx.run("pipenv check")
+
     nose_command = 'nosetests --with-coverage --cover-html'
     if verbose:
         nose_command += " --verbose"
