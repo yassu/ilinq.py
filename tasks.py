@@ -4,7 +4,7 @@
 from invoke import task
 
 
-def run_commands(ctx, commands):
+def _run_commands(ctx, commands):
     for command in commands:
         print(command)
         ctx.run(command)
@@ -49,7 +49,7 @@ def release(ctx):
     release this project
     """
     from ilinq import __VERSION__
-    run_commands(
+    _run_commands(
         ctx,
         [
             'python setup.py sdist bdist_wheel',
@@ -65,7 +65,7 @@ def deploy_doc(ctx):
     deploy to github.io
     """
     build_doc(ctx)
-    run_commands(
+    _run_commands(
         ctx,
         [
             'git stash',
