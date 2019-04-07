@@ -9,6 +9,7 @@ invoke = "*"
 flake8 = "*"
 twine = "*"
 nose = "*"
+coverage = "*"
 
 [packages]
 
